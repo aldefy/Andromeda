@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/compose-model-1643825954395.xml" value="0.35684121621621623" />
+        <entry key="andromeda-icons/src/main/res/drawable/andromeda_icon_visibility_on.xml" value="0.2265" />
+        <entry key="andromeda/src/main/res/drawable/andromeda_icon_alert.xml" value="0.4235" />
+        <entry key="andromeda/src/main/res/drawable/andromeda_icon_alert_circle.xml" value="0.4235" />
+        <entry key="andromeda/src/main/res/drawable/andromeda_icon_info_circle.xml" value="0.4235" />
+        <entry key="andromeda/src/main/res/drawable/andromeda_icon_password.xml" value="0.4235" />
+        <entry key="andromeda/src/main/res/drawable/andromeda_icon_visibility_on.xml" value="0.4235" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

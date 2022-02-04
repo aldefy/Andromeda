@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/andromeda" />
+            <option value="$PROJECT_DIR$/andromeda-icons" />
             <option value="$PROJECT_DIR$/sample" />
           </set>
         </option>
