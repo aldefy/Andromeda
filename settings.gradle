@@ -1,4 +1,5 @@
 rootProject.name = "Andromeda"
-include ':sample'
+
+include ':catalog'
 include ':andromeda'
 include ':andromeda-icons'

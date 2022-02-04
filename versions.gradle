@@ -1,4 +1,5 @@
-def VERSION_NAME = "1.0.0-alpha"
+def VERSION_NAME = "0.0.1"
+
 def DEFAULT_VERSION_CODE = 1
 
 ext.getUniqueVersionCode = {

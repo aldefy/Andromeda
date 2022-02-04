@@ -13,7 +13,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.1.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.4.0"
     }
 }
@@ -50,3 +50,5 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+apply from: 'versions.gradle'
