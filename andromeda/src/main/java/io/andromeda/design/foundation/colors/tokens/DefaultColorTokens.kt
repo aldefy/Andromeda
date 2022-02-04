@@ -40,6 +40,12 @@ internal object DefaultColorTokens {
     val focusBorderDark: ComposeColor = ComposeColor(0XFF104B79)
     val errorBorderDark: ComposeColor = ComposeColor(0XFFEE324B)
 
+    /**
+     * Icon Dark colors
+     */
+    val iconDefaultDark: ComposeColor = ComposeColor(0xFFFFFFFF)
+    val iconDisabledDark: ComposeColor = ComposeColor(0xFFD3D3D3)
+    val iconActiveDark: ComposeColor = ComposeColor(0x8C2196F3)
 
     /**
      * Primary Light colors
@@ -77,4 +83,11 @@ internal object DefaultColorTokens {
     val muteBorderLight: ComposeColor = ComposeColor(0XFFE8F4FD)
     val focusBorderLight: ComposeColor = ComposeColor(0XFF104B79)
     val errorBorderLight: ComposeColor = ComposeColor(0XFFEE324B)
+
+    /**
+     * Icon Light colors
+     */
+    val iconDefaultLight: ComposeColor = ComposeColor(0xFF494A4A)
+    val iconDisabledLight: ComposeColor = ComposeColor(0xFF606161)
+    val iconActiveLight: ComposeColor = ComposeColor(0x8C2196F3)
 }

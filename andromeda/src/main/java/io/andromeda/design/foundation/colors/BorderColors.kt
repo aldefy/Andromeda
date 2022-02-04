@@ -17,7 +17,7 @@ interface BorderColors {
 }
 
 @Stable
-class StrokeColors(
+class AndromedaBorderColors(
     active: ComposeColor,
     pressed: ComposeColor,
     inactive: ComposeColor,
@@ -45,7 +45,7 @@ class StrokeColors(
         mute: ComposeColor,
         focus: ComposeColor,
         error: ComposeColor,
-    ): StrokeColors = StrokeColors(
+    ): BorderColors = AndromedaBorderColors(
         active,
         pressed,
         inactive,
