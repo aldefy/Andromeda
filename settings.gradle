@@ -1,3 +1,4 @@
 rootProject.name = "Andromeda"
 include ':sample'
 include ':andromeda'
+include ':andromeda-icons'
