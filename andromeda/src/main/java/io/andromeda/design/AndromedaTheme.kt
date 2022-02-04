@@ -3,22 +3,24 @@ package io.andromeda.design
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
-import androidx.compose.runtime.remember
 import io.andromeda.design.foundation.colors.AndromedaColors
 import io.andromeda.design.foundation.colors.LocalColors
+import io.andromeda.design.foundation.shape.AndromedaShapes
+import io.andromeda.design.foundation.shape.DefaultShapes
+import io.andromeda.design.foundation.shape.LocalShapes
 
 @Composable
 fun AndromedaTheme(
     colors: AndromedaColors = AndromedaTheme.colors,
+    shapes: AndromedaShapes = DefaultShapes.default,
     content: @Composable () -> Unit,
 ) {
-    val rememberedColors = remember { colors }
     CompositionLocalProvider(
         LocalColors provides colors,
+        LocalShapes provides shapes,
     ) {
         content()
     }
-
 }
 
 /**
