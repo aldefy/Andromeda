@@ -5,10 +5,17 @@ plugins {
 apply from: '../dependencies.gradle'
 
 android {
+    compileSdkVersion 31
+    buildToolsVersion "30.0.3"
+
     defaultConfig {
+        applicationId "io.andromeda.catalog"
+
         minSdkVersion 21
         compileSdkVersion 31
+
         vectorDrawables.useSupportLibrary = true
+
         versionCode getUniqueVersionCode()
         versionName getVersionName()
         versionNameSuffix getUserVisibleVersionSuffix()
@@ -27,9 +34,16 @@ android {
         kotlinCompilerVersion "1.5.31"
         kotlinCompilerExtensionVersion '1.0.5'
     }
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/DEPENDENCIES', 'META-INF/LICENSE', 'META-INF/LICENSE.md', 'META-INF/LICENSE.txt', 'META-INF/license.txt', 'META-INF/NOTICE', 'META-INF/NOTICE.txt', 'META-INF/notice.txt', 'META-INF/ASL2.0', 'META-INF/LICENSE-notice.md', 'META-INF/DEPENDENCIES', 'META-INF/LICENSE', 'META-INF/LICENSE.md', 'META-INF/LICENSE.txt', 'META-INF/license.txt', 'META-INF/NOTICE', 'META-INF/NOTICE.txt', 'META-INF/notice.txt', 'META-INF/ASL2.0', 'META-INF/LICENSE-notice.md']
+        }
+    }
 }
 
 dependencies {
     implementation kotlin
     implementation project(":andromeda")
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
 }
