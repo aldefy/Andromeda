@@ -35,8 +35,8 @@ android {
         jvmTarget = '11'
     }
     composeOptions {
-        kotlinCompilerVersion "1.5.31"
-        kotlinCompilerExtensionVersion '1.0.5'
+        kotlinCompilerVersion "1.6.10"
+        kotlinCompilerExtensionVersion '1.1.0-rc03'
     }
 }
 

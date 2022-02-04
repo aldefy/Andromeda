@@ -31,8 +31,8 @@ android {
         jvmTarget = '11'
     }
     composeOptions {
-        kotlinCompilerVersion "1.5.31"
-        kotlinCompilerExtensionVersion '1.0.5'
+        kotlinCompilerVersion "1.6.10"
+        kotlinCompilerExtensionVersion '1.1.0-rc03'
     }
     packagingOptions {
         resources {
@@ -44,6 +44,4 @@ android {
 dependencies {
     implementation kotlin
     implementation project(":andromeda")
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
 }

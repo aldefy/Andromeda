@@ -1,11 +1,11 @@
 ext {
     def AndroidxAppCompatVersion = '1.1.0'
     def AndroidxCoreVersion = '1.1.0'
-    def KotlinVersion = '1.5.31'
+    def KotlinVersion = '1.6.10'
     def AndroidxConstraintLayoutVersion = '2.0.0-beta4'
     def AndroidxLifeCycleVersion = '2.2.0'
     def GoogleMaterialVersion = '1.2.1'
-    def ComposeVersion = '1.0.5'
+    def ComposeVersion = '1.1.0-rc03'
 
     kotlinDependencies = [
             kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${KotlinVersion}"
@@ -52,23 +52,17 @@ ext {
             icons              : "androidx.compose.material:material-icons-core:${ComposeVersion}",
             iconsExtended      : "androidx.compose.material:material-icons-extended:${ComposeVersion}",
             // Integration with activities
-            activity           : "androidx.activity:activity-compose:1.3.1",
+            activity           : "androidx.activity:activity-compose:1.4.0",
             // Integration with ViewModels
-            viewModel          : "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07",
+            viewModel          : "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0",
             // Image loading
-            coil               : "io.coil-kt:coil-compose:1.3.2",
+            coil               : "io.coil-kt:coil-compose:1.4.0",
             // ConstraintLayout
-            constraint         : "androidx.constraintlayout:constraintlayout-compose:1.0.0-rc01",
-            //Pager
-            pager              : "com.google.accompanist:accompanist-pager:0.21.4-beta",
-            //Swipe Refresh
-            swipeRefresh       : "com.google.accompanist:accompanist-swiperefresh:0.21.4-beta",
-            //Permissions
-            permissions        : "com.google.accompanist:accompanist-permissions:0.22.0-rc",
+            constraint         : "androidx.constraintlayout:constraintlayout-compose:1.0.0",
             // Animations
-            animations_graphics: "androidx.compose.animation:animation-graphics:1.1.0-beta02",
-            animations_core    : "androidx.compose.animation:animation-core:1.1.0-beta02",
-            animations         : "androidx.compose.animation:animation:1.1.0-beta02",
+            animations_graphics: "androidx.compose.animation:animation-graphics:${ComposeVersion}",
+            animations_core    : "androidx.compose.animation:animation-core:${ComposeVersion}",
+            animations         : "androidx.compose.animation:animation:${ComposeVersion}",
             //Placeholder
             main               : "com.google.accompanist:accompanist-placeholder:0.24.0-alpha"
     ]
