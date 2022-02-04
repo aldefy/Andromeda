@@ -1,6 +1,7 @@
 package io.andromeda.design.foundation.typography
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import io.andromeda.design.foundation.typography.body.BodyModerateTypographyStyle
@@ -12,7 +13,7 @@ import io.andromeda.design.foundation.typography.title.*
 /**
  * Contains all the typography we provide for our components.
  * */
-class AndromedaComposeTypography(
+class AndromedaTypography(
     val titleHeroTextStyle: TextStyle,
     val titleModerateBoldTextStyle: TextStyle,
     val titleModerateDemiTextStyle: TextStyle,
@@ -27,8 +28,8 @@ class AndromedaComposeTypography(
  * Builds the default typography set for our theme.
  * */
 @Composable
-fun textStyles(fontFamily: FontFamily): AndromedaComposeTypography {
-    return AndromedaComposeTypography(
+fun textStyles(fontFamily: FontFamily): AndromedaTypography {
+    return AndromedaTypography(
         titleHeroTextStyle = TitleHeroTypographyStyle(fontFamily)
             .getComposeTextStyle(),
         titleModerateBoldTextStyle = TitleModerateBoldTypographyStyle(fontFamily)
@@ -59,4 +60,11 @@ private fun toTextStyle(typographyStyle: BaseTypography): TextStyle {
 
 fun BaseTypography.getComposeTextStyle(): TextStyle {
     return toTextStyle(this)
+}
+
+internal val LocalTypography = compositionLocalOf<AndromedaTypography> {
+    error(
+        "No typography provided! Make sure to wrap all usages of components in a " +
+                "AndromedaTheme."
+    )
 }
