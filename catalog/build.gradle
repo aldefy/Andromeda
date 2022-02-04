@@ -1,0 +1,35 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+apply from: '../dependencies.gradle'
+
+android {
+    defaultConfig {
+        minSdkVersion 21
+        compileSdkVersion 31
+        vectorDrawables.useSupportLibrary = true
+        versionCode getUniqueVersionCode()
+        versionName getVersionName()
+        versionNameSuffix getUserVisibleVersionSuffix()
+    }
+    buildFeatures {
+        compose true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+    composeOptions {
+        kotlinCompilerVersion "1.5.31"
+        kotlinCompilerExtensionVersion '1.0.5'
+    }
+}
+
+dependencies {
+    implementation kotlin
+    implementation project(":andromeda")
+}

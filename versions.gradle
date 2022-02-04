@@ -1,0 +1,22 @@
+def VERSION_NAME = "1.0.0-alpha"
+def DEFAULT_VERSION_CODE = 1
+
+ext.getUniqueVersionCode = {
+    def code = System.getenv("VERSION_CODE")
+    return (code != null && !code.isEmpty()) ? code.toInteger() : DEFAULT_VERSION_CODE
+}
+
+ext.getVersionName = {
+    return VERSION_NAME
+}
+
+ext.getVersionNameFormatted = {
+    return "\"${VERSION_NAME}\""
+}
+
+ext.getUserVisibleVersionSuffix = {
+    def suffix = System.getenv("VERSION_SUFFIX") != null ? "-${System.getenv("VERSION_SUFFIX")}" : ""
+    def code = System.getenv("VERSION_CODE") != null ? "-${System.getenv("VERSION_CODE")}" : ""
+
+    return suffix + code
+}
