@@ -115,7 +115,7 @@ public object ButtonDefaults {
         // focused: Dp = 4.dp,
         // hovered: Dp = 4.dp,
         disabledElevation: Dp = 0.dp
-    ): io.andromeda.design.components.buttons.ButtonElevation {
+    ): ButtonElevation {
         return remember(defaultElevation, pressedElevation, disabledElevation) {
             DefaultButtonElevation(
                 defaultElevation = defaultElevation,
