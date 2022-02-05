@@ -17,6 +17,7 @@ class AndromedaColors(
     val tertiaryColors: TertiaryColors,
     val borderColors: BorderColors,
     val iconColors: IconColors,
+    val contentColors: ContentColors,
     isDark: Boolean
 ) {
     var isDark: Boolean by mutableStateOf(isDark, structuralEqualityPolicy())
@@ -28,6 +29,7 @@ class AndromedaColors(
         tertiaryColors: TertiaryColors = this.tertiaryColors,
         borderColors: BorderColors = this.borderColors,
         iconColors: IconColors = this.iconColors,
+        contentColors: ContentColors = this.contentColors,
         isDark: Boolean = this.isDark
     ): AndromedaColors = AndromedaColors(
         primaryColors = primaryColors,
@@ -35,6 +37,7 @@ class AndromedaColors(
         tertiaryColors = tertiaryColors,
         borderColors = borderColors,
         iconColors = iconColors,
+        contentColors = contentColors,
         isDark = isDark
     )
 }

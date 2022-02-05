@@ -1,6 +1,7 @@
 package io.andromeda.design.foundation.colors
 
 import io.andromeda.design.foundation.colors.tokens.DefaultColorTokens
+import io.andromeda.design.invert
 import androidx.compose.ui.graphics.Color as ComposeColor
 
 /**
@@ -11,13 +12,15 @@ internal fun defaultDarkColors(
     secondaryColors: SecondaryColors = defaultSecondaryDarkColors(),
     tertiaryColors: TertiaryColors = defaultTertiaryDarkColors(),
     borderColors: BorderColors = defaultBorderDarkColors(),
-    iconColors: IconColors = defaultIconsDarkColors()
+    iconColors: IconColors = defaultIconsDarkColors(),
+    contentColors: ContentColors = defaultContentDarkColors()
 ): AndromedaColors = AndromedaColors(
     primaryColors = primaryColors,
     secondaryColors = secondaryColors,
     tertiaryColors = tertiaryColors,
     borderColors = borderColors,
     iconColors = iconColors,
+    contentColors = contentColors,
     isDark = true
 )
 
@@ -87,4 +90,16 @@ internal fun defaultIconsDarkColors(
     default = default,
     disabled = disabled,
     active = active
+)
+
+internal fun defaultContentDarkColors(
+    normal: ComposeColor = DefaultColorTokens.contentNormal.invert(),
+    minor: ComposeColor = DefaultColorTokens.contentMinor.invert(),
+    subtle: ComposeColor = DefaultColorTokens.contentSubtle.invert(),
+    disabled: ComposeColor = DefaultColorTokens.contentDisabled.invert(),
+): ContentColors = ContentColors(
+    normal = normal,
+    minor = minor,
+    subtle = subtle,
+    disabled = disabled
 )

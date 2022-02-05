@@ -4,14 +4,14 @@ import android.os.SystemClock
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
+import androidx.core.graphics.ColorUtils
 import androidx.compose.ui.graphics.Color as ComposeColor
-import android.graphics.Color as AndroidColor
 
 fun LazyListState.isScrolledToTheEnd() =
     layoutInfo.visibleItemsInfo.lastOrNull()?.index == layoutInfo.totalItemsCount - 1
@@ -49,4 +49,13 @@ fun Modifier.debouncedClickable(
         val clickable = debounced(debounceTime = debounceTime, onClick = { onClick() })
         this.clickable { clickable() }
     }
+}
+
+@OptIn(ExperimentalUnsignedTypes::class)
+fun ComposeColor.invert(): ComposeColor {
+    val hsl = floatArrayOf(0f, 0f, 0f)
+    ColorUtils.colorToHSL((value shr 32).toInt(), hsl)
+    hsl[2] = 1 - hsl[2]
+    val colorInt = ColorUtils.HSLToColor(hsl)
+    return androidx.compose.ui.graphics.Color(colorInt)
 }

@@ -11,13 +11,15 @@ internal fun defaultLightColors(
     secondaryColors: SecondaryColors = defaultSecondaryLightColors(),
     tertiaryColors: TertiaryColors = defaultTertiaryLightColors(),
     borderColors: BorderColors = defaultBorderLightColors(),
-    iconColors: IconColors = defaultIconsLightColors()
+    iconColors: IconColors = defaultIconsLightColors(),
+    contentColors: ContentColors = defaultContentLightColors()
 ): AndromedaColors = AndromedaColors(
     primaryColors = primaryColors,
     secondaryColors = secondaryColors,
     tertiaryColors = tertiaryColors,
     borderColors = borderColors,
     iconColors = iconColors,
+    contentColors = contentColors,
     isDark = false
 )
 
@@ -80,11 +82,23 @@ internal fun defaultBorderLightColors(
 )
 
 internal fun defaultIconsLightColors(
-    default: ComposeColor = DefaultColorTokens.activeBorderLight,
-    disabled: ComposeColor = DefaultColorTokens.activeBorderLight,
-    active: ComposeColor = DefaultColorTokens.activeBorderLight,
+    default: ComposeColor = DefaultColorTokens.iconDefaultLight,
+    disabled: ComposeColor = DefaultColorTokens.iconDisabledLight,
+    active: ComposeColor = DefaultColorTokens.iconActiveLight,
 ): IconColors = AndromedaIconColors(
     default = default,
     disabled = disabled,
     active = active
+)
+
+internal fun defaultContentLightColors(
+    normal: ComposeColor = DefaultColorTokens.contentNormal,
+    minor: ComposeColor = DefaultColorTokens.contentMinor,
+    subtle: ComposeColor = DefaultColorTokens.contentSubtle,
+    disabled: ComposeColor = DefaultColorTokens.contentDisabled,
+): ContentColors = ContentColors(
+    normal = normal,
+    minor = minor,
+    subtle = subtle,
+    disabled = disabled
 )

@@ -90,4 +90,12 @@ internal object DefaultColorTokens {
     val iconDefaultLight: ComposeColor = ComposeColor(0xFF494A4A)
     val iconDisabledLight: ComposeColor = ComposeColor(0xFF606161)
     val iconActiveLight: ComposeColor = ComposeColor(0x8C2196F3)
+
+    /**
+     * Generic Content colors
+     */
+    val contentNormal: ComposeColor = ComposeColor(0XFF252A31)
+    val contentMinor: ComposeColor = ComposeColor(0xFF4F5E71)
+    val contentSubtle: ComposeColor = ComposeColor(0xFF697D95)
+    val contentDisabled: ComposeColor = ComposeColor(0xFFA6B6C8)
 }
