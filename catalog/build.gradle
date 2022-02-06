@@ -43,5 +43,8 @@ android {
 
 dependencies {
     implementation kotlin
+    implementation composeNav
     implementation project(":andromeda")
+    implementation project(":andromeda-icons")
+    implementation project(":andromeda-illustrations")
 }

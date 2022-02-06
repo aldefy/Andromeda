@@ -10,6 +10,7 @@ import io.andromeda.design.AndromedaTheme
 class LauncherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             AndromedaTheme {
                 LazyColumn {
