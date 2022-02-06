@@ -8,7 +8,8 @@ ext {
     def ComposeVersion = '1.1.0-rc03'
 
     kotlinDependencies = [
-            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${KotlinVersion}"
+            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${KotlinVersion}",
+            reflect: "org.jetbrains.kotlin:kotlin-reflect:${KotlinVersion}"
     ]
 
     kotlin = kotlinDependencies.values()
