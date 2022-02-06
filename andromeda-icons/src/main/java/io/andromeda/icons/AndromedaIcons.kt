@@ -10,7 +10,6 @@ import androidx.compose.ui.res.painterResource
 
 @Suppress("unused")
 object AndromedaIcons {
-
     val Visibility: Painter
         @Composable
         get() = painterResource(R.drawable.andromeda_icon_visibility_on)
@@ -35,11 +34,7 @@ object AndromedaIcons {
         @Composable
         get() = painterResource(R.drawable.andromeda_icon_alert_circle)
 
-    public val LeftSelector: ImageVector
+    public val Photos: Painter
         @Composable
-        get() = Icons.Default.KeyboardArrowLeft
-
-    public val RightSelector: ImageVector
-        @Composable
-        get() = Icons.Default.KeyboardArrowRight
+        get() = painterResource(id = R.drawable.andromeda_icon_photos)
 }
