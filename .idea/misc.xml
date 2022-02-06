@@ -4,12 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/compose-model-1643825954395.xml" value="0.35684121621621623" />
+        <entry key="../../../../layout/compose-model-1644064376973.xml" value="0.21697324414715718" />
+        <entry key="andromeda-icons/src/main/res/drawable/andromeda_icon_password.xml" value="0.4785" />
+        <entry key="andromeda-icons/src/main/res/drawable/andromeda_icon_photos.xml" value="0.4785" />
+        <entry key="andromeda-icons/src/main/res/drawable/andromeda_icon_placeholder.xml" value="0.1" />
         <entry key="andromeda-icons/src/main/res/drawable/andromeda_icon_visibility_on.xml" value="0.2265" />
+        <entry key="andromeda-illustrations/src/main/res/drawable/andromeda_vector_friends_chatting.xml" value="0.1" />
+        <entry key="andromeda-illustrations/src/main/res/drawable/andromeda_vector_man_vibing.xml" value="0.4785" />
+        <entry key="andromeda-illustrations/src/main/res/drawable/andromeda_vector_watering_plants.xml" value="0.4785" />
         <entry key="andromeda/src/main/res/drawable/andromeda_icon_alert.xml" value="0.4235" />
         <entry key="andromeda/src/main/res/drawable/andromeda_icon_alert_circle.xml" value="0.4235" />
         <entry key="andromeda/src/main/res/drawable/andromeda_icon_info_circle.xml" value="0.4235" />
         <entry key="andromeda/src/main/res/drawable/andromeda_icon_password.xml" value="0.4235" />
         <entry key="andromeda/src/main/res/drawable/andromeda_icon_visibility_on.xml" value="0.4235" />
+        <entry key="catalog/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="catalog/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="catalog/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>
