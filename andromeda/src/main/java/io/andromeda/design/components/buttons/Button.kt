@@ -27,10 +27,10 @@ import io.andromeda.design.foundation.typography.ProvideMergedTextStyle
 import androidx.compose.ui.graphics.Color as ComposeColor
 
 @Composable
-internal fun Button(
+fun Button(
     onClick: () -> Unit,
-    backgroundColor: ComposeColor,
     modifier: Modifier = Modifier,
+    backgroundColor: ComposeColor = AndromedaTheme.colors.primaryColors.active,
     contentColor: ComposeColor = contentColorFor(backgroundColor = backgroundColor),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     elevation: ButtonElevation = ButtonDefaults.elevation(),
