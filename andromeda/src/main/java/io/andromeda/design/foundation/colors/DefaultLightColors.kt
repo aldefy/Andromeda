@@ -1,12 +1,13 @@
 package io.andromeda.design.foundation.colors
 
 import io.andromeda.design.foundation.colors.tokens.DefaultColorTokens
+import io.andromeda.design.invert
 import androidx.compose.ui.graphics.Color as ComposeColor
 
 /**
  * Light side
  */
-internal fun defaultLightColors(
+fun defaultLightColors(
     primaryColors: PrimaryColors = defaultPrimaryLightColors(),
     secondaryColors: SecondaryColors = defaultSecondaryLightColors(),
     tertiaryColors: TertiaryColors = defaultTertiaryLightColors(),
@@ -29,12 +30,14 @@ internal fun defaultPrimaryLightColors(
     error: ComposeColor = DefaultColorTokens.errorPrimaryLight,
     mute: ComposeColor = DefaultColorTokens.mutePrimaryLight,
     pressed: ComposeColor = DefaultColorTokens.pressedPrimaryLight,
+    alt: ComposeColor = DefaultColorTokens.White.invert(),
 ): PrimaryColors = PrimaryColors(
     active = active,
     background = background,
     error = error,
     mute = mute,
-    pressed = pressed
+    pressed = pressed,
+    alt = alt
 )
 
 internal fun defaultSecondaryLightColors(
@@ -43,12 +46,14 @@ internal fun defaultSecondaryLightColors(
     error: ComposeColor = DefaultColorTokens.errorSecondaryLight,
     mute: ComposeColor = DefaultColorTokens.muteSecondaryLight,
     pressed: ComposeColor = DefaultColorTokens.pressedSecondaryLight,
+    alt: ComposeColor = DefaultColorTokens.White.invert(),
 ): SecondaryColors = SecondaryColors(
     active = active,
     background = background,
     error = error,
     mute = mute,
-    pressed = pressed
+    pressed = pressed,
+    alt = alt
 )
 
 internal fun defaultTertiaryLightColors(
@@ -57,12 +62,14 @@ internal fun defaultTertiaryLightColors(
     error: ComposeColor = DefaultColorTokens.errorTertiaryLight,
     mute: ComposeColor = DefaultColorTokens.muteTertiaryLight,
     pressed: ComposeColor = DefaultColorTokens.pressedTertiaryLight,
+    alt: ComposeColor = DefaultColorTokens.White.invert(),
 ): TertiaryColors = TertiaryColors(
     active = active,
     background = background,
     error = error,
     mute = mute,
-    pressed = pressed
+    pressed = pressed,
+    alt = alt
 )
 
 internal fun defaultBorderLightColors(

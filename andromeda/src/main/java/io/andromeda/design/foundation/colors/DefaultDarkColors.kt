@@ -7,7 +7,7 @@ import androidx.compose.ui.graphics.Color as ComposeColor
 /**
  * Dark side
  */
-internal fun defaultDarkColors(
+fun defaultDarkColors(
     primaryColors: PrimaryColors = defaultPrimaryDarkColors(),
     secondaryColors: SecondaryColors = defaultSecondaryDarkColors(),
     tertiaryColors: TertiaryColors = defaultTertiaryDarkColors(),
@@ -30,12 +30,14 @@ internal fun defaultPrimaryDarkColors(
     error: ComposeColor = DefaultColorTokens.errorPrimaryDark,
     mute: ComposeColor = DefaultColorTokens.mutePrimaryDark,
     pressed: ComposeColor = DefaultColorTokens.pressedPrimaryDark,
+    alt: ComposeColor = DefaultColorTokens.White,
 ): PrimaryColors = PrimaryColors(
     active = active,
     background = background,
     error = error,
     mute = mute,
-    pressed = pressed
+    pressed = pressed,
+    alt = alt
 )
 
 internal fun defaultSecondaryDarkColors(
@@ -44,12 +46,14 @@ internal fun defaultSecondaryDarkColors(
     error: ComposeColor = DefaultColorTokens.errorSecondaryDark,
     mute: ComposeColor = DefaultColorTokens.muteSecondaryDark,
     pressed: ComposeColor = DefaultColorTokens.pressedSecondaryDark,
+    alt: ComposeColor = DefaultColorTokens.White,
 ): SecondaryColors = SecondaryColors(
     active = active,
     background = background,
     error = error,
     mute = mute,
-    pressed = pressed
+    pressed = pressed,
+    alt = alt
 )
 
 internal fun defaultTertiaryDarkColors(
@@ -58,12 +62,14 @@ internal fun defaultTertiaryDarkColors(
     error: ComposeColor = DefaultColorTokens.errorTertiaryDark,
     mute: ComposeColor = DefaultColorTokens.muteTertiaryDark,
     pressed: ComposeColor = DefaultColorTokens.pressedTertiaryDark,
+    alt: ComposeColor = DefaultColorTokens.White,
 ): TertiaryColors = TertiaryColors(
     active = active,
     background = background,
     error = error,
     mute = mute,
-    pressed = pressed
+    pressed = pressed,
+    alt = alt
 )
 
 internal fun defaultBorderDarkColors(

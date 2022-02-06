@@ -57,5 +57,5 @@ fun ComposeColor.invert(): ComposeColor {
     ColorUtils.colorToHSL((value shr 32).toInt(), hsl)
     hsl[2] = 1 - hsl[2]
     val colorInt = ColorUtils.HSLToColor(hsl)
-    return androidx.compose.ui.graphics.Color(colorInt)
+    return ComposeColor(colorInt)
 }

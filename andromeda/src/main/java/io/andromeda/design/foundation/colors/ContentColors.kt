@@ -1,10 +1,15 @@
 package io.andromeda.design.foundation.colors
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.structuralEqualityPolicy
+import androidx.compose.ui.graphics.takeOrElse
+import androidx.compose.material.LocalContentColor
+import io.andromeda.design.AndromedaTheme
 import androidx.compose.ui.graphics.Color as ComposeColor
 
 @Stable
@@ -35,3 +40,10 @@ class ContentColors(
         disabled,
     )
 }
+
+@Composable
+public fun contentColorFor(backgroundColor: ComposeColor): ComposeColor =
+    AndromedaTheme.colors.contentColorFor(backgroundColor)
+        .takeOrElse { LocalContentColor.current }
+
+public val LocalContentColor: ProvidableCompositionLocal<ComposeColor> = LocalContentColor

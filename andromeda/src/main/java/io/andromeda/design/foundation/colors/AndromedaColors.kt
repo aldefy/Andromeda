@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.structuralEqualityPolicy
+import androidx.compose.ui.graphics.Color
 
 @Stable
 class AndromedaColors(
@@ -58,3 +59,9 @@ public fun ProvideColors(colors: AndromedaColors, content: @Composable () -> Uni
         content = content
     )
 }
+
+public fun AndromedaColors.contentColorFor(color: Color): Color =
+    primaryColors.contentColorFor(color)
+        ?: primaryColors.contentColorFor(color)
+        ?: Color.Unspecified
+

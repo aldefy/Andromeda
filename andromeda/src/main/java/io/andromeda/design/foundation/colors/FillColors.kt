@@ -13,6 +13,7 @@ interface FillColors {
     val error: ComposeColor
     val mute: ComposeColor
     val pressed: ComposeColor
+    val alt: ComposeColor
 }
 
 @Stable
@@ -22,6 +23,7 @@ class PrimaryColors(
     error: ComposeColor,
     mute: ComposeColor,
     pressed: ComposeColor,
+    alt: ComposeColor
 ) : FillColors {
     override var background: ComposeColor by mutableStateOf(background, structuralEqualityPolicy())
         internal set
@@ -33,19 +35,23 @@ class PrimaryColors(
         internal set
     override var pressed: ComposeColor by mutableStateOf(pressed, structuralEqualityPolicy())
         internal set
+    override var alt: ComposeColor by mutableStateOf(alt, structuralEqualityPolicy())
+        internal set
 
     fun copy(
         background: ComposeColor = this.background,
         active: ComposeColor = this.active,
         error: ComposeColor = this.error,
         mute: ComposeColor = this.mute,
-        pressed: ComposeColor = this.pressed
+        pressed: ComposeColor = this.pressed,
+        alt: ComposeColor = this.alt
     ): PrimaryColors = PrimaryColors(
         active,
         background,
         error,
         mute,
         pressed,
+        alt
     )
 }
 
@@ -56,6 +62,7 @@ class SecondaryColors(
     error: ComposeColor,
     mute: ComposeColor,
     pressed: ComposeColor,
+    alt: ComposeColor
 ) : FillColors {
     override var background: ComposeColor by mutableStateOf(background, structuralEqualityPolicy())
         internal set
@@ -67,19 +74,23 @@ class SecondaryColors(
         internal set
     override var pressed: ComposeColor by mutableStateOf(pressed, structuralEqualityPolicy())
         internal set
+    override var alt: ComposeColor by mutableStateOf(alt, structuralEqualityPolicy())
+        internal set
 
     fun copy(
         background: ComposeColor = this.background,
         active: ComposeColor = this.active,
         error: ComposeColor = this.error,
         mute: ComposeColor = this.mute,
-        pressed: ComposeColor = this.pressed
+        pressed: ComposeColor = this.pressed,
+        alt: ComposeColor = this.alt
     ): SecondaryColors = SecondaryColors(
         active,
         background,
         error,
         mute,
         pressed,
+        alt
     )
 }
 
@@ -90,6 +101,7 @@ class TertiaryColors(
     error: ComposeColor,
     mute: ComposeColor,
     pressed: ComposeColor,
+    alt: ComposeColor
 ) : FillColors {
     override var background: ComposeColor by mutableStateOf(background, structuralEqualityPolicy())
         internal set
@@ -101,18 +113,34 @@ class TertiaryColors(
         internal set
     override var pressed: ComposeColor by mutableStateOf(pressed, structuralEqualityPolicy())
         internal set
+    override var alt: ComposeColor by mutableStateOf(alt, structuralEqualityPolicy())
+        internal set
 
     fun copy(
         background: ComposeColor = this.background,
         active: ComposeColor = this.active,
         error: ComposeColor = this.error,
         mute: ComposeColor = this.mute,
-        pressed: ComposeColor = this.pressed
+        pressed: ComposeColor = this.pressed,
+        alt: ComposeColor = this.alt
     ): TertiaryColors = TertiaryColors(
         active,
         background,
         error,
         mute,
         pressed,
+        alt
     )
 }
+
+internal fun FillColors.contentColorFor(
+    color: ComposeColor
+): ComposeColor? =
+    when (color) {
+        background -> alt
+        active -> alt
+        error -> alt
+        mute -> alt
+        pressed -> alt
+        else -> null
+    }

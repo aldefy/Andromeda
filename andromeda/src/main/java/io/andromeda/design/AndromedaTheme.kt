@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.text.font.FontFamily
+import io.andromeda.design.foundation.ContentEmphasis
+import io.andromeda.design.foundation.LocalContentEmphasis
 import io.andromeda.design.foundation.colors.AndromedaColors
 import io.andromeda.design.foundation.colors.LocalColors
 import io.andromeda.design.foundation.shape.AndromedaShapes
@@ -16,9 +18,9 @@ import io.andromeda.design.foundation.typography.textStyles
 
 @Composable
 fun AndromedaTheme(
-    colors: AndromedaColors = AndromedaTheme.colors,
     shapes: AndromedaShapes = DefaultShapes.default,
     fontFamily: FontFamily = AndromedaFonts,
+    colors: AndromedaColors = AndromedaTheme.colors,
     typography: AndromedaTypography = textStyles(fontFamily = fontFamily),
     content: @Composable () -> Unit,
 ) {
@@ -26,6 +28,7 @@ fun AndromedaTheme(
         LocalColors provides colors,
         LocalTypography provides typography,
         LocalShapes provides shapes,
+        LocalContentEmphasis provides ContentEmphasis.Normal,
     ) {
         content()
     }

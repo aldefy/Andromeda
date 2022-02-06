@@ -3,6 +3,8 @@ package io.andromeda.design.foundation.colors.tokens
 import androidx.compose.ui.graphics.Color as ComposeColor
 
 internal object DefaultColorTokens {
+    val White: ComposeColor = ComposeColor.White
+
     /**
      * Primary Dark colors
      */
@@ -28,7 +30,7 @@ internal object DefaultColorTokens {
     val backgroundTertiaryDark: ComposeColor = ComposeColor(0xA6FFFFFF)
     val errorTertiaryDark: ComposeColor = ComposeColor(0XA6EA001F)
     val muteTertiaryDark: ComposeColor = ComposeColor(0XA6E8E8E8)
-    val pressedTertiaryDark: ComposeColor = ComposeColor(0XA6EA001F)
+    val pressedTertiaryDark: ComposeColor = ComposeColor(0X3379c0f7)
 
     /**
      * Border Dark colors
@@ -72,7 +74,7 @@ internal object DefaultColorTokens {
     val backgroundTertiaryLight: ComposeColor = ComposeColor(0xA6FFFFFF)
     val errorTertiaryLight: ComposeColor = ComposeColor(0XA6EA001F)
     val muteTertiaryLight: ComposeColor = ComposeColor(0XA6E8E8E8)
-    val pressedTertiaryLight: ComposeColor = ComposeColor(0XA6EA001F)
+    val pressedTertiaryLight: ComposeColor = ComposeColor(0X3379c0f7)
 
     /**
      * Border Light colors
