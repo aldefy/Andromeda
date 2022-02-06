@@ -65,8 +65,18 @@ ext {
             animations_core    : "androidx.compose.animation:animation-core:${ComposeVersion}",
             animations         : "androidx.compose.animation:animation:${ComposeVersion}",
             //Placeholder
-            main               : "com.google.accompanist:accompanist-placeholder:0.24.0-alpha"
+            main               : "com.google.accompanist:accompanist-placeholder:0.24.0-alpha",
+            // Insets
+            insets             : "com.google.accompanist:accompanist-insets:0.24.1-alpha",
+            insetsui           : "com.google.accompanist:accompanist-insets-ui:0.24.1-alpha",
+            systemui           : "com.google.accompanist:accompanist-systemuicontroller:0.24.1-alpha"
     ]
 
     compose = composeDeps.values()
+
+    composeNavDeps = [
+            main: "androidx.navigation:navigation-compose:2.4.0-beta02"
+    ]
+
+    composeNav = composeNavDeps.values()
 }
