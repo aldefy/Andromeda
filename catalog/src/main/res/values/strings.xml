@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">Andromeda</string>
+  <string name="accessibility_toggle_theme">Toggle theme</string>
 </resources>
