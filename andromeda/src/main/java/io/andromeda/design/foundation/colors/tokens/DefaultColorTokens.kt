@@ -27,7 +27,7 @@ internal object DefaultColorTokens {
      * Tertiary Dark colors
      */
     val activeTertiaryDark: ComposeColor = ComposeColor(0XA62196F3)
-    val backgroundTertiaryDark: ComposeColor = ComposeColor(0xA6FFFFFF)
+    val backgroundTertiaryDark: ComposeColor = ComposeColor(0X2FFFFFFF)
     val errorTertiaryDark: ComposeColor = ComposeColor(0XA6EA001F)
     val muteTertiaryDark: ComposeColor = ComposeColor(0XA6E8E8E8)
     val pressedTertiaryDark: ComposeColor = ComposeColor(0X3379c0f7)
@@ -71,7 +71,7 @@ internal object DefaultColorTokens {
      * Tertiary Light colors
      */
     val activeTertiaryLight: ComposeColor = ComposeColor(0XA62196F3)
-    val backgroundTertiaryLight: ComposeColor = ComposeColor(0xA6FFFFFF)
+    val backgroundTertiaryLight: ComposeColor = ComposeColor(0X2F79c0f7)
     val errorTertiaryLight: ComposeColor = ComposeColor(0XA6EA001F)
     val muteTertiaryLight: ComposeColor = ComposeColor(0XA6E8E8E8)
     val pressedTertiaryLight: ComposeColor = ComposeColor(0X3379c0f7)

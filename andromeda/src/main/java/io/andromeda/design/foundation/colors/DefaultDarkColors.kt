@@ -89,9 +89,9 @@ internal fun defaultBorderDarkColors(
 )
 
 internal fun defaultIconsDarkColors(
-    default: ComposeColor = DefaultColorTokens.activeBorderDark,
-    disabled: ComposeColor = DefaultColorTokens.activeBorderDark,
-    active: ComposeColor = DefaultColorTokens.activeBorderDark,
+    default: ComposeColor = DefaultColorTokens.iconDefaultDark,
+    disabled: ComposeColor = DefaultColorTokens.iconDisabledDark,
+    active: ComposeColor = DefaultColorTokens.iconActiveDark,
 ): IconColors = AndromedaIconColors(
     default = default,
     disabled = disabled,
