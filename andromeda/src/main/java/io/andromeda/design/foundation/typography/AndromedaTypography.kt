@@ -8,7 +8,10 @@ import io.andromeda.design.foundation.typography.body.BodyModerateTypographyStyl
 import io.andromeda.design.foundation.typography.body.BodySmallTypographyStyle
 import io.andromeda.design.foundation.typography.caption.CaptionModerateBookTypographyStyle
 import io.andromeda.design.foundation.typography.caption.CaptionModerateDemiTypographyStyle
-import io.andromeda.design.foundation.typography.title.*
+import io.andromeda.design.foundation.typography.title.TitleHeroTypographyStyle
+import io.andromeda.design.foundation.typography.title.TitleModerateBoldTypographyStyle
+import io.andromeda.design.foundation.typography.title.TitleModerateDemiTypographyStyle
+import io.andromeda.design.foundation.typography.title.TitleSmallDemiTypographyStyle
 
 /**
  * Contains all the typography we provide for our components.
@@ -54,7 +57,7 @@ private fun toTextStyle(typographyStyle: BaseTypography): TextStyle {
         fontSize = typographyStyle.fontSize,
         fontFamily = typographyStyle.fontFamily,
         lineHeight = typographyStyle.lineHeight,
-        fontWeight = typographyStyle.fontWeight
+        fontWeight = typographyStyle.fontWeight,
     )
 }
 
