@@ -91,7 +91,7 @@ jobs:
           retention-days: 1
 
   assemble_job:
-    needs: [ test_job, code_formatting_job, lint_job ]
+    needs: [ code_formatting_job, lint_job ]
     name: Assemble
     runs-on: ubuntu-latest
     continue-on-error: true
