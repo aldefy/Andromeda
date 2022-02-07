@@ -4,21 +4,37 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 
+interface IllustrationResource {
+    @Composable
+    fun resource(): Painter
+    fun resourceName(): String
+}
+
 @Suppress("unused")
-public object AndromedaIllustrations {
-    public val FriendsChatting: Painter
+enum class AndromedaIllustrations : IllustrationResource {
+    FriendsChatting {
         @Composable
-        get() = painterResource(R.drawable.andromeda_vector_friends_chatting)
-    public val ManVibing: Painter
+        override fun resource() = painterResource(R.drawable.andromeda_vector_friends_chatting)
+        override fun resourceName(): String = "Friends Chatting"
+    },
+    ManVibing {
         @Composable
-        get() = painterResource(R.drawable.andromeda_vector_man_vibing)
-    public val WateringPlants: Painter
+        override fun resource() = painterResource(R.drawable.andromeda_vector_man_vibing)
+        override fun resourceName(): String = "Man Vibing"
+    },
+    WateringPlants {
         @Composable
-        get() = painterResource(R.drawable.andromeda_vector_watering_plants)
-    public val Workspace: Painter
+        override fun resource() = painterResource(R.drawable.andromeda_vector_watering_plants)
+        override fun resourceName(): String = "Watering Plants"
+    },
+    Workspace {
         @Composable
-        get() = painterResource(R.drawable.andromeda_vector_workspace)
-    public val WorkingPeople: Painter
+        override fun resource() = painterResource(R.drawable.andromeda_vector_workspace)
+        override fun resourceName(): String = "Workspace"
+    },
+    WorkingPeople {
         @Composable
-        get() = painterResource(R.drawable.andromeda_working_people)
+        override fun resource() = painterResource(R.drawable.andromeda_working_people)
+        override fun resourceName(): String = "Working People"
+    };
 }

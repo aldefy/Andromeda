@@ -11,6 +11,7 @@ import io.andromeda.catalog.screens.ColorsScreen
 import io.andromeda.catalog.screens.IconsScreen
 import io.andromeda.catalog.screens.IllustrationsScreen
 import io.andromeda.catalog.screens.MainScreen
+import io.andromeda.catalog.screens.NavBarScreen
 import io.andromeda.catalog.screens.TypographyScreen
 
 object MainDestinations {
@@ -22,6 +23,7 @@ object MainDestinations {
     const val TYPOGRAPHY = "typography"
 
     const val BUTTON = "button"
+    const val NAVBAR = "navbar"
 }
 
 @Composable
@@ -54,6 +56,9 @@ fun NavGraph(
         composable(MainDestinations.BUTTON) {
             ButtonScreen(actions::navigateUp)
         }
+        composable(MainDestinations.NAVBAR) {
+            NavBarScreen(actions::navigateUp)
+        }
     }
 }
 
@@ -82,5 +87,9 @@ data class MainActions(
 
     fun showButton() {
         navController.navigate(MainDestinations.BUTTON)
+    }
+
+    fun showNavBar() {
+        navController.navigate(MainDestinations.NAVBAR)
     }
 }

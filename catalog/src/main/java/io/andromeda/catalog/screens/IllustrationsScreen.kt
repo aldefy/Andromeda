@@ -1,7 +1,6 @@
 package io.andromeda.catalog.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,9 +11,7 @@ import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.currentComposer
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,7 +21,7 @@ import io.andromeda.catalog.Screen
 import io.andromeda.design.AndromedaTheme
 import io.andromeda.design.components.Text
 import io.andromeda.illustrations.AndromedaIllustrations
-import kotlin.reflect.full.memberProperties
+import io.andromeda.illustrations.Illustration
 
 @Composable
 fun IllustrationsScreen(onUpClick: () -> Unit) {
@@ -46,11 +43,6 @@ fun IllustrationsScreen(onUpClick: () -> Unit) {
 @Preview
 @Composable
 fun IllustrationsScreenContent() {
-    val illustrations: List<Pair<String, Painter>> =
-        AndromedaIllustrations::class.memberProperties.map {
-            it.name to (it.getter.call(AndromedaIllustrations, currentComposer, 0) as Painter)
-        }
-
     LazyVerticalGrid(
         cells = GridCells.Adaptive(256.dp),
         contentPadding = rememberInsetsPaddingValues(
@@ -61,7 +53,7 @@ fun IllustrationsScreenContent() {
             additionalBottom = 8.dp
         )
     ) {
-        items(illustrations) { (name, icon) ->
+        items(AndromedaIllustrations.values()) { ill ->
             Card(
                 Modifier.padding(8.dp),
                 backgroundColor = AndromedaTheme.colors.primaryColors.background,
@@ -69,17 +61,16 @@ fun IllustrationsScreenContent() {
             ) {
                 Column {
                     Text(
-                        name,
+                        ill.resourceName(),
                         Modifier.padding(top = 4.dp, start = 6.dp),
                         style = AndromedaTheme.typography.titleSmallDemiTextStyle,
                         textAlign = TextAlign.Center,
                     )
-                    Image(
-                        painter = icon,
+                    Illustration(
+                        illustration = ill,
                         modifier = Modifier
                             .padding(8.dp)
                             .fillMaxWidth(),
-                        contentDescription = name
                     )
                 }
             }

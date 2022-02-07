@@ -2,6 +2,8 @@ package io.andromeda.design.components
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
@@ -17,9 +19,9 @@ import io.andromeda.design.AndromedaTheme
  */
 @Composable
 fun BackButton(
-    imageVector: ImageVector,
     onBackPressed: () -> Unit,
     modifier: Modifier = Modifier,
+    imageVector: ImageVector = Icons.Default.ArrowBack,
 ) {
     IconButton(
         modifier = modifier,

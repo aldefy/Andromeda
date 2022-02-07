@@ -15,6 +15,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.icons.rounded.Colorize
 import androidx.compose.material.icons.rounded.FormatBold
 import androidx.compose.material.icons.rounded.Gamepad
+import androidx.compose.material.icons.rounded.SpaceBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -88,6 +89,16 @@ fun MainScreen(
                 )
             },
             actions::showButton
+        ),
+        Triple(
+            "Nav Bar",
+            {
+                Icon(
+                    MaterialIcons.Rounded.SpaceBar,
+                    null
+                )
+            },
+            actions::showNavBar
         ),
     )
 

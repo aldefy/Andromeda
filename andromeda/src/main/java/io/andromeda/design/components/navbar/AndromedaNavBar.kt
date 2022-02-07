@@ -114,7 +114,7 @@ fun AndromedaNavBar(
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
-                menuView(Modifier)
+                menuView(Modifier.padding(end = 8.dp))
             }
         )
     }
