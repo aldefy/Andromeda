@@ -1,4 +1,4 @@
-[![CI Build](https://img.shields.io/github/workflow/status/aldefy/Andromeda/Build/main)](https://github.com/aldefy/Andromeda/actions/workflows/build.yml)
+[![CI Build](https://img.shields.io/github/workflow/status/aldefy/Andromeda/Build/main)](https://github.com/aldefy/Andromeda/actions/workflows/build_deploy.yml)
 [![Github](https://img.shields.io/github/followers/aldefy?label=Follow&style=social)](https://github.com/aldefy)
 [![Twitter](https://img.shields.io/twitter/follow/aditlal?label=Follow&style=social)](https://twitter.com/aditlal)
 
