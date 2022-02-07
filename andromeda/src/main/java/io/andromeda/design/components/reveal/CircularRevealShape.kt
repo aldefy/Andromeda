@@ -24,14 +24,16 @@ internal class CircularRevealShape(
         layoutDirection: LayoutDirection,
         density: Density
     ): Outline {
-        return Outline.Generic(Path().apply {
-            addCircle(
-                offset?.x ?: (size.width / 2f),
-                offset?.y ?: (size.height / 2f),
-                longestDistanceToACorner(size, offset) * progress,
-                Path.Direction.CW
-            )
-        }.asComposePath())
+        return Outline.Generic(
+            Path().apply {
+                addCircle(
+                    offset?.x ?: (size.width / 2f),
+                    offset?.y ?: (size.height / 2f),
+                    longestDistanceToACorner(size, offset) * progress,
+                    Path.Direction.CW
+                )
+            }.asComposePath()
+        )
     }
 
     private fun longestDistanceToACorner(size: Size, offset: Offset?): Float {

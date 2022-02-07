@@ -18,7 +18,28 @@ buildscript {
     }
 }
 
+plugins {
+    id "org.jlleitschuh.gradle.ktlint" version "10.2.0"
+    id("org.jetbrains.dokka") version "1.6.10"
+}
+
 allprojects {
+    apply plugin: "org.jlleitschuh.gradle.ktlint" // Version should be inherited from parent
+
+    ktlint {
+        android = true
+        ignoreFailures = false
+        disabledRules = ["no-wildcard-imports", "import-ordering"]
+        reporters {
+            reporter "plain"
+            reporter "checkstyle"
+        }
+        filter {
+            exclude("**/generated/**")
+            include("**/kotlin/**")
+        }
+    }
+
     repositories {
         google()
         maven { url "https://jitpack.io" }
@@ -31,7 +52,9 @@ subprojects {
         google()
         mavenCentral()
     }
-
+    apply {
+        plugin("org.jetbrains.dokka")
+    }
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
         kotlinOptions {
             // Treat all Kotlin warnings as errors (disabled by default)
@@ -51,4 +74,5 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+apply from: 'git-hooks.gradle'
 apply from: 'versions.gradle'

@@ -22,4 +22,3 @@ public object AndromedaIllustrations {
         @Composable
         get() = painterResource(R.drawable.andromeda_working_people)
 }
-

@@ -60,7 +60,9 @@ fun Screen(
                             Icon(
                                 modifier = Modifier.size(20.dp, 32.dp),
                                 imageVector = Icons.Rounded.BrightnessMedium,
-                                contentDescription = stringResource(R.string.accessibility_toggle_theme),
+                                contentDescription = stringResource(
+                                    R.string.accessibility_toggle_theme
+                                ),
                             )
                         }
                     }

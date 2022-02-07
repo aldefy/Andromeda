@@ -24,7 +24,6 @@ import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.andromeda.catalog.Screen
-import io.andromeda.catalog.ThemeToggle
 import io.andromeda.design.AndromedaTheme
 import io.andromeda.design.components.Text
 import io.andromeda.design.foundation.colors.FillColors

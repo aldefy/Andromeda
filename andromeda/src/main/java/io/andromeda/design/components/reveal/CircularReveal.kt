@@ -68,13 +68,15 @@ fun <T> CircularReveal(
         items.removeAll { it.key != transitionState.targetState }
     }
 
-    Box(modifier.pointerInteropFilter {
-        offset = when (it.action) {
-            MotionEvent.ACTION_DOWN -> Offset(it.x, it.y)
-            else -> null
+    Box(
+        modifier.pointerInteropFilter {
+            offset = when (it.action) {
+                MotionEvent.ACTION_DOWN -> Offset(it.x, it.y)
+                else -> null
+            }
+            false
         }
-        false
-    }) {
+    ) {
         items.forEach {
             key(it.key) {
                 it.content()

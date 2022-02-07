@@ -68,6 +68,6 @@ fun BaseTypography.getComposeTextStyle(): TextStyle {
 internal val LocalTypography = compositionLocalOf<AndromedaTypography> {
     error(
         "No typography provided! Make sure to wrap all usages of components in a " +
-                "AndromedaTheme."
+            "AndromedaTheme."
     )
 }

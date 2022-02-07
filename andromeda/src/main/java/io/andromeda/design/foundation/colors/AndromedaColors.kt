@@ -43,7 +43,6 @@ class AndromedaColors(
     )
 }
 
-
 /**
  * Local Andromeda Colors.
  *
@@ -64,4 +63,3 @@ public fun AndromedaColors.contentColorFor(color: Color): Color =
     primaryColors.contentColorFor(color)
         ?: primaryColors.contentColorFor(color)
         ?: Color.Unspecified
-

@@ -39,6 +39,6 @@ public class DefaultShapes(
 internal val LocalShapes = compositionLocalOf<AndromedaShapes> {
     error(
         "No shapes provided! Make sure to wrap all usages of Andromeda components in a " +
-                "AndromedaTheme."
+            "AndromedaTheme."
     )
 }
