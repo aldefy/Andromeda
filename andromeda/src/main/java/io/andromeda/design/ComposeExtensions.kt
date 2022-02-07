@@ -59,3 +59,13 @@ fun ComposeColor.invert(): ComposeColor {
     val colorInt = ColorUtils.HSLToColor(hsl)
     return ComposeColor(colorInt)
 }
+
+fun Modifier.conditional(
+    predicate: Boolean,
+    other: Modifier.() -> Modifier
+): Modifier =
+    if (predicate) {
+        this.then(other())
+    } else {
+        this
+    }

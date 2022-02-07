@@ -1,7 +1,10 @@
 package io.andromeda.design.components
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -22,6 +25,7 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import io.andromeda.design.AndromedaTheme
+import io.andromeda.design.conditional
 import io.andromeda.design.foundation.ContentEmphasis
 import io.andromeda.design.foundation.LocalContentEmphasis
 import io.andromeda.design.foundation.applyEmphasis
@@ -65,6 +69,7 @@ public fun Icon(
     painter: Painter,
     contentDescription: String?,
     modifier: Modifier = Modifier,
+    onClick: IconClickHandler? = null,
     emphasis: ContentEmphasis = LocalContentEmphasis.current,
     tint: Color = AndromedaTheme.colors.contentColors.normal.applyEmphasis(emphasis),
 ) {
@@ -77,6 +82,14 @@ public fun Icon(
     } else {
         Modifier
     }
+    val iconClickRipple = rememberRipple(
+        bounded = false,
+        color = AndromedaTheme.colors.contentColors.normal
+    )
+    val interactionSource = remember {
+        MutableInteractionSource()
+    }
+
     Box(
         modifier
             .toolingGraphicsLayer()
@@ -87,6 +100,13 @@ public fun Icon(
                 contentScale = ContentScale.Fit
             )
             .then(semantics)
+            .conditional(onClick != null) {
+                Modifier.clickable(
+                    onClick = onClick!!,
+                    indication = iconClickRipple,
+                    interactionSource = interactionSource
+                )
+            }
     )
 }
 
@@ -99,6 +119,7 @@ private fun Modifier.defaultSizeFor(painter: Painter) =
         }
     )
 
-private fun Size.isInfinite() = width.isInfinite() && height.isInfinite()
+typealias IconClickHandler = () -> Unit
 
+private fun Size.isInfinite() = width.isInfinite() && height.isInfinite()
 private val DefaultIconSizeModifier = Modifier.size(24.dp)
