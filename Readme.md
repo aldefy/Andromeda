@@ -1,6 +1,6 @@
-[![CI Build](https://img.shields.io/github/workflow/status/aldefy/Andromeda/Build/main)](https://github.com/aldefy/Andromeda/actions/workflows/build_deploy.yml)
 [![Github](https://img.shields.io/github/followers/aldefy?label=Follow&style=social)](https://github.com/aldefy)
 [![Twitter](https://img.shields.io/twitter/follow/aditlal?label=Follow&style=social)](https://twitter.com/aditlal)
+[![Build Pull Request](https://github.com/aldefy/Andromeda/actions/workflows/build_pull_request.yml/badge.svg)](https://github.com/aldefy/Andromeda/actions/workflows/build_deploy.yml)
 
 <!-- PROJECT LOGO -->
 <br />
@@ -91,14 +91,14 @@ Adit Lal - [@aditlal](https://twitter.com/aditlal) - https://aditlal.dev
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/confluxtoo/loanbook-app.svg?style=flat-square
-[contributors-url]: https://github.com/confluxtoo/loanbook-app/graphs/contributors
+[contributors-url]: https://github.com/aldefy/Andromeda/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/confluxtoo/loanbook-app.svg?style=flat-square
-[forks-url]: https://github.com/confluxtoo/loanbook-app/network/members
+[forks-url]: https://github.com/aldefy/Andromeda/network/members
 [stars-shield]: https://img.shields.io/github/stars/confluxtoo/loanbook-app.svg?style=flat-square
-[stars-url]: https://github.com/confluxtoo/loanbook-app/stargazers
+[stars-url]: https://github.com/aldefy/Andromeda/stargazers
 [issues-shield]: https://img.shields.io/github/issues/confluxtoo/loanbook-app.svg?style=flat-square
-[issues-url]: https://github.com/confluxtoo/loanbook-app/issues
+[issues-url]: https://github.com/aldefy/Andromeda/issues
 [license-shield]: https://img.shields.io/github/license/confluxtoo/loanbook-app.svg?style=flat-square
-[license-url]: https://github.com/confluxtoo/loanbook-app/blob/master/LICENSE.txt
+[license-url]: https://github.com/aldefy/Andromeda/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/aditlal
