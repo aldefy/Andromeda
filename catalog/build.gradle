@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "io.andromeda.catalog"
+        applicationId "design.andromedacompose.catalog"
 
         minSdkVersion 21
         compileSdkVersion 31

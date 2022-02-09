@@ -42,7 +42,7 @@ In `build.gradle` of your application module, include this dependency
 
 ```gradle
 dependencies {
-  implementation("io.andromeda:1.0.0-alpha01")
+  implementation("design.andromedacompose:1.0.0-alpha01")
 }
 ```
 
@@ -50,7 +50,7 @@ If you want to use our provided Icons, also add
 
 ```gradle
 dependencies {
-    implementation("io.andromeda-icon:1.0.0-alpha01")
+    implementation("design.andromedacompose-icon:1.0.0-alpha01")
 }
 ```
 

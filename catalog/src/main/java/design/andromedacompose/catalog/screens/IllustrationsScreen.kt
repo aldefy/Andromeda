@@ -21,6 +21,7 @@ import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.catalog.Screen
 import design.andromedacompose.components.Text
 import design.andromedacompose.illustrations.AndromedaIllustrations
+import design.andromedacompose.illustrations.Illustration
 
 @Composable
 fun IllustrationsScreen(onUpClick: () -> Unit) {

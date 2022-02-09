@@ -6,7 +6,7 @@ plugins {
 }
 apply from: '../dependencies.gradle'
 ext {
-    PUBLISH_GROUP_ID = 'io.andromeda.illustrations'
+    PUBLISH_GROUP_ID = 'design.andromedacompose.illustrations'
     PUBLISH_VERSION = '1.0.0-alpha01'
     PUBLISH_ARTIFACT_ID = 'andromeda-illustrations'
 }

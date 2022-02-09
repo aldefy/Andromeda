@@ -22,7 +22,7 @@ class LauncherActivity : AppCompatActivity() {
 
                 CircularReveal(
                     targetState = isLightTheme,
-                    animationSpec = tween(750)
+                    animationSpec = tween(2500)
                 ) { localTheme ->
                     CatalogTheme(isLightTheme = localTheme) {
                         NavGraph(
