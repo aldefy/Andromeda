@@ -1,7 +1,6 @@
 [![Github](https://img.shields.io/github/followers/aldefy?label=Follow&style=social)](https://github.com/aldefy)
 [![Twitter](https://img.shields.io/twitter/follow/aditlal?label=Follow&style=social)](https://twitter.com/aditlal)
-[![Build Pull Request](https://github.com/aldefy/Andromeda/actions/workflows/build_pull_request.yml/badge.svg)](https://github.com/aldefy/Andromeda/actions/workflows/build_deploy.yml)
-
+[![Build and Deploy](https://github.com/aldefy/Andromeda/actions/workflows/build_deploy.yml/badge.svg)](https://github.com/aldefy/Andromeda/actions/workflows/build_deploy.yml)
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
