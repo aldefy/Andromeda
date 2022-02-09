@@ -2,9 +2,6 @@
 [![Twitter](https://img.shields.io/twitter/follow/aditlal?label=Follow&style=social)](https://twitter.com/aditlal)
 [![Build and Deploy](https://github.com/aldefy/Andromeda/actions/workflows/build_deploy.yml/badge.svg)](https://github.com/aldefy/Andromeda/actions/workflows/build_deploy.yml)
 
-
-[![AndromedaVersion](https://img.shields.io/maven-central/v/design/andromedacompose)](https://search.maven.org/artifact/design/andromedacompose)
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -37,6 +34,9 @@
 ## About The Project
 
 ### Andromeda 
+
+[![AndromedaVersion](https://badgen.net/maven/v/maven-central/design.andromedacompose/andromeda)](https://badgen.net/maven/v/maven-central/design.andromedacompose/andromeda)
+
 Welcome 👋 Andromeda is an open-source Jetpack Compose design system. A collection of guidelines and components which can be used to create amazing compose app user experiences. `Foundations` introduces you to Andromeda tokens and principles while `Components` lists out the bolts and nuts that make Andromeda Compose wrapped apps tick.
 
 #### Catalog app
