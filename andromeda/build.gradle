@@ -5,6 +5,12 @@ plugins {
     id 'kotlin-kapt'
 }
 apply from: '../dependencies.gradle'
+ext {
+    PUBLISH_GROUP_ID = 'io.andromeda'
+    PUBLISH_VERSION = '1.0.0-alpha01'
+    PUBLISH_ARTIFACT_ID = 'andromeda'
+}
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
 
 android {
     compileSdkVersion 31

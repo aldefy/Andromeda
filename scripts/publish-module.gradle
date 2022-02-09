@@ -1,0 +1,75 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    if (project.plugins.findPlugin("com.android.library")) {
+// For Android libraries
+        from android.sourceSets.main.java.srcDirs
+        from android.sourceSets.main.kotlin.srcDirs
+    } else {
+// For pure Kotlin libraries, in case you have them
+        from sourceSets.main.java.srcDirs
+        from sourceSets.main.kotlin.srcDirs
+    }
+}
+artifacts {
+    archives androidSourcesJar
+}
+group = PUBLISH_GROUP_ID
+version = PUBLISH_VERSION
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+// The coordinates of the library, being set from variables that
+// we'll set up later
+                groupId PUBLISH_GROUP_ID
+                artifactId PUBLISH_ARTIFACT_ID
+                version PUBLISH_VERSION
+// Two artifacts, the `aar` (or `jar`) and the sources
+                if (project.plugins.findPlugin("com.android.library")) {
+                    from components.release
+                } else {
+                    from components.java
+                }
+                artifact androidSourcesJar
+// Mostly self-explanatory metadata
+                pom {
+                    name = PUBLISH_ARTIFACT_ID
+                    description = 'Andromeda Compose design system sdk'
+                    url = 'https://github.com/aldefy/Andromeda'
+                    licenses {
+                        license {
+                            name = 'Andromeda License'
+                            url = 'https://github.com/aldefy/Andromeda/blob/main/license.md'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'aldefy'
+                            name = 'Adit Lal'
+                            email = 'me@aditlal.dev'
+                        }
+// Add all other devs here...
+                    }
+// Version control info - if you're using GitHub, follow the
+// format as seen here
+                    scm {
+                        connection = 'scm:git:github.com/aldefy/Andromeda/.git'
+                        developerConnection = 'scm:git:ssh://github.com/aldefy/Andromeda/.git'
+                        url = 'https://github.com/aldefy/Andromeda/tree/main'
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    useInMemoryPgpKeys(
+            rootProject.ext["signing.keyId"],
+            rootProject.ext["signing.key"],
+            rootProject.ext["signing.password"],
+    )
+    sign publishing.publications
+}
