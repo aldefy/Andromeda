@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="io.andromeda.catalog">
+  package="design.andromedacompose.catalog">
 
   <application
     android:allowBackup="true"
@@ -10,7 +10,7 @@
     android:theme="@style/Theme.Andromeda">
     <activity
       android:exported="true"
-      android:name=".LauncherActivity">
+      android:name="design.andromedacompose.catalog.LauncherActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
