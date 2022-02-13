@@ -5,7 +5,7 @@ ext {
     def AndroidxConstraintLayoutVersion = '2.0.0-beta4'
     def AndroidxLifeCycleVersion = '2.2.0'
     def GoogleMaterialVersion = '1.2.1'
-    def ComposeVersion = '1.1.0-rc03'
+    def ComposeVersion = '1.1.0'
 
     kotlinDependencies = [
             kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${KotlinVersion}",
