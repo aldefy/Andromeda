@@ -39,6 +39,10 @@
 
 Welcome 👋 Andromeda is an open-source Jetpack Compose design system. A collection of guidelines and components which can be used to create amazing compose app user experiences. `Foundations` introduces you to Andromeda tokens and principles while `Components` lists out the bolts and nuts that make Andromeda Compose wrapped apps tick.
 
+[Andromeda](https://andromedacompose.design)
+
+or
+
 More details in a blog series: [aditlal.dev/Andromeda](https://www.aditlal.dev/design-systems-with-jetpack-compose/)
 
 #### Catalog app
