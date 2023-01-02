@@ -7,7 +7,7 @@ plugins {
 apply from: '../dependencies.gradle'
 ext {
     PUBLISH_GROUP_ID = 'design.andromedacompose.icons'
-    PUBLISH_VERSION = '1.0.0-alpha01'
+    PUBLISH_VERSION = getVersionName()
     PUBLISH_ARTIFACT_ID = 'andromeda-icons'
 }
 apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
@@ -41,9 +41,10 @@ android {
         jvmTarget = '11'
     }
     composeOptions {
-        kotlinCompilerVersion "1.6.10"
-        kotlinCompilerExtensionVersion '1.1.0-rc03'
+        kotlinCompilerVersion "1.7.20"
+        kotlinCompilerExtensionVersion '1.3.2'
     }
+    namespace 'design.andromedacompose.icons'
 }
 
 dependencies {
