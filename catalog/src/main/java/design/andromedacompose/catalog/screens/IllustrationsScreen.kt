@@ -6,17 +6,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.insets.LocalWindowInsets
-import com.google.accompanist.insets.rememberInsetsPaddingValues
 import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.catalog.Screen
 import design.andromedacompose.components.Text
@@ -44,14 +42,7 @@ fun IllustrationsScreen(onUpClick: () -> Unit) {
 @Composable
 fun IllustrationsScreenContent() {
     LazyVerticalGrid(
-        cells = GridCells.Adaptive(256.dp),
-        contentPadding = rememberInsetsPaddingValues(
-            insets = LocalWindowInsets.current.navigationBars,
-            additionalStart = 8.dp,
-            additionalTop = 8.dp,
-            additionalEnd = 8.dp,
-            additionalBottom = 8.dp
-        )
+        columns = GridCells.Adaptive(96.dp),
     ) {
         items(AndromedaIllustrations.values()) { ill ->
             Card(

@@ -30,7 +30,7 @@ internal fun defaultPrimaryLightColors(
     error: ComposeColor = DefaultColorTokens.errorPrimaryLight,
     mute: ComposeColor = DefaultColorTokens.mutePrimaryLight,
     pressed: ComposeColor = DefaultColorTokens.pressedPrimaryLight,
-    alt: ComposeColor = DefaultColorTokens.White.invert(),
+    alt: ComposeColor = DefaultColorTokens.CloudNormal,
 ): PrimaryColors = PrimaryColors(
     active = active,
     background = background,

@@ -4,6 +4,8 @@ import androidx.compose.ui.graphics.Color as ComposeColor
 
 internal object DefaultColorTokens {
     val White: ComposeColor = ComposeColor.White
+    val CloudNormal: ComposeColor = ComposeColor(0xFFE8EDF1)
+    val CloudDarkNormal: ComposeColor = ComposeColor(0xFF293845)
 
     /**
      * Primary Dark colors
