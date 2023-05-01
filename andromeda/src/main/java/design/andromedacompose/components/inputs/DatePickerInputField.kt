@@ -1,5 +1,7 @@
 package design.andromedacompose.components.inputs
 
+import android.app.DatePickerDialog
+import android.widget.DatePicker
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -8,11 +10,9 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.vanpra.composematerialdialogs.MaterialDialog
-import com.vanpra.composematerialdialogs.datetime.date.DatePickerDefaults
-import com.vanpra.composematerialdialogs.datetime.date.datepicker
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.components.Icon
@@ -21,10 +21,12 @@ import design.andromedacompose.components.internal.AndromedaPreview
 import design.andromedacompose.components.internal.Preview
 import design.andromedacompose.foundation.typography.LocalTextStyle
 import java.time.LocalDate
+import java.util.*
 
 @Composable
 fun DatePickerInputField(
     value: String,
+    pastDateAllowed: Boolean = false,
     modifier: Modifier = Modifier,
     label: @Composable (() -> Unit) = {
         Text(text = "Date")
@@ -44,28 +46,33 @@ fun DatePickerInputField(
     val textStyle = LocalTextStyle.current
     val mergedTextStyle =
         textStyle.copy(color = AndromedaTheme.colors.primaryColors.active)
+    val context = LocalContext.current
+    val calendar = Calendar.getInstance()
 
-    MaterialDialog(
-        dialogState = dialogState,
-        buttons = {
-            positiveButton("Ok", mergedTextStyle)
-            negativeButton("Cancel", mergedTextStyle)
-        }
-    ) {
-        datepicker(
-            colors = DatePickerDefaults.colors(
-                headerBackgroundColor = AndromedaTheme.colors.primaryColors.active,
-                dateActiveBackgroundColor = AndromedaTheme.colors.primaryColors.active,
+// Fetching current year, month and day
+    val year = calendar[Calendar.YEAR]
+    val month = calendar[Calendar.MONTH]
+    val dayOfMonth = calendar[Calendar.DAY_OF_MONTH]
+
+    val datePicker = DatePickerDialog(
+        context,
+        { _: DatePicker, selectedYear: Int, selectedMonth: Int, selectedDayOfMonth: Int ->
+            onDatePicked(
+                LocalDate.of(
+                    selectedYear,
+                    selectedMonth + 1, // month the initially selected month (0_11)
+                    selectedDayOfMonth
+                )
             )
-        ) { date ->
-            onDatePicked(date)
-        }
-    }
+        }, year, month, dayOfMonth
+    )
+    if (!pastDateAllowed)
+        datePicker.datePicker.minDate = calendar.timeInMillis
     Column(modifier = modifier) {
         ReadonlyTextField(
             value = value,
             onClick = {
-                dialogState.show()
+                datePicker.show()
             },
             label = label,
             error = error,
