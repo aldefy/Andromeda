@@ -36,6 +36,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.error
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -67,8 +68,10 @@ fun TextField(
     enabled: Boolean = true,
     readOnly: Boolean = false,
     label: @Composable (() -> Unit)? = null,
+    toShowErrorCheck: Boolean = true,
     error: @Composable (() -> Unit)? = null,
     info: @Composable (() -> Unit)? = null,
+    defaultBorderNormalColor: Color = Color.Transparent,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null,
     onLeadingIconClick: (() -> Unit)? = null,
@@ -93,6 +96,7 @@ fun TextField(
         info = info,
         additionalContent = null,
         placeholder = placeholder,
+        defaultBorderNormalColor = defaultBorderNormalColor,
         leadingIcon = leadingIcon,
         onLeadingIconClick = onLeadingIconClick,
         trailingIcon = trailingIcon,
@@ -104,7 +108,7 @@ fun TextField(
         bringIntoView = bringIntoView,
         visualTransformation = visualTransformation,
         interactionSource = interactionSource,
-        toShowInfoError = if (error != null) value.isEmpty() else true
+        toShowErrorCheck = toShowErrorCheck
     )
 }
 
@@ -116,6 +120,7 @@ internal fun TextField(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     readOnly: Boolean = false,
+    defaultBorderNormalColor: Color = Color.Transparent,
     label: @Composable (() -> Unit)? = null,
     error: @Composable (() -> Unit)? = null,
     info: @Composable (() -> Unit)? = null,
@@ -130,7 +135,7 @@ internal fun TextField(
     singleLine: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
     bringIntoView: Boolean = true,
-    toShowInfoError: Boolean = true,
+    toShowErrorCheck: Boolean = true,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) {
@@ -157,7 +162,7 @@ internal fun TextField(
     ConstrainedColumn(
         modifier
             .semantics {
-                if (error != null && toShowInfoError) {
+                if (error != null && toShowErrorCheck) {
                     this.error(errorMessage)
                 }
             }
@@ -173,12 +178,12 @@ internal fun TextField(
 
             val isFocused = interactionSource.collectIsFocusedAsState().value
             val inputState: InputState = when (isFocused) {
-                true -> when (error != null && toShowInfoError) {
+                true -> when (error != null && toShowErrorCheck) {
                     true -> InputState.FocusedError
                     false -> InputState.Focused
                 }
 
-                false -> when (error != null && toShowInfoError) {
+                false -> when (error != null && toShowErrorCheck) {
                     true -> InputState.NormalError
                     false -> InputState.Normal
                 }
@@ -187,7 +192,10 @@ internal fun TextField(
             // If color is not provided via the text style, use content color as a default
             val textStyle = LocalTextStyle.current
             val mergedTextStyle =
-                textStyle.copy(color = AndromedaTheme.colors.secondaryColors.alt)
+                textStyle.copy(
+                    color = AndromedaTheme.colors.secondaryColors.alt,
+                    fontFamily = FontFamily.Default
+                )
 
             val transition = updateTransition(inputState, "stateTransition")
             val borderColor = transition.animateColor(
@@ -195,9 +203,10 @@ internal fun TextField(
                 label = "borderColor",
             ) {
                 when (it) {
-                    InputState.Normal -> Color.Transparent
+                    InputState.Normal -> defaultBorderNormalColor
                     InputState.Focused, InputState.FocusedError ->
                         AndromedaTheme.colors.primaryColors.active
+
                     InputState.NormalError -> AndromedaTheme.colors.primaryColors.error
                 }
             }
@@ -248,7 +257,7 @@ internal fun TextField(
             FieldMessage(
                 error = error,
                 info = info,
-                toShow = toShowInfoError
+                toShow = toShowErrorCheck
             )
         }
     }
