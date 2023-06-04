@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 
 /**
  * Useful to get input field with date picker / expiry etc
@@ -15,6 +16,7 @@ fun ReadonlyTextField(
     modifier: Modifier = Modifier,
     onValueChange: (String) -> Unit = {},
     onClick: () -> Unit = {},
+    defaultBorderNormalColor: Color = Color.Transparent,
     label: @Composable () -> Unit = {},
     error: @Composable (() -> Unit)? = null,
     info: @Composable (() -> Unit)? = null,
@@ -33,6 +35,7 @@ fun ReadonlyTextField(
             error = error,
             info = info,
             placeholder = placeholder,
+            defaultBorderNormalColor = defaultBorderNormalColor,
             leadingIcon = leadingIcon,
             onLeadingIconClick = onLeadingIconClick,
             trailingIcon = trailingIcon,
