@@ -34,7 +34,7 @@ fun Button(
     backgroundColor: ComposeColor = AndromedaTheme.colors.primaryColors.active,
     contentColor: ComposeColor = contentColorFor(backgroundColor = backgroundColor),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    indication: Indication = rememberRipple(),
+    indication: Indication? = rememberRipple(),
     elevation: ButtonElevation = ButtonDefaults.elevation(),
     shape: Shape = AndromedaTheme.shapes.small,
     border: BorderStroke? = null,
