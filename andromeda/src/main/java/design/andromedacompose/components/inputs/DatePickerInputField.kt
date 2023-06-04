@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,7 +32,9 @@ fun DatePickerInputField(
     label: @Composable (() -> Unit) = {
         Text(text = "Date")
     },
+    shouldDisallowFutureDate: Boolean = false,
     onDatePicked: (LocalDate) -> Unit = {},
+    defaultBorderNormalColor: Color = Color.Transparent,
     error: @Composable (() -> Unit)? = null,
     info: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
@@ -49,7 +52,7 @@ fun DatePickerInputField(
     val context = LocalContext.current
     val calendar = Calendar.getInstance()
 
-// Fetching current year, month and day
+    // Fetching current year, month and day
     val year = calendar[Calendar.YEAR]
     val month = calendar[Calendar.MONTH]
     val dayOfMonth = calendar[Calendar.DAY_OF_MONTH]
@@ -68,6 +71,8 @@ fun DatePickerInputField(
     )
     if (!pastDateAllowed)
         datePicker.datePicker.minDate = calendar.timeInMillis
+    if (shouldDisallowFutureDate)
+        datePicker.datePicker.maxDate = calendar.timeInMillis
     Column(modifier = modifier) {
         ReadonlyTextField(
             value = value,
@@ -78,6 +83,7 @@ fun DatePickerInputField(
             error = error,
             info = info,
             placeholder = placeholder,
+            defaultBorderNormalColor = defaultBorderNormalColor,
             leadingIcon = leadingIcon,
             onLeadingIconClick = onLeadingIconClick,
             trailingIcon = trailingIcon,
