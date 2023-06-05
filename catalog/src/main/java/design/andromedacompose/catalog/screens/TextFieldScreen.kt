@@ -304,9 +304,10 @@ fun TextFieldScreenContent() {
                                 onClick = {
                                     selectedOptionText = TextFieldValue(
                                         selectionOption,
-                                        selection = if (selectionOption.isNotEmpty()) TextRange(
-                                            selectionOption.length
-                                        ) else TextRange(0)
+                                        selection = if (selectionOption.isNotEmpty())
+                                            TextRange(selectionOption.length)
+                                        else
+                                            TextRange(0)
                                     )
                                     expanded = false
                                 }

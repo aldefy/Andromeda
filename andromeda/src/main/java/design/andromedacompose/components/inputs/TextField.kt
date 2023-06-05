@@ -36,7 +36,6 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.error
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
@@ -172,12 +171,11 @@ internal fun TextField(
         ProvideMergedTextStyle(AndromedaTheme.typography.bodyModerateDefaultTypographyStyle) {
             var textFieldValueState by remember {
                 mutableStateOf(
-                    TextFieldValue(text = value, selection = TextRange(value.length))
+                    TextFieldValue(text = value)
                 )
             }
             val textFieldValue = textFieldValueState.copy(
                 text = value,
-                selection = TextRange(value.length)
             )
 
             if (label != null) {
