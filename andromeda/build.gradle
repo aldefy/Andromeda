@@ -7,18 +7,17 @@ plugins {
 apply from: '../dependencies.gradle'
 ext {
     PUBLISH_GROUP_ID = 'design.andromedacompose'
-    PUBLISH_VERSION = '1.0.0-alpha01'
+    PUBLISH_VERSION = getVersionName()
     PUBLISH_ARTIFACT_ID = 'andromeda'
 }
 apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion "30.0.3"
+    compileSdk 34
 
     defaultConfig {
-        minSdkVersion 21
-        compileSdkVersion 31
+        minSdkVersion 26
+        compileSdkVersion 34
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -41,18 +40,23 @@ android {
         jvmTarget = '11'
     }
     composeOptions {
-        kotlinCompilerVersion "1.6.10"
-        kotlinCompilerExtensionVersion '1.1.0-rc03'
+        kotlinCompilerVersion "1.7.20"
+        kotlinCompilerExtensionVersion '1.3.2'
     }
+    namespace 'design.andromedacompose'
 }
 
 dependencies {
     implementation kotlin
     api androidX
     implementation loggingLibs
-    api 'com.airbnb.android:lottie:4.2.2'
+    api 'com.airbnb.android:lottie:5.2.0'
     api 'com.airbnb.android:lottie-compose:4.2.2'
     api google
     api compose
     api("com.jakewharton.threetenabp:threetenabp:1.3.1")
+    api 'androidx.compose.ui:ui-tooling-preview:1.3.2'
+    debugApi 'androidx.compose.ui:ui-tooling:1.3.2'
+    api "io.github.vanpra.compose-material-dialogs:core:0.9.0"
+    api "io.github.vanpra.compose-material-dialogs:datetime:0.9.0"
 }

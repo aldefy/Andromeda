@@ -12,6 +12,7 @@ import design.andromedacompose.catalog.screens.IconsScreen
 import design.andromedacompose.catalog.screens.IllustrationsScreen
 import design.andromedacompose.catalog.screens.MainScreen
 import design.andromedacompose.catalog.screens.NavBarScreen
+import design.andromedacompose.catalog.screens.TextFieldScreen
 import design.andromedacompose.catalog.screens.TypographyScreen
 
 object MainDestinations {
@@ -21,6 +22,7 @@ object MainDestinations {
     const val ICONS = "icons"
     const val ILLUSTRATIONS = "illustrations"
     const val TYPOGRAPHY = "typography"
+    const val INPUTFIELDS = "textFields"
 
     const val BUTTON = "button"
     const val NAVBAR = "navbar"
@@ -59,6 +61,9 @@ fun NavGraph(
         composable(MainDestinations.NAVBAR) {
             NavBarScreen(actions::navigateUp)
         }
+        composable(MainDestinations.INPUTFIELDS) {
+            TextFieldScreen(actions::navigateUp)
+        }
     }
 }
 
@@ -91,5 +96,9 @@ data class MainActions(
 
     fun showNavBar() {
         navController.navigate(MainDestinations.NAVBAR)
+    }
+
+    fun showTextFields() {
+        navController.navigate(MainDestinations.INPUTFIELDS)
     }
 }

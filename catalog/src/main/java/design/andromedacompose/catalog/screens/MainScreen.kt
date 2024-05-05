@@ -15,13 +15,13 @@ import androidx.compose.material.Card
 import androidx.compose.material.icons.rounded.Colorize
 import androidx.compose.material.icons.rounded.FormatBold
 import androidx.compose.material.icons.rounded.Gamepad
+import androidx.compose.material.icons.rounded.Input
 import androidx.compose.material.icons.rounded.SpaceBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.insets.navigationBarsPadding
 import design.andromedacompose.catalog.MainActions
 import design.andromedacompose.catalog.Screen
 import design.andromedacompose.catalog.ThemeToggle
@@ -100,6 +100,16 @@ fun MainScreen(
             },
             actions::showNavBar
         ),
+        Triple(
+            "Text Fields",
+            {
+                Icon(
+                    MaterialIcons.Rounded.Input,
+                    null
+                )
+            },
+            actions::showTextFields
+        ),
     )
 
     Screen(title = "Andromeda Catalog", themeToggle = onToggleTheme) {
@@ -108,7 +118,6 @@ fun MainScreen(
             Column(
                 Modifier
                     .verticalScroll(rememberScrollState())
-                    .navigationBarsPadding()
             ) {
                 Spacer(Modifier.size(16.dp))
                 CardRowItems("Foundation", foundation, 1)

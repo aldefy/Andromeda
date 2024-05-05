@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="input_field_default_error">Invalid input</string>
+</resources>

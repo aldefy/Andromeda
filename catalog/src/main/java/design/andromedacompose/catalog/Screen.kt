@@ -5,25 +5,22 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.rounded.BrightnessMedium
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.insets.LocalWindowInsets
-import com.google.accompanist.insets.derivedWindowInsetsTypeOf
-import com.google.accompanist.insets.rememberInsetsPaddingValues
 import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.components.BackButton
+import design.andromedacompose.components.Icon
+import design.andromedacompose.components.IconButton
+import design.andromedacompose.components.Text
 import design.andromedacompose.components.navbar.AndromedaNavBar
 import design.andromedacompose.components.navbar.NavBarDefaultElevation
+import design.andromedacompose.foundation.typography.LocalTextStyle
 import androidx.compose.ui.graphics.Color as ComposeColor
 
 typealias OnNavigateUp = () -> Unit
@@ -48,8 +45,13 @@ fun Screen(
             AndromedaNavBar(
                 backgroundColor = background,
                 titleView = {
+                    val textStyle = LocalTextStyle.current
+                    val mergedTextStyle =
+                        textStyle.copy(color = AndromedaTheme.colors.contentColors.normal)
+
                     Text(
                         text = title,
+                        style = mergedTextStyle
                     )
                 },
                 elevation = if (onNavigateUp == null) NavBarDefaultElevation else 4.dp,
@@ -70,16 +72,12 @@ fun Screen(
             )
         },
         content = {
-            val ime = LocalWindowInsets.current.ime
-            val navBars = LocalWindowInsets.current.navigationBars
-            val insets = remember(ime, navBars) { derivedWindowInsetsTypeOf(ime, navBars) }
-            val contentPadding = rememberInsetsPaddingValues(insets)
             Box(
                 Modifier
                     .fillMaxSize()
                     .background(background)
             ) {
-                content(contentPadding)
+                content(it)
             }
         },
     )

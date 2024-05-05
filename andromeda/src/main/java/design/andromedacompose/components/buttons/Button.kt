@@ -1,6 +1,7 @@
 package design.andromedacompose.components.buttons
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Indication
 import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -33,6 +34,7 @@ fun Button(
     backgroundColor: ComposeColor = AndromedaTheme.colors.primaryColors.active,
     contentColor: ComposeColor = contentColorFor(backgroundColor = backgroundColor),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    indication: Indication? = rememberRipple(),
     elevation: ButtonElevation = ButtonDefaults.elevation(),
     shape: Shape = AndromedaTheme.shapes.small,
     border: BorderStroke? = null,
@@ -49,7 +51,7 @@ fun Button(
         onClick = onClick,
         role = Role.Button,
         interactionSource = interactionSource,
-        indication = rememberRipple()
+        indication = indication
     ) {
         ProvideContentEmphasis(
             emphasis = ContentEmphasis.Normal

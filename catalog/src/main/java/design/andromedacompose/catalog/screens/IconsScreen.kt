@@ -1,15 +1,14 @@
 package design.andromedacompose.catalog.screens
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.currentComposer
@@ -20,10 +19,8 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.insets.LocalWindowInsets
-import com.google.accompanist.insets.rememberInsetsPaddingValues
-import design.andromedacompose.catalog.Screen
 import design.andromedacompose.AndromedaTheme
+import design.andromedacompose.catalog.Screen
 import design.andromedacompose.components.Icon
 import design.andromedacompose.components.Text
 import design.andromedacompose.icons.AndromedaIcons
@@ -45,7 +42,6 @@ fun IconsScreen(onUpClick: () -> Unit) {
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Preview
 @Composable
 fun IconsScreenContent() {
@@ -54,14 +50,7 @@ fun IconsScreenContent() {
     }
 
     LazyVerticalGrid(
-        cells = GridCells.Adaptive(96.dp),
-        contentPadding = rememberInsetsPaddingValues(
-            insets = LocalWindowInsets.current.navigationBars,
-            additionalStart = 8.dp,
-            additionalTop = 8.dp,
-            additionalEnd = 8.dp,
-            additionalBottom = 8.dp
-        )
+        columns = GridCells.Adaptive(96.dp),
     ) {
         items(icons) { (name, icon) ->
             Column(

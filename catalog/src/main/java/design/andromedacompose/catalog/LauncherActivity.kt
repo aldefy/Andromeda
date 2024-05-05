@@ -9,7 +9,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.core.view.WindowCompat
-import com.google.accompanist.insets.ProvideWindowInsets
 import design.andromedacompose.components.reveal.CircularReveal
 
 class LauncherActivity : AppCompatActivity() {
@@ -17,20 +16,18 @@ class LauncherActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
-            ProvideWindowInsets {
-                var isLightTheme by remember { mutableStateOf(true) }
+            var isLightTheme by remember { mutableStateOf(true) }
 
-                CircularReveal(
-                    targetState = isLightTheme,
-                    animationSpec = tween(2500)
-                ) { localTheme ->
-                    CatalogTheme(isLightTheme = localTheme) {
-                        NavGraph(
-                            onToggleTheme = {
-                                isLightTheme = !isLightTheme
-                            },
-                        )
-                    }
+            CircularReveal(
+                targetState = isLightTheme,
+                animationSpec = tween(2500)
+            ) { localTheme ->
+                CatalogTheme(isLightTheme = localTheme) {
+                    NavGraph(
+                        onToggleTheme = {
+                            isLightTheme = !isLightTheme
+                        },
+                    )
                 }
             }
         }
