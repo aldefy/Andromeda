@@ -1,9 +1,13 @@
 package design.andromedacompose.catalog
 
+import android.app.Activity
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.core.view.WindowInsetsControllerCompat
 import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.foundation.colors.defaultDarkColors
 import design.andromedacompose.foundation.colors.defaultLightColors
@@ -13,6 +17,16 @@ fun CatalogTheme(
     isLightTheme: Boolean = true,
     content: @Composable () -> Unit
 ) {
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            val controller = WindowInsetsControllerCompat(window, view)
+            controller.isAppearanceLightStatusBars = isLightTheme
+            controller.isAppearanceLightNavigationBars = isLightTheme
+        }
+    }
+
     AndromedaTheme(
         colors = if (isLightTheme) defaultLightColors() else defaultDarkColors(),
         fontFamily = CatalogAppFonts
