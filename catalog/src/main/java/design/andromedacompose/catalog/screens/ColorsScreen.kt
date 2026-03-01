@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION_ERROR")
+
 package design.andromedacompose.catalog.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi

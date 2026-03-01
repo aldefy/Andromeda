@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.components.Icon
 import design.andromedacompose.components.Text
@@ -45,7 +44,6 @@ fun DatePickerInputField(
     trailingIcon: @Composable (() -> Unit)? = null,
     onTrailingIconClick: (() -> Unit)? = null,
 ) {
-    val dialogState = rememberMaterialDialogState()
     val textStyle = LocalTextStyle.current
     val mergedTextStyle =
         textStyle.copy(color = AndromedaTheme.colors.primaryColors.active)

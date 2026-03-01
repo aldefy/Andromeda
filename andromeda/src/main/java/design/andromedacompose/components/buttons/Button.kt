@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION_ERROR")
+
 package design.andromedacompose.components.buttons
 
 import androidx.compose.foundation.BorderStroke

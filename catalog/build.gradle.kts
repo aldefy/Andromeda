@@ -71,9 +71,15 @@ dependencies {
     implementation(libs.compose.navigation)
     implementation(libs.lifecycle.runtime)
     implementation(libs.core.ktx)
+    implementation(libs.appcompat)
 
     // Material — temporary for catalog, removed in Phase 2
     implementation(libs.compose.material)
+    implementation(libs.compose.material.icons.core)
+    implementation(libs.compose.material.icons.extended)
+
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlin.reflect)
 
     debugImplementation(libs.compose.ui.tooling)
 }

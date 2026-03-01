@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
+import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Colorize
 import androidx.compose.material.icons.rounded.FormatBold
 import androidx.compose.material.icons.rounded.Gamepad
@@ -29,7 +30,7 @@ import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.components.Icon
 import design.andromedacompose.components.Text
 import design.andromedacompose.icons.AndromedaIcons
-import androidx.compose.material.icons.Icons as MaterialIcons
+// Icons is imported directly above
 
 @Composable
 fun MainScreen(
@@ -41,7 +42,7 @@ fun MainScreen(
             "Colors",
             {
                 Icon(
-                    MaterialIcons.Rounded.Colorize,
+                    Icons.Rounded.Colorize,
                     null
                 )
             },
@@ -71,7 +72,7 @@ fun MainScreen(
             "Typography",
             {
                 Icon(
-                    MaterialIcons.Rounded.FormatBold,
+                    Icons.Rounded.FormatBold,
                     null
                 )
             },
@@ -84,7 +85,7 @@ fun MainScreen(
             "Button",
             {
                 Icon(
-                    MaterialIcons.Rounded.Gamepad,
+                    Icons.Rounded.Gamepad,
                     null
                 )
             },
@@ -94,7 +95,7 @@ fun MainScreen(
             "Nav Bar",
             {
                 Icon(
-                    MaterialIcons.Rounded.SpaceBar,
+                    Icons.Rounded.SpaceBar,
                     null
                 )
             },
@@ -104,7 +105,7 @@ fun MainScreen(
             "Text Fields",
             {
                 Icon(
-                    MaterialIcons.Rounded.Input,
+                    Icons.Rounded.Input,
                     null
                 )
             },

@@ -27,7 +27,5 @@ tasks.register<Exec>("installGitHooks") {
 }
 
 afterEvaluate {
-    tasks.named("clean") {
-        dependsOn("installGitHooks")
-    }
+    tasks.findByName("clean")?.dependsOn("installGitHooks")
 }
