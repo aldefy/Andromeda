@@ -1,6 +1,0 @@
-rootProject.name = "Andromeda"
-
-include ':catalog'
-include ':andromeda'
-include ':andromeda-icons'
-include ':andromeda-illustrations'

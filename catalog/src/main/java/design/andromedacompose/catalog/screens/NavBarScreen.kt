@@ -12,6 +12,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import design.andromedacompose.AndromedaTheme
@@ -34,7 +35,7 @@ fun NavBarScreen(onUpClick: () -> Unit) {
             Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(it)
+                .padding(it),
         ) {
             NavBarScreenContent()
         }
@@ -50,7 +51,7 @@ fun NavBarScreenContent() {
     ) {
         Text(
             text = "Title and subtitle",
-            style = AndromedaTheme.typography.titleModerateDemiTextStyle
+            style = AndromedaTheme.typography.titleModerateDemiTextStyle,
         )
         AndromedaNavBar(title = "Title", subTitle = "Subtitle")
         Spacer(modifier = Modifier.height(Spacing.times(2f)))
@@ -74,14 +75,14 @@ fun NavBarScreenContent() {
             },
             menuView = {
                 Icon(
-                    painter = AndromedaIcons.InformationCircle,
+                    painter = rememberVectorPainter(AndromedaIcons.InformationCircle),
                     contentDescription = "Demo icon",
-                    onClick = {}
+                    onClick = {},
                 )
             },
             navigationIcon = {
                 BackButton(onBackPressed = { /*TODO*/ })
-            }
+            },
         )
         Spacer(modifier = Modifier.height(Spacing.times(2f)))
         Divider(modifier = Modifier.fillMaxWidth())

@@ -6,7 +6,7 @@ on:
       - main
   pull_request:
     branches:
-      - 'master'
+      - 'main'
       - 'release/*'
       - 'hotfix/*'
 
@@ -21,47 +21,24 @@ jobs:
     continue-on-error: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install Ruby
-        uses: actions/setup-ruby@v1
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
         with:
-          ruby-version: '2.6'
-
-      - uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }} # change your gemfile path
-          restore-keys: |
-            ${{ runner.os }}-gems-
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
       - name: Run Debug ktlint
         run: ./gradlew --no-daemon ktlintCheck --continue
 
       - name: Upload ktlint Reports
         if: ${{ always() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ktlint-report
           path: '**/build/reports/ktlint'
           retention-days: 1
-
-      - name: Danger
-        if: ${{ always() }}
-        uses: MeilCli/danger-action@v5
-        with:
-          plugins_file: 'Gemfile'
-          install_path: 'vendor/bundle'
-          danger_file: 'Dangerfile'
-          danger_id: 'danger-pr'
-        env:
-          DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   lint_job:
     name: Lint
@@ -69,22 +46,20 @@ jobs:
     continue-on-error: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Restore Cache
-        uses: actions/cache@v2
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
       - name: Run Debug Lint
         run: ./gradlew --no-daemon lintDebug
 
       - name: Upload Lint Reports
         if: ${{ always() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: lint-report
           path: '**/build/reports/lint-results-*'
@@ -97,22 +72,20 @@ jobs:
     continue-on-error: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Restore Cache
-        uses: actions/cache@v2
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
       - name: Assemble Debug
-        run: ./gradlew --no-daemon assemble
+        run: ./gradlew --no-daemon assembleDebug
 
       - name: Upload APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: apk
-          path: app/build/outputs/apk/debug/**.apk
+          path: catalog/build/outputs/apk/debug/**.apk
           retention-days: 7

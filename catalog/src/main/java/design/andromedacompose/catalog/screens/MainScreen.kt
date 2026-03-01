@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
+import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Colorize
 import androidx.compose.material.icons.rounded.FormatBold
 import androidx.compose.material.icons.rounded.Gamepad
@@ -22,102 +23,144 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.catalog.MainActions
 import design.andromedacompose.catalog.Screen
 import design.andromedacompose.catalog.ThemeToggle
-import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.components.Icon
 import design.andromedacompose.components.Text
 import design.andromedacompose.icons.AndromedaIcons
-import androidx.compose.material.icons.Icons as MaterialIcons
+// Icons is imported directly above
 
 @Composable
 fun MainScreen(
     actions: MainActions,
     onToggleTheme: ThemeToggle,
 ) {
-    val foundation = listOf<Triple<String, @Composable () -> Unit, () -> Unit>>(
-        Triple(
-            "Colors",
-            {
-                Icon(
-                    MaterialIcons.Rounded.Colorize,
-                    null
-                )
-            },
-            actions::showColors
-        ),
-        Triple(
-            "Icons",
-            {
-                Icon(
-                    AndromedaIcons.Alert,
-                    null
-                )
-            },
-            actions::showIcons
-        ),
-        Triple(
-            "Illustrations",
-            {
-                Icon(
-                    AndromedaIcons.Photos,
-                    null
-                )
-            },
-            actions::showIllustrations
-        ),
-        Triple(
-            "Typography",
-            {
-                Icon(
-                    MaterialIcons.Rounded.FormatBold,
-                    null
-                )
-            },
-            actions::showTypography
-        ),
-    )
+    val foundation =
+        listOf<Triple<String, @Composable () -> Unit, () -> Unit>>(
+            Triple(
+                "Colors",
+                {
+                    Icon(
+                        Icons.Rounded.Colorize,
+                        null,
+                    )
+                },
+                actions::showColors,
+            ),
+            Triple(
+                "Icons",
+                {
+                    Icon(
+                        AndromedaIcons.Alert,
+                        null,
+                    )
+                },
+                actions::showIcons,
+            ),
+            Triple(
+                "Illustrations",
+                {
+                    Icon(
+                        AndromedaIcons.Photos,
+                        null,
+                    )
+                },
+                actions::showIllustrations,
+            ),
+            Triple(
+                "Typography",
+                {
+                    Icon(
+                        Icons.Rounded.FormatBold,
+                        null,
+                    )
+                },
+                actions::showTypography,
+            ),
+            Triple(
+                "Tokens",
+                {
+                    Icon(
+                        Icons.Rounded.SpaceBar,
+                        null,
+                    )
+                },
+                actions::showTokens,
+            ),
+            Triple(
+                "Shapes",
+                {
+                    Icon(
+                        Icons.Rounded.Gamepad,
+                        null,
+                    )
+                },
+                actions::showShapes,
+            ),
+            Triple(
+                "Emphasis",
+                {
+                    Icon(
+                        Icons.Rounded.FormatBold,
+                        null,
+                    )
+                },
+                actions::showEmphasis,
+            ),
+        )
 
-    val components = listOf<Triple<String, @Composable () -> Unit, () -> Unit>>(
-        Triple(
-            "Button",
-            {
-                Icon(
-                    MaterialIcons.Rounded.Gamepad,
-                    null
-                )
-            },
-            actions::showButton
-        ),
-        Triple(
-            "Nav Bar",
-            {
-                Icon(
-                    MaterialIcons.Rounded.SpaceBar,
-                    null
-                )
-            },
-            actions::showNavBar
-        ),
-        Triple(
-            "Text Fields",
-            {
-                Icon(
-                    MaterialIcons.Rounded.Input,
-                    null
-                )
-            },
-            actions::showTextFields
-        ),
-    )
+    val components =
+        listOf<Triple<String, @Composable () -> Unit, () -> Unit>>(
+            Triple(
+                "Button",
+                {
+                    Icon(
+                        Icons.Rounded.Gamepad,
+                        null,
+                    )
+                },
+                actions::showButton,
+            ),
+            Triple(
+                "Nav Bar",
+                {
+                    Icon(
+                        Icons.Rounded.SpaceBar,
+                        null,
+                    )
+                },
+                actions::showNavBar,
+            ),
+            Triple(
+                "Text Fields",
+                {
+                    Icon(
+                        Icons.Rounded.Input,
+                        null,
+                    )
+                },
+                actions::showTextFields,
+            ),
+            Triple(
+                "Selection",
+                {
+                    Icon(
+                        Icons.Rounded.Gamepad,
+                        null,
+                    )
+                },
+                actions::showSelectionControls,
+            ),
+        )
 
     Screen(title = "Andromeda Catalog", themeToggle = onToggleTheme) {
         BoxWithConstraints {
             val columns = (maxWidth / 156.dp).toInt().coerceAtLeast(1)
             Column(
                 Modifier
-                    .verticalScroll(rememberScrollState())
+                    .verticalScroll(rememberScrollState()),
             ) {
                 Spacer(Modifier.size(16.dp))
                 CardRowItems("Foundation", foundation, 1)
@@ -137,8 +180,9 @@ private fun CardRowItems(
     Text(
         text = title,
         style = AndromedaTheme.typography.titleModerateBoldTextStyle,
-        modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 4.dp)
+        modifier =
+            Modifier
+                .padding(horizontal = 16.dp, vertical = 4.dp),
     )
     Column(Modifier.padding(horizontal = 12.dp, vertical = 8.dp)) {
         for (rowItems in items.chunked(columns)) {
@@ -161,13 +205,18 @@ private fun RowScope.Items(rowItems: List<Triple<String, @Composable () -> Unit,
 }
 
 @Composable
-private fun RowScope.Item(title: String, icon: @Composable () -> Unit, onClick: () -> Unit) {
+private fun RowScope.Item(
+    title: String,
+    icon: @Composable () -> Unit,
+    onClick: () -> Unit,
+) {
     Card(
-        modifier = Modifier
-            .padding(4.dp)
-            .weight(1f),
+        modifier =
+            Modifier
+                .padding(4.dp)
+                .weight(1f),
         backgroundColor = AndromedaTheme.colors.primaryColors.background,
-        elevation = 2.dp
+        elevation = 2.dp,
     ) {
         Row(
             Modifier

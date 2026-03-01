@@ -8,11 +8,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import design.andromedacompose.catalog.screens.ButtonScreen
 import design.andromedacompose.catalog.screens.ColorsScreen
+import design.andromedacompose.catalog.screens.EmphasisScreen
 import design.andromedacompose.catalog.screens.IconsScreen
 import design.andromedacompose.catalog.screens.IllustrationsScreen
 import design.andromedacompose.catalog.screens.MainScreen
 import design.andromedacompose.catalog.screens.NavBarScreen
+import design.andromedacompose.catalog.screens.SelectionControlsScreen
+import design.andromedacompose.catalog.screens.ShapesScreen
 import design.andromedacompose.catalog.screens.TextFieldScreen
+import design.andromedacompose.catalog.screens.TokensScreen
 import design.andromedacompose.catalog.screens.TypographyScreen
 
 object MainDestinations {
@@ -26,6 +30,10 @@ object MainDestinations {
 
     const val BUTTON = "button"
     const val NAVBAR = "navbar"
+    const val TOKENS = "tokens"
+    const val SHAPES = "shapes"
+    const val EMPHASIS = "emphasis"
+    const val SELECTION_CONTROLS = "selectionControls"
 }
 
 @Composable
@@ -38,7 +46,7 @@ fun NavGraph(
 
     NavHost(
         navController = navController,
-        startDestination = startDestination
+        startDestination = startDestination,
     ) {
         composable(MainDestinations.MAIN) {
             MainScreen(actions, onToggleTheme)
@@ -63,6 +71,18 @@ fun NavGraph(
         }
         composable(MainDestinations.INPUTFIELDS) {
             TextFieldScreen(actions::navigateUp)
+        }
+        composable(MainDestinations.TOKENS) {
+            TokensScreen(actions::navigateUp)
+        }
+        composable(MainDestinations.SHAPES) {
+            ShapesScreen(actions::navigateUp)
+        }
+        composable(MainDestinations.EMPHASIS) {
+            EmphasisScreen(actions::navigateUp)
+        }
+        composable(MainDestinations.SELECTION_CONTROLS) {
+            SelectionControlsScreen(actions::navigateUp)
         }
     }
 }
@@ -100,5 +120,21 @@ data class MainActions(
 
     fun showTextFields() {
         navController.navigate(MainDestinations.INPUTFIELDS)
+    }
+
+    fun showTokens() {
+        navController.navigate(MainDestinations.TOKENS)
+    }
+
+    fun showShapes() {
+        navController.navigate(MainDestinations.SHAPES)
+    }
+
+    fun showEmphasis() {
+        navController.navigate(MainDestinations.EMPHASIS)
+    }
+
+    fun showSelectionControls() {
+        navController.navigate(MainDestinations.SELECTION_CONTROLS)
     }
 }

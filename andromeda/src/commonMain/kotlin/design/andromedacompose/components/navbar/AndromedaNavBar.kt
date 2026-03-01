@@ -1,0 +1,173 @@
+package design.andromedacompose.components.navbar
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.width
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import design.andromedacompose.AndromedaTheme
+import design.andromedacompose.components.Surface
+import design.andromedacompose.components.Text
+import design.andromedacompose.foundation.ContentEmphasis
+import design.andromedacompose.foundation.LocalContentEmphasis
+import design.andromedacompose.foundation.ProvideContentEmphasis
+import design.andromedacompose.foundation.colors.contentColorFor
+import design.andromedacompose.foundation.tokens.AndromedaElevation
+import design.andromedacompose.foundation.typography.ProvideMergedTextStyle
+import androidx.compose.ui.graphics.Color as ComposeColor
+
+@Composable
+fun AndromedaNavBar(
+    modifier: Modifier = Modifier,
+    backgroundColor: ComposeColor = AndromedaTheme.colors.primaryColors.active,
+    elevation: Dp = NavBarDefaultElevation,
+    title: String = "",
+    subTitle: String = "",
+    contentPadding: PaddingValues = ContentPadding,
+    contentColor: ComposeColor = contentColorFor(backgroundColor = backgroundColor),
+    barHeight: Dp = NavBarHeight,
+    shape: Shape = RectangleShape,
+    navigationIcon: @Composable (() -> Unit)? = null,
+    titleView: @Composable RowScope.(Modifier) -> Unit = { titleModifier ->
+        DefaultAndromedaNavBarTitle(
+            modifier = titleModifier,
+            title = title,
+            subTitle = subTitle,
+        )
+    },
+    menuView: @Composable RowScope.(Modifier) -> Unit = { DefaultAndromedaNavBarMenu(it) },
+) {
+    Surface(
+        color = backgroundColor,
+        elevation = elevation,
+        shape = shape,
+        contentColor = contentColor,
+        modifier =
+            modifier.then(
+                Modifier.padding(
+                    WindowInsets.statusBars.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
+                        .asPaddingValues(),
+                ),
+            ),
+    ) {
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .padding(contentPadding)
+                .height(barHeight),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically,
+            content = {
+                if (navigationIcon == null) {
+                    Spacer(TitleInsetWithoutIcon)
+                } else {
+                    Row(TitleIconModifier, verticalAlignment = Alignment.CenterVertically) {
+                        ProvideContentEmphasis(
+                            emphasis = ContentEmphasis.Normal,
+                            content = navigationIcon,
+                        )
+                    }
+                }
+
+                ProvideMergedTextStyle(
+                    value =
+                        TextStyle(
+                            fontSize = 19.sp,
+                            letterSpacing = 0.15.sp,
+                            fontWeight = FontWeight.Medium,
+                        ),
+                ) {
+                    CompositionLocalProvider(
+                        LocalContentEmphasis provides ContentEmphasis.Normal,
+                    ) {
+                        Box(
+                            Modifier.semantics(mergeDescendants = true) {
+                                testTag = "title"
+                            },
+                        ) {
+                            this@Row.titleView(Modifier.fillMaxWidth())
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.weight(1f))
+                menuView(Modifier.padding(end = 8.dp))
+            },
+        )
+    }
+}
+
+@Composable
+fun DefaultAndromedaNavBarTitle(
+    title: String,
+    subTitle: String,
+    modifier: Modifier = Modifier,
+) {
+    Column(modifier) {
+        Text(
+            text = title,
+            style = AndromedaTheme.typography.titleModerateBoldTextStyle,
+            color = AndromedaTheme.colors.contentColors.normal,
+        )
+        Text(
+            text = subTitle,
+            style = AndromedaTheme.typography.titleSmallDemiTextStyle,
+            color = AndromedaTheme.colors.contentColors.subtle,
+        )
+    }
+}
+
+@Composable
+fun DefaultAndromedaNavBarTitlePreview() {
+    AndromedaTheme {
+        DefaultAndromedaNavBarTitle("Heelo world", "i am subtitle")
+    }
+}
+
+@Composable
+fun DefaultAndromedaNavBarMenu(modifier: Modifier) {
+}
+
+val ContentPadding =
+    PaddingValues(
+        start = 4.dp,
+        end = 4.dp,
+    )
+val NavBarNoElevation = AndromedaElevation.None
+val NavBarDefaultElevation = AndromedaElevation.Small
+private val NavBarHeight = 56.dp
+private val NavBarHorizontalPadding = 4.dp
+
+// Start inset for the title when there is no navigation icon provided
+private val TitleInsetWithoutIcon = Modifier.width(16.dp - NavBarHorizontalPadding)
+
+// Start inset for the title when there is a navigation icon provided
+private val TitleIconModifier =
+    Modifier
+        .fillMaxHeight()
+        .width(72.dp - NavBarHorizontalPadding)
