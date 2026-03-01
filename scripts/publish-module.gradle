@@ -55,6 +55,8 @@ afterEvaluate {
 }
 
 signing {
-    useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
-    sign publishing.publications
+    if (signingKeyId && signingKey && signingPassword) {
+        useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
+        sign publishing.publications
+    }
 }
