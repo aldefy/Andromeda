@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.components.Icon
 import design.andromedacompose.foundation.size
+import design.andromedacompose.foundation.tokens.AndromedaMotion
 import design.andromedacompose.foundation.typography.ProvideMergedTextStyle
 
 @Composable
@@ -99,4 +100,4 @@ private sealed class Message(
     data class Info(override val content: @Composable () -> Unit) : Message(content)
 }
 
-private const val AnimationDuration = 150
+private val AnimationDuration = AndromedaMotion.Normal

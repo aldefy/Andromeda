@@ -78,6 +78,16 @@ fun MainScreen(
             },
             actions::showTypography
         ),
+        Triple(
+            "Tokens",
+            {
+                Icon(
+                    Icons.Rounded.SpaceBar,
+                    null
+                )
+            },
+            actions::showTokens
+        ),
     )
 
     val components = listOf<Triple<String, @Composable () -> Unit, () -> Unit>>(

@@ -50,6 +50,7 @@ import design.andromedacompose.components.internal.AndromedaPreview
 import design.andromedacompose.components.internal.ConstrainedColumn
 import design.andromedacompose.components.internal.LocalScaffoldPadding
 import design.andromedacompose.components.internal.Preview
+import design.andromedacompose.foundation.tokens.AndromedaMotion
 import design.andromedacompose.foundation.typography.LocalTextStyle
 import design.andromedacompose.foundation.typography.ProvideMergedTextStyle
 import kotlinx.coroutines.FlowPreview
@@ -301,7 +302,7 @@ private enum class InputState {
     FocusedError,
 }
 
-private const val AnimationDuration = 150
+private val AnimationDuration = AndromedaMotion.Normal
 
 @AndromedaPreview
 @Composable

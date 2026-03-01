@@ -38,6 +38,7 @@ import design.andromedacompose.foundation.ContentEmphasis
 import design.andromedacompose.foundation.LocalContentEmphasis
 import design.andromedacompose.foundation.ProvideContentEmphasis
 import design.andromedacompose.foundation.colors.contentColorFor
+import design.andromedacompose.foundation.tokens.AndromedaElevation
 import design.andromedacompose.foundation.typography.ProvideMergedTextStyle
 import androidx.compose.ui.graphics.Color as ComposeColor
 
@@ -156,8 +157,8 @@ val ContentPadding = PaddingValues(
     start = 4.dp,
     end = 4.dp
 )
-val NavBarNoElevation = 0.dp
-val NavBarDefaultElevation = 2.dp
+val NavBarNoElevation = AndromedaElevation.None
+val NavBarDefaultElevation = AndromedaElevation.Small
 private val NavBarHeight = 56.dp
 private val NavBarHorizontalPadding = 4.dp
 

@@ -12,11 +12,12 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import design.andromedacompose.AndromedaTheme
+import design.andromedacompose.foundation.tokens.AndromedaOpacity
 
 @Composable
 fun Divider(
     modifier: Modifier = Modifier,
-    color: Color = AndromedaTheme.colors.contentColors.normal.copy(alpha = DividerAlpha),
+    color: Color = AndromedaTheme.colors.contentColors.normal.copy(alpha = AndromedaOpacity.Divider),
     thickness: Dp = 1.dp,
     startIndent: Dp = 0.dp
 ) {
@@ -38,5 +39,3 @@ fun Divider(
             .background(color = color)
     )
 }
-
-private const val DividerAlpha = 0.12f

@@ -24,6 +24,7 @@ import design.andromedacompose.foundation.ContentEmphasis
 import design.andromedacompose.foundation.ProvideContentEmphasis
 import design.andromedacompose.foundation.colors.contentColorFor
 import design.andromedacompose.foundation.indication.AndromedaIndication
+import design.andromedacompose.foundation.tokens.AndromedaElevation
 import design.andromedacompose.foundation.typography.ProvideMergedTextStyle
 import androidx.compose.ui.graphics.Color as ComposeColor
 
@@ -111,11 +112,9 @@ public object ButtonDefaults {
      */
     @Composable
     public fun elevation(
-        defaultElevation: Dp = 2.dp,
-        pressedElevation: Dp = 8.dp,
-        // focused: Dp = 4.dp,
-        // hovered: Dp = 4.dp,
-        disabledElevation: Dp = 0.dp
+        defaultElevation: Dp = AndromedaElevation.Small,
+        pressedElevation: Dp = AndromedaElevation.Large,
+        disabledElevation: Dp = AndromedaElevation.None
     ): ButtonElevation {
         return remember(defaultElevation, pressedElevation, disabledElevation) {
             DefaultButtonElevation(

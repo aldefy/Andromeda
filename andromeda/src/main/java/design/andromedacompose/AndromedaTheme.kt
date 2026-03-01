@@ -12,6 +12,10 @@ import design.andromedacompose.foundation.shape.AndromedaShapes
 import design.andromedacompose.foundation.shape.DefaultShapes
 import design.andromedacompose.foundation.shape.LocalShapes
 import design.andromedacompose.foundation.typography.AndromedaFonts
+import design.andromedacompose.foundation.tokens.AndromedaElevation
+import design.andromedacompose.foundation.tokens.AndromedaMotion
+import design.andromedacompose.foundation.tokens.AndromedaOpacity
+import design.andromedacompose.foundation.tokens.Spacing
 import design.andromedacompose.foundation.typography.AndromedaTypography
 import design.andromedacompose.foundation.typography.LocalTypography
 import design.andromedacompose.foundation.typography.textStyles
@@ -56,4 +60,9 @@ object AndromedaTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalShapes.current
+
+    public val spacing: Spacing get() = Spacing
+    public val elevation: AndromedaElevation get() = AndromedaElevation
+    public val motion: AndromedaMotion get() = AndromedaMotion
+    public val opacity: AndromedaOpacity get() = AndromedaOpacity
 }
