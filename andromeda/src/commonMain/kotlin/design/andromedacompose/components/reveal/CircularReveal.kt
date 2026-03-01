@@ -1,6 +1,5 @@
 package design.andromedacompose.components.reveal
 
-import android.view.MotionEvent
 import androidx.compose.animation.core.FiniteAnimationSpec
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.animation.core.animateFloat
@@ -14,16 +13,14 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.input.pointer.pointerInteropFilter
+import androidx.compose.ui.input.pointer.pointerInput
 
 /**
  * Author : Benjamin Monjoie
  * Credit : https://gist.github.com/bmonjoie/8506040b2ea534eac931378348622725
  */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun <T> CircularReveal(
     targetState: T,
@@ -69,12 +66,16 @@ fun <T> CircularReveal(
     }
 
     Box(
-        modifier.pointerInteropFilter {
-            offset = when (it.action) {
-                MotionEvent.ACTION_DOWN -> Offset(it.x, it.y)
-                else -> null
+        modifier.pointerInput(Unit) {
+            awaitPointerEventScope {
+                while (true) {
+                    val event = awaitPointerEvent()
+                    val change = event.changes.firstOrNull()
+                    if (change != null && change.pressed && !change.previousPressed) {
+                        offset = change.position
+                    }
+                }
             }
-            false
         }
     ) {
         items.forEach {

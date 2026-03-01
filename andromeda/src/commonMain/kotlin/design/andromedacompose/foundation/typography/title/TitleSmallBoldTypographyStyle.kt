@@ -4,14 +4,13 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
-import design.andromedacompose.foundation.typography.AndromedaFonts
 import design.andromedacompose.foundation.typography.BaseTypography
 
 /**
  * Title Small Bold typography style
  */
-class TitleSmallBoldTypographyStyle : BaseTypography {
-    override val fontFamily: FontFamily = AndromedaFonts
+class TitleSmallBoldTypographyStyle(fonts: FontFamily = FontFamily.Default) : BaseTypography {
+    override val fontFamily: FontFamily = fonts
 
     override val fontSize: TextUnit = 16.sp
 

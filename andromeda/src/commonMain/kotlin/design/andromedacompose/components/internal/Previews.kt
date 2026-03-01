@@ -1,13 +1,11 @@
 package design.andromedacompose.components.internal
 
-import android.content.res.Configuration
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.components.Surface
@@ -34,19 +32,3 @@ internal fun Preview(
         }
     }
 }
-
-@Preview(
-    name = "A.Standard",
-    group = "standard",
-)
-@Preview(
-    name = "B.Large font",
-    group = "large-font",
-    fontScale = 1.6f,
-)
-@Preview(
-    name = "C.Dark mode",
-    group = "dark-mode",
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-)
-internal annotation class AndromedaPreview

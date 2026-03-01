@@ -4,14 +4,13 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
-import design.andromedacompose.foundation.typography.AndromedaFonts
 import design.andromedacompose.foundation.typography.BaseTypography
 
 /**
  * Title Tiny Demi typography style
  */
-class TitleTinyDemiTypographyStyle : BaseTypography {
-    override val fontFamily: FontFamily = AndromedaFonts
+class TitleTinyDemiTypographyStyle(fonts: FontFamily = FontFamily.Default) : BaseTypography {
+    override val fontFamily: FontFamily = fonts
 
     override val fontSize: TextUnit = 14.sp
 

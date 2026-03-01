@@ -1,6 +1,5 @@
 package design.andromedacompose.design
 
-import android.os.SystemClock
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable
@@ -10,8 +9,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
-import androidx.core.graphics.ColorUtils
+import kotlin.math.abs
+import kotlin.time.TimeSource
 import androidx.compose.ui.graphics.Color as ComposeColor
+
+private val timeSource = TimeSource.Monotonic
+private val startMark = timeSource.markNow()
 
 fun LazyListState.isScrolledToTheEnd() =
     layoutInfo.visibleItemsInfo.lastOrNull()?.index == layoutInfo.totalItemsCount - 1
@@ -29,7 +32,7 @@ fun LazyListState.isScrolledToTheStart() =
 inline fun debounced(crossinline onClick: () -> Unit, debounceTime: Long = 1000L): () -> Unit {
     var lastTimeClicked by remember { mutableStateOf(0L) }
     val onClickLambda: () -> Unit = {
-        val now = SystemClock.uptimeMillis()
+        val now = startMark.elapsedNow().inWholeMilliseconds
         if (now - lastTimeClicked > debounceTime) {
             onClick()
         }
@@ -51,13 +54,44 @@ fun Modifier.debouncedClickable(
     }
 }
 
-@OptIn(ExperimentalUnsignedTypes::class)
 fun ComposeColor.invert(): ComposeColor {
-    val hsl = floatArrayOf(0f, 0f, 0f)
-    ColorUtils.colorToHSL((value shr 32).toInt(), hsl)
-    hsl[2] = 1 - hsl[2]
-    val colorInt = ColorUtils.HSLToColor(hsl)
-    return ComposeColor(colorInt)
+    val r = red; val g = green; val b = blue
+    val max = maxOf(r, g, b)
+    val min = minOf(r, g, b)
+    var h: Float
+    val s: Float
+    val l = (max + min) / 2f
+
+    if (max == min) {
+        h = 0f; s = 0f
+    } else {
+        val d = max - min
+        s = if (l > 0.5f) d / (2f - max - min) else d / (max + min)
+        h = when (max) {
+            r -> (g - b) / d + (if (g < b) 6f else 0f)
+            g -> (b - r) / d + 2f
+            else -> (r - g) / d + 4f
+        }
+        h /= 6f
+    }
+
+    val invertedL = 1f - l
+    return hslToColor(h, s, invertedL, alpha)
+}
+
+private fun hslToColor(h: Float, s: Float, l: Float, alpha: Float): ComposeColor {
+    val c = (1f - abs(2f * l - 1f)) * s
+    val x = c * (1f - abs((h * 6f) % 2f - 1f))
+    val m = l - c / 2f
+    val (r, g, b) = when {
+        h < 1f / 6f -> Triple(c, x, 0f)
+        h < 2f / 6f -> Triple(x, c, 0f)
+        h < 3f / 6f -> Triple(0f, c, x)
+        h < 4f / 6f -> Triple(0f, x, c)
+        h < 5f / 6f -> Triple(x, 0f, c)
+        else -> Triple(c, 0f, x)
+    }
+    return ComposeColor(r + m, g + m, b + m, alpha)
 }
 
 fun Modifier.conditional(

@@ -1,12 +1,10 @@
 package design.andromedacompose.components.reveal
 
-import android.graphics.Path
-import androidx.annotation.FloatRange
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.asComposePath
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import kotlin.math.hypot
@@ -16,7 +14,7 @@ import kotlin.math.hypot
  * Credit : https://gist.github.com/bmonjoie/8506040b2ea534eac931378348622725
  */
 internal class CircularRevealShape(
-    @FloatRange(from = 0.0, to = 1.0) private val progress: Float,
+    private val progress: Float,
     private val offset: Offset? = null
 ) : Shape {
     override fun createOutline(
@@ -24,15 +22,20 @@ internal class CircularRevealShape(
         layoutDirection: LayoutDirection,
         density: Density
     ): Outline {
+        val centerX = offset?.x ?: (size.width / 2f)
+        val centerY = offset?.y ?: (size.height / 2f)
+        val radius = longestDistanceToACorner(size, offset) * progress
         return Outline.Generic(
             Path().apply {
-                addCircle(
-                    offset?.x ?: (size.width / 2f),
-                    offset?.y ?: (size.height / 2f),
-                    longestDistanceToACorner(size, offset) * progress,
-                    Path.Direction.CW
+                addOval(
+                    androidx.compose.ui.geometry.Rect(
+                        left = centerX - radius,
+                        top = centerY - radius,
+                        right = centerX + radius,
+                        bottom = centerY + radius
+                    )
                 )
-            }.asComposePath()
+            }
         )
     }
 

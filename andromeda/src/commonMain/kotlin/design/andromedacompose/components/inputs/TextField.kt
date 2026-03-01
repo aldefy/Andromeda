@@ -30,7 +30,6 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.error
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontFamily
@@ -40,13 +39,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import design.andromedacompose.AndromedaTheme
-import design.andromedacompose.R
 import design.andromedacompose.components.Icon
 import design.andromedacompose.components.Text
 import design.andromedacompose.components.inputs.field.FieldContent
 import design.andromedacompose.components.inputs.field.FieldLabel
 import design.andromedacompose.components.inputs.field.FieldMessage
-import design.andromedacompose.components.internal.AndromedaPreview
 import design.andromedacompose.components.internal.ConstrainedColumn
 import design.andromedacompose.components.internal.LocalScaffoldPadding
 import design.andromedacompose.components.internal.Preview
@@ -156,7 +153,7 @@ internal fun TextField(
         autoBringIntoViewFocusModifier = Modifier
     }
 
-    val errorMessage = stringResource(R.string.input_field_default_error)
+    val errorMessage = "Invalid input"
     ConstrainedColumn(
         modifier
             .semantics {
@@ -304,7 +301,6 @@ private enum class InputState {
 
 private val AnimationDuration = AndromedaMotion.Normal
 
-@AndromedaPreview
 @Composable
 internal fun TextFieldPreview() {
     Preview {
