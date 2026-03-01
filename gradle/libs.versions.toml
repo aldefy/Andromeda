@@ -12,6 +12,7 @@ phosphor-icons = "1.0.0"
 dokka = "1.9.20"
 ktlint = "12.1.2"
 nexus-publish = "2.0.0"
+compose-multiplatform = "1.10.1"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -43,3 +44,5 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexus-publish" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+compose-multiplatform-plugin = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }

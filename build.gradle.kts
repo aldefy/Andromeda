@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.compose) apply false
+    alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.compose.multiplatform.plugin) apply false
     alias(libs.plugins.dokka) apply false
     alias(libs.plugins.ktlint)
     alias(libs.plugins.nexus.publish)
