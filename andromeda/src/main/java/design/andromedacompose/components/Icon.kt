@@ -1,12 +1,9 @@
-@file:Suppress("DEPRECATION_ERROR")
-
 package design.andromedacompose.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -32,6 +29,7 @@ import design.andromedacompose.foundation.ContentEmphasis
 import design.andromedacompose.foundation.LocalContentEmphasis
 import design.andromedacompose.foundation.applyEmphasis
 import design.andromedacompose.foundation.colors.LocalContentColor
+import design.andromedacompose.foundation.indication.AndromedaIndication
 
 @Composable
 public fun Icon(
@@ -84,10 +82,6 @@ public fun Icon(
     } else {
         Modifier
     }
-    val iconClickRipple = rememberRipple(
-        bounded = false,
-        color = AndromedaTheme.colors.contentColors.normal
-    )
     val interactionSource = remember {
         MutableInteractionSource()
     }
@@ -105,7 +99,7 @@ public fun Icon(
             .conditional(onClick != null) {
                 Modifier.clickable(
                     onClick = onClick!!,
-                    indication = iconClickRipple,
+                    indication = AndromedaIndication,
                     interactionSource = interactionSource
                 )
             }

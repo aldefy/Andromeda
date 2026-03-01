@@ -53,10 +53,6 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime)
 
-    // Material — temporary, removed in Phase 2
-    implementation(libs.compose.material)
-    implementation(libs.compose.material.icons.core)
-    implementation(libs.compose.material.icons.extended)
 
     debugImplementation(libs.compose.ui.tooling)
 

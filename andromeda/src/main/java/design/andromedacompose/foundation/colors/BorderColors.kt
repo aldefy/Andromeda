@@ -42,9 +42,9 @@ class AndromedaBorderColors(
         active: ComposeColor = this.active,
         pressed: ComposeColor = this.pressed,
         inactive: ComposeColor = this.inactive,
-        mute: ComposeColor,
-        focus: ComposeColor,
-        error: ComposeColor,
+        mute: ComposeColor = this.mute,
+        focus: ComposeColor = this.focus,
+        error: ComposeColor = this.error,
     ): BorderColors = AndromedaBorderColors(
         active,
         pressed,

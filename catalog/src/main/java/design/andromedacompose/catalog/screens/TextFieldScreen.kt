@@ -47,10 +47,8 @@ import androidx.compose.ui.unit.sp
 import design.andromedacompose.catalog.Screen
 import design.andromedacompose.components.Icon
 import design.andromedacompose.components.Text
-import design.andromedacompose.components.inputs.DatePickerInputField
 import design.andromedacompose.components.inputs.TextField
 import design.andromedacompose.foundation.colors.parse
-import java.time.LocalDate
 
 @Composable
 fun TextFieldScreen(onUpClick: () -> Unit) {
@@ -122,19 +120,6 @@ fun TextFieldScreenContent() {
                     text.value = ""
                 },
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
-            )
-        }
-        item {
-            val date = remember {
-                mutableStateOf(LocalDate.now())
-            }
-            DatePickerInputField(
-                value = date.value.toString(),
-                onDatePicked = { date.value = it },
-                label = { Text("Date picker") },
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .fillMaxWidth(),
             )
         }
         item {

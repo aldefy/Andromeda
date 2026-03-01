@@ -1,20 +1,17 @@
 package design.andromedacompose.components.inputs.field
 
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.SizeTransform
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.animation.with
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Error
-import androidx.compose.material.icons.filled.Info
+import design.andromedacompose.icons.AndromedaSystemIcons
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,7 +22,6 @@ import design.andromedacompose.components.Icon
 import design.andromedacompose.foundation.size
 import design.andromedacompose.foundation.typography.ProvideMergedTextStyle
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 internal fun FieldMessage(
     toShow: Boolean = true,
@@ -47,12 +43,12 @@ internal fun FieldMessage(
                     val exit = slideOutVertically(animationSpec = tween(AnimationDuration)) +
                         fadeOut(animationSpec = tween(AnimationDuration))
                     val size = SizeTransform(clip = false) { _, _ -> tween(AnimationDuration) }
-                    enter with exit using size
+                    enter togetherWith exit using size
                 } else {
                     val enter = fadeIn(animationSpec = tween(AnimationDuration))
                     val exit = fadeOut(animationSpec = tween(AnimationDuration))
                     val size = SizeTransform(clip = false) { _, _ -> tween(AnimationDuration) }
-                    enter with exit using size
+                    enter togetherWith exit using size
                 }
             },
         ) { message ->
@@ -62,8 +58,8 @@ internal fun FieldMessage(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     val icon = when (message) {
-                        is Message.Error -> Icons.Filled.Error
-                        is Message.Info -> Icons.Filled.Info
+                        is Message.Error -> AndromedaSystemIcons.ErrorIcon
+                        is Message.Info -> AndromedaSystemIcons.Info
                     }
                     val tintColor = when (message) {
                         is Message.Error -> AndromedaTheme.colors.secondaryColors.error

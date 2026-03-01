@@ -89,6 +89,11 @@ internal class DefaultButtonElevation(
                     pressedElevation -> PressInteraction.Press(Offset.Zero)
                     else -> null
                 }
+                animatable.animateElevation(
+                    target = target,
+                    from = lastInteraction,
+                    to = interactions.lastOrNull()
+                )
             }
         } else {
             LaunchedEffect(key1 = target) {

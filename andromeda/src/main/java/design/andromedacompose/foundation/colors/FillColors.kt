@@ -46,8 +46,8 @@ class PrimaryColors(
         pressed: ComposeColor = this.pressed,
         alt: ComposeColor = this.alt
     ): PrimaryColors = PrimaryColors(
-        active,
         background,
+        active,
         error,
         mute,
         pressed,
@@ -85,8 +85,8 @@ class SecondaryColors(
         pressed: ComposeColor = this.pressed,
         alt: ComposeColor = this.alt
     ): SecondaryColors = SecondaryColors(
-        active,
         background,
+        active,
         error,
         mute,
         pressed,
@@ -124,8 +124,8 @@ class TertiaryColors(
         pressed: ComposeColor = this.pressed,
         alt: ComposeColor = this.alt
     ): TertiaryColors = TertiaryColors(
-        active,
         background,
+        active,
         error,
         mute,
         pressed,

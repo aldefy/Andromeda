@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION_ERROR")
-
 package design.andromedacompose.components.buttons
 
 import androidx.compose.foundation.BorderStroke
@@ -12,8 +10,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.contentColorFor
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -26,6 +22,8 @@ import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.components.Surface
 import design.andromedacompose.foundation.ContentEmphasis
 import design.andromedacompose.foundation.ProvideContentEmphasis
+import design.andromedacompose.foundation.colors.contentColorFor
+import design.andromedacompose.foundation.indication.AndromedaIndication
 import design.andromedacompose.foundation.typography.ProvideMergedTextStyle
 import androidx.compose.ui.graphics.Color as ComposeColor
 
@@ -36,7 +34,7 @@ fun Button(
     backgroundColor: ComposeColor = AndromedaTheme.colors.primaryColors.active,
     contentColor: ComposeColor = contentColorFor(backgroundColor = backgroundColor),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    indication: Indication? = rememberRipple(),
+    indication: Indication? = AndromedaIndication,
     elevation: ButtonElevation = ButtonDefaults.elevation(),
     shape: Shape = AndromedaTheme.shapes.small,
     border: BorderStroke? = null,

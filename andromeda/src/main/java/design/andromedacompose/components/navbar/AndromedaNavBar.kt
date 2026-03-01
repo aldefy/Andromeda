@@ -17,10 +17,6 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
@@ -36,8 +32,11 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import design.andromedacompose.AndromedaTheme
+import design.andromedacompose.components.Surface
+import design.andromedacompose.components.Text
 import design.andromedacompose.foundation.ContentEmphasis
 import design.andromedacompose.foundation.LocalContentEmphasis
+import design.andromedacompose.foundation.ProvideContentEmphasis
 import design.andromedacompose.foundation.colors.contentColorFor
 import design.andromedacompose.foundation.typography.ProvideMergedTextStyle
 import androidx.compose.ui.graphics.Color as ComposeColor
@@ -87,8 +86,8 @@ fun AndromedaNavBar(
                     Spacer(TitleInsetWithoutIcon)
                 } else {
                     Row(TitleIconModifier, verticalAlignment = Alignment.CenterVertically) {
-                        CompositionLocalProvider(
-                            LocalContentAlpha provides ContentAlpha.high,
+                        ProvideContentEmphasis(
+                            emphasis = ContentEmphasis.Normal,
                             content = navigationIcon
                         )
                     }

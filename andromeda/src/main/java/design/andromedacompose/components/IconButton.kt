@@ -1,12 +1,9 @@
-@file:Suppress("DEPRECATION_ERROR")
-
 package design.andromedacompose.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -17,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import design.andromedacompose.foundation.ContentEmphasis
 import design.andromedacompose.foundation.LocalContentEmphasis
 import design.andromedacompose.foundation.ProvideContentEmphasis
+import design.andromedacompose.foundation.indication.AndromedaIndication
 
 @Composable
 public fun IconButton(
@@ -34,7 +32,7 @@ public fun IconButton(
                 enabled = enabled,
                 role = Role.Button,
                 interactionSource = interactionSource,
-                indication = rememberRipple(bounded = false, radius = rippleRadius),
+                indication = AndromedaIndication,
             )
             .size(rippleRadius * 2),
         contentAlignment = Alignment.Center,

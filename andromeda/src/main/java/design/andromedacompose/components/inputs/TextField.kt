@@ -14,10 +14,7 @@ import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.MoreVert
+import design.andromedacompose.icons.AndromedaSystemIcons
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
@@ -315,8 +312,8 @@ internal fun TextFieldPreview() {
             onValueChange = {},
             label = { Text("Surname") },
             modifier = Modifier.fillMaxWidth(),
-            leadingIcon = { Icon(Icons.Default.Edit, contentDescription = null) },
-            trailingIcon = { Icon(Icons.Default.Close, contentDescription = null) },
+            leadingIcon = { Icon(AndromedaSystemIcons.Edit, contentDescription = null) },
+            trailingIcon = { Icon(AndromedaSystemIcons.Close, contentDescription = null) },
         )
         TextField(
             value = "",
@@ -324,8 +321,8 @@ internal fun TextFieldPreview() {
             label = { Text("Surname") },
             placeholder = { Text("Enter your surname.") },
             modifier = Modifier.fillMaxWidth(),
-            leadingIcon = { Icon(Icons.Default.MoreVert, contentDescription = null) },
-            trailingIcon = { Icon(Icons.Default.Close, contentDescription = null) },
+            leadingIcon = { Icon(AndromedaSystemIcons.MoreVert, contentDescription = null) },
+            trailingIcon = { Icon(AndromedaSystemIcons.Close, contentDescription = null) },
             info = {
                 Text("Input must be set", fontSize = 9.sp)
             }

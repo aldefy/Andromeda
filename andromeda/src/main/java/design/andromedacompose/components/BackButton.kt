@@ -1,14 +1,11 @@
 package design.andromedacompose.components
 
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import design.andromedacompose.AndromedaTheme
+import design.andromedacompose.icons.AndromedaSystemIcons
 
 /**
  * Basic back button, that shows an icon and calls [onBackPressed] when tapped.
@@ -21,7 +18,7 @@ import design.andromedacompose.AndromedaTheme
 fun BackButton(
     onBackPressed: () -> Unit,
     modifier: Modifier = Modifier,
-    imageVector: ImageVector = Icons.Default.ArrowBack,
+    imageVector: ImageVector = AndromedaSystemIcons.ArrowBack,
 ) {
     IconButton(
         modifier = modifier,
