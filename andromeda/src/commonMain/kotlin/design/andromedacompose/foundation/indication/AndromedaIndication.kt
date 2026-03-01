@@ -21,7 +21,7 @@ object AndromedaIndication : IndicationNodeFactory {
     }
 
     override fun equals(other: Any?) = other === this
-    override fun hashCode() = System.identityHashCode(this)
+    override fun hashCode() = this::class.hashCode()
 }
 
 private class AndromedaIndicationNode(

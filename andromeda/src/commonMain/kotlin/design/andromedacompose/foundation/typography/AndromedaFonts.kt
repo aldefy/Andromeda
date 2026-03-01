@@ -4,15 +4,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import org.jetbrains.compose.resources.Font
-import andromeda.generated.resources.Res
-import andromeda.generated.resources.andromeda_black
-import andromeda.generated.resources.andromeda_bold
-import andromeda.generated.resources.andromeda_extrabold
-import andromeda.generated.resources.andromeda_light
-import andromeda.generated.resources.andromeda_medium
-import andromeda.generated.resources.andromeda_regular
-import andromeda.generated.resources.andromeda_semibold
-import andromeda.generated.resources.andromeda_thin
+import design.andromedacompose.andromeda.generated.resources.Res
+import design.andromedacompose.andromeda.generated.resources.andromeda_black
+import design.andromedacompose.andromeda.generated.resources.andromeda_bold
+import design.andromedacompose.andromeda.generated.resources.andromeda_extrabold
+import design.andromedacompose.andromeda.generated.resources.andromeda_light
+import design.andromedacompose.andromeda.generated.resources.andromeda_medium
+import design.andromedacompose.andromeda.generated.resources.andromeda_regular
+import design.andromedacompose.andromeda.generated.resources.andromeda_semibold
+import design.andromedacompose.andromeda.generated.resources.andromeda_thin
 
 /**
  * Fallback font family used by typography style classes that are not constructed

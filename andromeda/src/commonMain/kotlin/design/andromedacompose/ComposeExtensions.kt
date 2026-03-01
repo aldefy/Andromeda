@@ -13,8 +13,10 @@ import kotlin.math.abs
 import kotlin.time.TimeSource
 import androidx.compose.ui.graphics.Color as ComposeColor
 
-private val timeSource = TimeSource.Monotonic
-private val startMark = timeSource.markNow()
+@PublishedApi
+internal val timeSource = TimeSource.Monotonic
+@PublishedApi
+internal val startMark = timeSource.markNow()
 
 fun LazyListState.isScrolledToTheEnd() =
     layoutInfo.visibleItemsInfo.lastOrNull()?.index == layoutInfo.totalItemsCount - 1

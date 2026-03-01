@@ -1,0 +1,6 @@
+{
+    "tool": "device_interact",
+    "args": "action=wait_for, element_text=Foundation",
+    "result": "Element \"Foundation\" appeared after 2578ms on Pixel_9_Pro_Fold",
+    "timestamp": "2026-03-01T12:21:04.581698"
+}

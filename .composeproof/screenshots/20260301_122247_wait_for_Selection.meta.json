@@ -1,0 +1,6 @@
+{
+    "tool": "device_interact",
+    "args": "action=wait_for, element_text=Selection",
+    "result": "Element \"Selection\" appeared after 2671ms on Pixel_9_Pro_Fold",
+    "timestamp": "2026-03-01T12:22:47.457828"
+}
