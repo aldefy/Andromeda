@@ -88,6 +88,26 @@ fun MainScreen(
             },
             actions::showTokens
         ),
+        Triple(
+            "Shapes",
+            {
+                Icon(
+                    Icons.Rounded.Gamepad,
+                    null
+                )
+            },
+            actions::showShapes
+        ),
+        Triple(
+            "Emphasis",
+            {
+                Icon(
+                    Icons.Rounded.FormatBold,
+                    null
+                )
+            },
+            actions::showEmphasis
+        ),
     )
 
     val components = listOf<Triple<String, @Composable () -> Unit, () -> Unit>>(

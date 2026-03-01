@@ -8,10 +8,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import design.andromedacompose.catalog.screens.ButtonScreen
 import design.andromedacompose.catalog.screens.ColorsScreen
+import design.andromedacompose.catalog.screens.EmphasisScreen
 import design.andromedacompose.catalog.screens.IconsScreen
 import design.andromedacompose.catalog.screens.IllustrationsScreen
 import design.andromedacompose.catalog.screens.MainScreen
 import design.andromedacompose.catalog.screens.NavBarScreen
+import design.andromedacompose.catalog.screens.ShapesScreen
 import design.andromedacompose.catalog.screens.TextFieldScreen
 import design.andromedacompose.catalog.screens.TokensScreen
 import design.andromedacompose.catalog.screens.TypographyScreen
@@ -28,6 +30,8 @@ object MainDestinations {
     const val BUTTON = "button"
     const val NAVBAR = "navbar"
     const val TOKENS = "tokens"
+    const val SHAPES = "shapes"
+    const val EMPHASIS = "emphasis"
 }
 
 @Composable
@@ -69,6 +73,12 @@ fun NavGraph(
         composable(MainDestinations.TOKENS) {
             TokensScreen(actions::navigateUp)
         }
+        composable(MainDestinations.SHAPES) {
+            ShapesScreen(actions::navigateUp)
+        }
+        composable(MainDestinations.EMPHASIS) {
+            EmphasisScreen(actions::navigateUp)
+        }
     }
 }
 
@@ -109,5 +119,13 @@ data class MainActions(
 
     fun showTokens() {
         navController.navigate(MainDestinations.TOKENS)
+    }
+
+    fun showShapes() {
+        navController.navigate(MainDestinations.SHAPES)
+    }
+
+    fun showEmphasis() {
+        navController.navigate(MainDestinations.EMPHASIS)
     }
 }
