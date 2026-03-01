@@ -3,9 +3,17 @@ package design.andromedacompose.icons
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import com.adamglin.PhosphorIcons
 
 @Suppress("unused")
 object AndromedaIcons {
+
+    /**
+     * Phosphor Icons — 1500+ icons in 6 weights (Bold, Duotone, Fill, Light, Regular, Thin).
+     *
+     * Usage: `AndromedaIcons.Phosphor.Regular.Heart`
+     */
+    val Phosphor: PhosphorIcons = PhosphorIcons
     val Visibility: Painter
         @Composable
         get() = painterResource(R.drawable.andromeda_icon_visibility_on)

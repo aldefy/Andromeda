@@ -8,6 +8,7 @@ lifecycle = "2.8.7"
 core-ktx = "1.15.0"
 appcompat = "1.7.0"
 coil = "2.7.0"
+phosphor-icons = "1.0.0"
 dokka = "1.9.20"
 ktlint = "12.1.2"
 nexus-publish = "2.0.0"
@@ -32,6 +33,7 @@ lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+phosphor-icons = { module = "com.adamglin:phosphor-icon", version.ref = "phosphor-icons" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

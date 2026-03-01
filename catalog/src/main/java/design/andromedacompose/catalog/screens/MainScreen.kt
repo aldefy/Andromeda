@@ -141,6 +141,16 @@ fun MainScreen(
             },
             actions::showTextFields
         ),
+        Triple(
+            "Selection",
+            {
+                Icon(
+                    Icons.Rounded.Gamepad,
+                    null
+                )
+            },
+            actions::showSelectionControls
+        ),
     )
 
     Screen(title = "Andromeda Catalog", themeToggle = onToggleTheme) {

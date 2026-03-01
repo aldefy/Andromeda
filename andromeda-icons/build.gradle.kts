@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.compose.ui)
     implementation(libs.compose.foundation)
     implementation(libs.compose.runtime)
+    api(libs.phosphor.icons)
 }
 
 apply(from = "${rootProject.projectDir}/scripts/publish-module.gradle")

@@ -14,6 +14,7 @@ import design.andromedacompose.catalog.screens.IllustrationsScreen
 import design.andromedacompose.catalog.screens.MainScreen
 import design.andromedacompose.catalog.screens.NavBarScreen
 import design.andromedacompose.catalog.screens.ShapesScreen
+import design.andromedacompose.catalog.screens.SelectionControlsScreen
 import design.andromedacompose.catalog.screens.TextFieldScreen
 import design.andromedacompose.catalog.screens.TokensScreen
 import design.andromedacompose.catalog.screens.TypographyScreen
@@ -32,6 +33,7 @@ object MainDestinations {
     const val TOKENS = "tokens"
     const val SHAPES = "shapes"
     const val EMPHASIS = "emphasis"
+    const val SELECTION_CONTROLS = "selectionControls"
 }
 
 @Composable
@@ -78,6 +80,9 @@ fun NavGraph(
         }
         composable(MainDestinations.EMPHASIS) {
             EmphasisScreen(actions::navigateUp)
+        }
+        composable(MainDestinations.SELECTION_CONTROLS) {
+            SelectionControlsScreen(actions::navigateUp)
         }
     }
 }
@@ -127,5 +132,9 @@ data class MainActions(
 
     fun showEmphasis() {
         navController.navigate(MainDestinations.EMPHASIS)
+    }
+
+    fun showSelectionControls() {
+        navController.navigate(MainDestinations.SELECTION_CONTROLS)
     }
 }
