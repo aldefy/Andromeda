@@ -43,7 +43,7 @@ public fun Icon(
         painter = rememberVectorPainter(imageVector),
         contentDescription = contentDescription,
         modifier = modifier,
-        tint = tint
+        tint = tint,
     )
 }
 
@@ -60,7 +60,7 @@ public fun Icon(
         painter = painter,
         contentDescription = contentDescription,
         modifier = modifier,
-        tint = tint
+        tint = tint,
     )
 }
 
@@ -74,17 +74,19 @@ public fun Icon(
     tint: Color = AndromedaTheme.colors.contentColors.normal.applyEmphasis(emphasis),
 ) {
     val colorFilter = if (tint == Color.Unspecified) null else ColorFilter.tint(tint)
-    val semantics = if (contentDescription != null) {
-        Modifier.semantics {
-            this.contentDescription = contentDescription
-            this.role = Role.Image
+    val semantics =
+        if (contentDescription != null) {
+            Modifier.semantics {
+                this.contentDescription = contentDescription
+                this.role = Role.Image
+            }
+        } else {
+            Modifier
         }
-    } else {
-        Modifier
-    }
-    val interactionSource = remember {
-        MutableInteractionSource()
-    }
+    val interactionSource =
+        remember {
+            MutableInteractionSource()
+        }
 
     Box(
         modifier
@@ -93,16 +95,16 @@ public fun Icon(
             .paint(
                 painter,
                 colorFilter = colorFilter,
-                contentScale = ContentScale.Fit
+                contentScale = ContentScale.Fit,
             )
             .then(semantics)
             .conditional(onClick != null) {
                 Modifier.clickable(
                     onClick = onClick!!,
                     indication = AndromedaIndication,
-                    interactionSource = interactionSource
+                    interactionSource = interactionSource,
                 )
-            }
+            },
     )
 }
 
@@ -112,10 +114,11 @@ private fun Modifier.defaultSizeFor(painter: Painter) =
             DefaultIconSizeModifier
         } else {
             Modifier
-        }
+        },
     )
 
 typealias IconClickHandler = () -> Unit
 
 private fun Size.isInfinite() = width.isInfinite() && height.isInfinite()
+
 private val DefaultIconSizeModifier = Modifier.size(24.dp)

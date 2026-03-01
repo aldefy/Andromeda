@@ -25,17 +25,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import design.andromedacompose.catalog.Screen
 import design.andromedacompose.AndromedaTheme
+import design.andromedacompose.catalog.Screen
 import design.andromedacompose.components.Text
 import design.andromedacompose.foundation.colors.FillColors
 import design.andromedacompose.foundation.colors.contentColorFor
 import androidx.compose.ui.graphics.Color as ComposeColor
 
 @Composable
-fun ColorsScreen(
-    onUpClick: () -> Unit,
-) {
+fun ColorsScreen(onUpClick: () -> Unit) {
     Screen(
         title = "Colors",
         onNavigateUp = onUpClick,
@@ -43,7 +41,7 @@ fun ColorsScreen(
         Box(
             Modifier
                 .fillMaxSize()
-                .padding(it)
+                .padding(it),
         ) {
             ColorsScreenContent()
         }
@@ -61,9 +59,10 @@ private fun ColorsScreenContent() {
             Text(
                 text = "Primary",
                 style = AndromedaTheme.typography.titleHeroTextStyle,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
             )
             FillColors(colors = AndromedaTheme.colors.primaryColors)
         }
@@ -71,9 +70,10 @@ private fun ColorsScreenContent() {
             Text(
                 text = "Secondary",
                 style = AndromedaTheme.typography.titleHeroTextStyle,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
             )
             FillColors(colors = AndromedaTheme.colors.secondaryColors)
         }
@@ -81,9 +81,10 @@ private fun ColorsScreenContent() {
             Text(
                 text = "Tertiary",
                 style = AndromedaTheme.typography.titleHeroTextStyle,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
             )
             FillColors(colors = AndromedaTheme.colors.tertiaryColors)
             Spacer(modifier = Modifier.padding(vertical = 16.dp))
@@ -94,38 +95,39 @@ private fun ColorsScreenContent() {
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun FillColors(colors: FillColors) {
-    val listOfColors = listOf(
-        ColorToShow(
-            color = colors.background,
-            name = "Background",
-            contentColor = AndromedaTheme.colors.contentColors.normal
-        ),
-        ColorToShow(
-            color = colors.active,
-            name = "Active",
-            contentColor = AndromedaTheme.colors.contentColors.normal
-        ),
-        ColorToShow(
-            color = colors.error,
-            name = "Error",
-            contentColor = AndromedaTheme.colors.contentColors.normal
-        ),
-        ColorToShow(
-            color = colors.mute,
-            name = "Mute",
-            contentColor = AndromedaTheme.colors.contentColors.normal
-        ),
-        ColorToShow(
-            color = colors.pressed,
-            name = "Pressed",
-            contentColor = AndromedaTheme.colors.contentColors.normal
-        ),
-        ColorToShow(
-            color = colors.alt,
-            name = "Alt",
-            contentColor = AndromedaTheme.colors.contentColors.minor
-        ),
-    )
+    val listOfColors =
+        listOf(
+            ColorToShow(
+                color = colors.background,
+                name = "Background",
+                contentColor = AndromedaTheme.colors.contentColors.normal,
+            ),
+            ColorToShow(
+                color = colors.active,
+                name = "Active",
+                contentColor = AndromedaTheme.colors.contentColors.normal,
+            ),
+            ColorToShow(
+                color = colors.error,
+                name = "Error",
+                contentColor = AndromedaTheme.colors.contentColors.normal,
+            ),
+            ColorToShow(
+                color = colors.mute,
+                name = "Mute",
+                contentColor = AndromedaTheme.colors.contentColors.normal,
+            ),
+            ColorToShow(
+                color = colors.pressed,
+                name = "Pressed",
+                contentColor = AndromedaTheme.colors.contentColors.normal,
+            ),
+            ColorToShow(
+                color = colors.alt,
+                name = "Alt",
+                contentColor = AndromedaTheme.colors.contentColors.minor,
+            ),
+        )
     Column(verticalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
         Row(horizontalArrangement = Arrangement.SpaceAround, modifier = Modifier.fillMaxWidth()) {
             ColorItem(colorToShow = listOfColors[0])
@@ -152,25 +154,24 @@ private fun FillColors(colors: FillColors) {
 data class ColorToShow(
     val name: String,
     val color: ComposeColor,
-    val contentColor: ComposeColor
+    val contentColor: ComposeColor,
 )
 
 @Composable
-private fun ColorItem(
-    colorToShow: ColorToShow,
-) {
+private fun ColorItem(colorToShow: ColorToShow) {
     Box(
         Modifier
             .background(colorToShow.color)
             .clickable(
                 onClick = { /* Ignoring onClick */ },
                 indication = rememberRipple(bounded = true, color = colorToShow.contentColor),
-                interactionSource = remember {
-                    MutableInteractionSource()
-                }
+                interactionSource =
+                    remember {
+                        MutableInteractionSource()
+                    },
             )
             .width(100.dp)
-            .height(52.dp)
+            .height(52.dp),
     ) {
         Text(
             colorToShow.name,

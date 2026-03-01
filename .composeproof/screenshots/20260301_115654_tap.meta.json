@@ -1,6 +1,0 @@
-{
-    "tool": "device_interact",
-    "args": "action=tap, x=670, y=130",
-    "result": "Tapped (670, 130) on Pixel_9_Pro_Fold",
-    "timestamp": "2026-03-01T11:56:54.091968"
-}

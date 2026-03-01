@@ -32,26 +32,28 @@ internal fun LoadingSpinner(
     val rotation by infiniteTransition.animateFloat(
         initialValue = 0f,
         targetValue = 360f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 1000, easing = LinearEasing),
-            repeatMode = RepeatMode.Restart
-        ),
-        label = "spinnerAngle"
+        animationSpec =
+            infiniteRepeatable(
+                animation = tween(durationMillis = 1000, easing = LinearEasing),
+                repeatMode = RepeatMode.Restart,
+            ),
+        label = "spinnerAngle",
     )
 
     Canvas(
-        modifier = modifier.size(size)
+        modifier = modifier.size(size),
     ) {
-        val stroke = Stroke(
-            width = strokeWidth.toPx(),
-            cap = StrokeCap.Round
-        )
+        val stroke =
+            Stroke(
+                width = strokeWidth.toPx(),
+                cap = StrokeCap.Round,
+            )
         drawArc(
             color = color,
             startAngle = rotation,
             sweepAngle = 270f,
             useCenter = false,
-            style = stroke
+            style = stroke,
         )
     }
 }

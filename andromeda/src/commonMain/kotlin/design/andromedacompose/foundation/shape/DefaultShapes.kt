@@ -22,23 +22,25 @@ public class DefaultShapes(
     override val large: CornerBasedShape,
 ) : AndromedaShapes {
     public companion object {
-        public val default: AndromedaShapes = DefaultShapes(
-            bottomSheet = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
-            buttonShape = RoundedCornerShape(8.dp),
-            dialogShape = RoundedCornerShape(8.dp),
-            small = RoundedCornerShape(4.dp),
-            normal = RoundedCornerShape(6.dp),
-            large = RoundedCornerShape(12.dp),
-        )
+        public val default: AndromedaShapes =
+            DefaultShapes(
+                bottomSheet = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
+                buttonShape = RoundedCornerShape(8.dp),
+                dialogShape = RoundedCornerShape(8.dp),
+                small = RoundedCornerShape(4.dp),
+                normal = RoundedCornerShape(6.dp),
+                large = RoundedCornerShape(12.dp),
+            )
     }
 }
 
 /**
  * Local providers for shapes in [AndromedaTheme].
  * */
-internal val LocalShapes = compositionLocalOf<AndromedaShapes> {
-    error(
-        "No shapes provided! Make sure to wrap all usages of Andromeda components in a " +
-            "AndromedaTheme."
-    )
-}
+internal val LocalShapes =
+    compositionLocalOf<AndromedaShapes> {
+        error(
+            "No shapes provided! Make sure to wrap all usages of Andromeda components in a " +
+                "AndromedaTheme.",
+        )
+    }

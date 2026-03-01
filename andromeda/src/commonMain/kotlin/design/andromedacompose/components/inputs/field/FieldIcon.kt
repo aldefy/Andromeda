@@ -20,20 +20,22 @@ internal fun FieldIcon(
         Spacer(modifier.width(FieldIconPadding))
     } else if (onClick != null) {
         IconButton(
-            modifier = modifier.padding(
-                start = if (leading) FieldIconButtonPadding else FieldIconButtonSeparatorPadding,
-                end = if (leading) FieldIconButtonSeparatorPadding else FieldIconButtonPadding,
-            ),
+            modifier =
+                modifier.padding(
+                    start = if (leading) FieldIconButtonPadding else FieldIconButtonSeparatorPadding,
+                    end = if (leading) FieldIconButtonSeparatorPadding else FieldIconButtonPadding,
+                ),
             onClick = onClick,
             rippleRadius = RippleRadius,
             content = icon,
         )
     } else {
         Box(
-            modifier = modifier.padding(
-                start = if (leading) FieldIconPadding else FieldIconSeparatorPadding,
-                end = if (leading) FieldIconSeparatorPadding else FieldIconPadding,
-            ),
+            modifier =
+                modifier.padding(
+                    start = if (leading) FieldIconPadding else FieldIconSeparatorPadding,
+                    end = if (leading) FieldIconSeparatorPadding else FieldIconPadding,
+                ),
         ) {
             icon()
         }

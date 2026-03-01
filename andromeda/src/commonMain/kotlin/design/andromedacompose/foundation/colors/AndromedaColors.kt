@@ -19,7 +19,7 @@ class AndromedaColors(
     val borderColors: BorderColors,
     val iconColors: IconColors,
     val contentColors: ContentColors,
-    isDark: Boolean
+    isDark: Boolean,
 ) {
     var isDark: Boolean by mutableStateOf(isDark, structuralEqualityPolicy())
         internal set
@@ -31,16 +31,17 @@ class AndromedaColors(
         borderColors: BorderColors = this.borderColors,
         iconColors: IconColors = this.iconColors,
         contentColors: ContentColors = this.contentColors,
-        isDark: Boolean = this.isDark
-    ): AndromedaColors = AndromedaColors(
-        primaryColors = primaryColors,
-        secondaryColors = secondaryColors,
-        tertiaryColors = tertiaryColors,
-        borderColors = borderColors,
-        iconColors = iconColors,
-        contentColors = contentColors,
-        isDark = isDark
-    )
+        isDark: Boolean = this.isDark,
+    ): AndromedaColors =
+        AndromedaColors(
+            primaryColors = primaryColors,
+            secondaryColors = secondaryColors,
+            tertiaryColors = tertiaryColors,
+            borderColors = borderColors,
+            iconColors = iconColors,
+            contentColors = contentColors,
+            isDark = isDark,
+        )
 }
 
 /**
@@ -52,10 +53,13 @@ internal val LocalColors: ProvidableCompositionLocal<AndromedaColors> =
     compositionLocalOf { defaultLightColors() }
 
 @Composable
-public fun ProvideColors(colors: AndromedaColors, content: @Composable () -> Unit) {
+public fun ProvideColors(
+    colors: AndromedaColors,
+    content: @Composable () -> Unit,
+) {
     CompositionLocalProvider(
         LocalColors provides colors,
-        content = content
+        content = content,
     )
 }
 

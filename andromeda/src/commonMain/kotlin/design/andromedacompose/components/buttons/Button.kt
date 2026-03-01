@@ -51,8 +51,10 @@ import androidx.compose.ui.graphics.Color as ComposeColor
 public enum class ButtonVariant {
     /** Solid background with contrasting content color. Default. */
     Filled,
+
     /** Transparent background with colored border and content. */
     Outlined,
+
     /** No background or border. Text-only appearance. */
     Ghost,
 }
@@ -63,8 +65,10 @@ public enum class ButtonVariant {
 public enum class ButtonSize {
     /** Compact: 32dp height, 12sp body text, 12dp horizontal padding */
     Small,
+
     /** Default: 44dp height, 16sp text, 16dp horizontal padding */
     Medium,
+
     /** Prominent: 56dp height, 18sp text, 24dp horizontal padding */
     Large,
 }
@@ -120,31 +124,35 @@ public fun Button(
 ) {
     val isInteractive = enabled && !isLoading
 
-    val resolvedBackgroundColor = if (isInteractive) {
-        colors.backgroundColor
-    } else {
-        colors.disabledBackgroundColor
-    }
-
-    val resolvedContentColor = if (isInteractive) {
-        colors.contentColor
-    } else {
-        colors.disabledContentColor
-    }
-
-    val resolvedBorder = when {
-        variant == ButtonVariant.Outlined -> {
-            val borderColor = if (isInteractive) colors.borderColor else colors.disabledBorderColor
-            BorderStroke(ButtonDefaults.OutlinedBorderWidth, borderColor)
+    val resolvedBackgroundColor =
+        if (isInteractive) {
+            colors.backgroundColor
+        } else {
+            colors.disabledBackgroundColor
         }
-        else -> null
-    }
 
-    val contentAlpha = animateFloatAsState(
-        targetValue = if (isLoading) AndromedaOpacity.Subtle else AndromedaOpacity.Full,
-        animationSpec = tween(durationMillis = AndromedaMotion.Fast),
-        label = "buttonContentAlpha"
-    )
+    val resolvedContentColor =
+        if (isInteractive) {
+            colors.contentColor
+        } else {
+            colors.disabledContentColor
+        }
+
+    val resolvedBorder =
+        when {
+            variant == ButtonVariant.Outlined -> {
+                val borderColor = if (isInteractive) colors.borderColor else colors.disabledBorderColor
+                BorderStroke(ButtonDefaults.OutlinedBorderWidth, borderColor)
+            }
+            else -> null
+        }
+
+    val contentAlpha =
+        animateFloatAsState(
+            targetValue = if (isLoading) AndromedaOpacity.Subtle else AndromedaOpacity.Full,
+            animationSpec = tween(durationMillis = AndromedaMotion.Fast),
+            label = "buttonContentAlpha",
+        )
 
     Surface(
         modifier = modifier,
@@ -160,16 +168,16 @@ public fun Button(
         enabled = isInteractive,
     ) {
         ProvideContentEmphasis(
-            emphasis = if (isInteractive) ContentEmphasis.Normal else ContentEmphasis.Disabled
+            emphasis = if (isInteractive) ContentEmphasis.Normal else ContentEmphasis.Disabled,
         ) {
             ProvideMergedTextStyle(
-                value = ButtonDefaults.textStyleForSize(size)
+                value = ButtonDefaults.textStyleForSize(size),
             ) {
                 Row(
                     Modifier
                         .defaultMinSize(
                             minWidth = ButtonDefaults.minWidthForSize(size),
-                            minHeight = ButtonDefaults.minHeightForSize(size)
+                            minHeight = ButtonDefaults.minHeightForSize(size),
                         )
                         .padding(ButtonDefaults.contentPaddingForSize(size)),
                     horizontalArrangement = Arrangement.Center,
@@ -192,7 +200,7 @@ public fun Button(
                         Row(
                             horizontalArrangement = Arrangement.Center,
                             verticalAlignment = Alignment.CenterVertically,
-                            content = content
+                            content = content,
                         )
                     }
                 }
@@ -231,10 +239,11 @@ public fun IconButton(
     val iconSize = ButtonDefaults.iconSizeForButtonSize(size)
     Button(
         onClick = onClick,
-        modifier = modifier.defaultMinSize(
-            minWidth = ButtonDefaults.minHeightForSize(size),
-            minHeight = ButtonDefaults.minHeightForSize(size)
-        ),
+        modifier =
+            modifier.defaultMinSize(
+                minWidth = ButtonDefaults.minHeightForSize(size),
+                minHeight = ButtonDefaults.minHeightForSize(size),
+            ),
         variant = variant,
         size = size,
         colors = colors,
@@ -255,7 +264,6 @@ public fun IconButton(
 // --- Button Defaults ---
 
 public object ButtonDefaults {
-
     /** Border width for outlined variant */
     public val OutlinedBorderWidth: Dp = 1.5.dp
 
@@ -263,57 +271,64 @@ public object ButtonDefaults {
 
     public val ContentPadding: PaddingValues = contentPaddingForSize(ButtonSize.Medium)
 
-    public fun contentPaddingForSize(size: ButtonSize): PaddingValues = when (size) {
-        ButtonSize.Small -> PaddingValues(horizontal = 12.dp, vertical = 4.dp)
-        ButtonSize.Medium -> PaddingValues(horizontal = 16.dp, vertical = 8.dp)
-        ButtonSize.Large -> PaddingValues(horizontal = 24.dp, vertical = 12.dp)
-    }
+    public fun contentPaddingForSize(size: ButtonSize): PaddingValues =
+        when (size) {
+            ButtonSize.Small -> PaddingValues(horizontal = 12.dp, vertical = 4.dp)
+            ButtonSize.Medium -> PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+            ButtonSize.Large -> PaddingValues(horizontal = 24.dp, vertical = 12.dp)
+        }
 
     // --- Min dimensions ---
 
     public val MinWidth: Dp = 64.dp
     public val MinHeight: Dp = 44.dp
 
-    public fun minWidthForSize(size: ButtonSize): Dp = when (size) {
-        ButtonSize.Small -> 48.dp
-        ButtonSize.Medium -> 64.dp
-        ButtonSize.Large -> 80.dp
-    }
+    public fun minWidthForSize(size: ButtonSize): Dp =
+        when (size) {
+            ButtonSize.Small -> 48.dp
+            ButtonSize.Medium -> 64.dp
+            ButtonSize.Large -> 80.dp
+        }
 
-    public fun minHeightForSize(size: ButtonSize): Dp = when (size) {
-        ButtonSize.Small -> 32.dp
-        ButtonSize.Medium -> 44.dp
-        ButtonSize.Large -> 56.dp
-    }
+    public fun minHeightForSize(size: ButtonSize): Dp =
+        when (size) {
+            ButtonSize.Small -> 32.dp
+            ButtonSize.Medium -> 44.dp
+            ButtonSize.Large -> 56.dp
+        }
 
     // --- Typography ---
 
     @Composable
-    public fun textStyleForSize(size: ButtonSize): TextStyle = when (size) {
-        ButtonSize.Small -> AndromedaTheme.typography.bodySmallDefaultTypographyStyle
-        ButtonSize.Medium -> AndromedaTheme.typography.titleSmallDemiTextStyle
-        ButtonSize.Large -> AndromedaTheme.typography.titleModerateDemiTextStyle
-    }
+    public fun textStyleForSize(size: ButtonSize): TextStyle =
+        when (size) {
+            ButtonSize.Small -> AndromedaTheme.typography.bodySmallDefaultTypographyStyle
+            ButtonSize.Medium -> AndromedaTheme.typography.titleSmallDemiTextStyle
+            ButtonSize.Large -> AndromedaTheme.typography.titleModerateDemiTextStyle
+        }
 
     // --- Icon & spinner sizes ---
 
-    public fun iconSizeForButtonSize(size: ButtonSize): Dp = when (size) {
-        ButtonSize.Small -> 16.dp
-        ButtonSize.Medium -> 20.dp
-        ButtonSize.Large -> 24.dp
-    }
+    public fun iconSizeForButtonSize(size: ButtonSize): Dp =
+        when (size) {
+            ButtonSize.Small -> 16.dp
+            ButtonSize.Medium -> 20.dp
+            ButtonSize.Large -> 24.dp
+        }
 
-    public fun spinnerSizeForButtonSize(size: ButtonSize): Dp = when (size) {
-        ButtonSize.Small -> 14.dp
-        ButtonSize.Medium -> 18.dp
-        ButtonSize.Large -> 22.dp
-    }
+    public fun spinnerSizeForButtonSize(size: ButtonSize): Dp =
+        when (size) {
+            ButtonSize.Small -> 14.dp
+            ButtonSize.Medium -> 18.dp
+            ButtonSize.Large -> 22.dp
+        }
 
-    public fun iconSpacingForSize(size: ButtonSize): Dp = when (size) {
-        ButtonSize.Small -> 4.dp
-        ButtonSize.Medium -> 8.dp
-        ButtonSize.Large -> 8.dp
-    }
+    public fun iconSpacingForSize(size: ButtonSize): Dp =
+        when (size) {
+            ButtonSize.Small -> 4.dp
+            ButtonSize.Medium -> 8.dp
+            ButtonSize.Large -> 8.dp
+        }
 
     // --- Elevation ---
 
@@ -327,34 +342,38 @@ public object ButtonDefaults {
             DefaultButtonElevation(
                 defaultElevation = defaultElevation,
                 pressedElevation = pressedElevation,
-                disabledElevation = disabledElevation
+                disabledElevation = disabledElevation,
             )
         }
     }
 
     @Composable
-    public fun elevationForVariant(variant: ButtonVariant): ButtonElevation = when (variant) {
-        ButtonVariant.Filled -> elevation()
-        ButtonVariant.Outlined -> elevation(
-            defaultElevation = AndromedaElevation.None,
-            pressedElevation = AndromedaElevation.XSmall,
-            disabledElevation = AndromedaElevation.None,
-        )
-        ButtonVariant.Ghost -> elevation(
-            defaultElevation = AndromedaElevation.None,
-            pressedElevation = AndromedaElevation.None,
-            disabledElevation = AndromedaElevation.None,
-        )
-    }
+    public fun elevationForVariant(variant: ButtonVariant): ButtonElevation =
+        when (variant) {
+            ButtonVariant.Filled -> elevation()
+            ButtonVariant.Outlined ->
+                elevation(
+                    defaultElevation = AndromedaElevation.None,
+                    pressedElevation = AndromedaElevation.XSmall,
+                    disabledElevation = AndromedaElevation.None,
+                )
+            ButtonVariant.Ghost ->
+                elevation(
+                    defaultElevation = AndromedaElevation.None,
+                    pressedElevation = AndromedaElevation.None,
+                    disabledElevation = AndromedaElevation.None,
+                )
+        }
 
     // --- Colors ---
 
     @Composable
-    public fun colorsForVariant(variant: ButtonVariant): ButtonColors = when (variant) {
-        ButtonVariant.Filled -> filledColors()
-        ButtonVariant.Outlined -> outlinedColors()
-        ButtonVariant.Ghost -> ghostColors()
-    }
+    public fun colorsForVariant(variant: ButtonVariant): ButtonColors =
+        when (variant) {
+            ButtonVariant.Filled -> filledColors()
+            ButtonVariant.Outlined -> outlinedColors()
+            ButtonVariant.Ghost -> ghostColors()
+        }
 
     @Composable
     public fun filledColors(
@@ -362,12 +381,13 @@ public object ButtonDefaults {
         contentColor: ComposeColor = contentColorFor(backgroundColor),
         disabledBackgroundColor: ComposeColor = AndromedaTheme.colors.primaryColors.mute,
         disabledContentColor: ComposeColor = AndromedaTheme.colors.contentColors.disabled,
-    ): ButtonColors = ButtonColors(
-        backgroundColor = backgroundColor,
-        contentColor = contentColor,
-        disabledBackgroundColor = disabledBackgroundColor,
-        disabledContentColor = disabledContentColor,
-    )
+    ): ButtonColors =
+        ButtonColors(
+            backgroundColor = backgroundColor,
+            contentColor = contentColor,
+            disabledBackgroundColor = disabledBackgroundColor,
+            disabledContentColor = disabledContentColor,
+        )
 
     @Composable
     public fun outlinedColors(
@@ -377,14 +397,15 @@ public object ButtonDefaults {
         disabledContentColor: ComposeColor = AndromedaTheme.colors.contentColors.disabled,
         borderColor: ComposeColor = AndromedaTheme.colors.primaryColors.active,
         disabledBorderColor: ComposeColor = AndromedaTheme.colors.borderColors.mute,
-    ): ButtonColors = ButtonColors(
-        backgroundColor = backgroundColor,
-        contentColor = contentColor,
-        disabledBackgroundColor = disabledBackgroundColor,
-        disabledContentColor = disabledContentColor,
-        borderColor = borderColor,
-        disabledBorderColor = disabledBorderColor,
-    )
+    ): ButtonColors =
+        ButtonColors(
+            backgroundColor = backgroundColor,
+            contentColor = contentColor,
+            disabledBackgroundColor = disabledBackgroundColor,
+            disabledContentColor = disabledContentColor,
+            borderColor = borderColor,
+            disabledBorderColor = disabledBorderColor,
+        )
 
     @Composable
     public fun ghostColors(
@@ -392,10 +413,11 @@ public object ButtonDefaults {
         contentColor: ComposeColor = AndromedaTheme.colors.primaryColors.active,
         disabledBackgroundColor: ComposeColor = ComposeColor.Transparent,
         disabledContentColor: ComposeColor = AndromedaTheme.colors.contentColors.disabled,
-    ): ButtonColors = ButtonColors(
-        backgroundColor = backgroundColor,
-        contentColor = contentColor,
-        disabledBackgroundColor = disabledBackgroundColor,
-        disabledContentColor = disabledContentColor,
-    )
+    ): ButtonColors =
+        ButtonColors(
+            backgroundColor = backgroundColor,
+            contentColor = contentColor,
+            disabledBackgroundColor = disabledBackgroundColor,
+            disabledContentColor = disabledContentColor,
+        )
 }

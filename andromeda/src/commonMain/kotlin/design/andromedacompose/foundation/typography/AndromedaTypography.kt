@@ -24,7 +24,7 @@ class AndromedaTypography(
     val bodyModerateDefaultTypographyStyle: TextStyle,
     val bodySmallDefaultTypographyStyle: TextStyle,
     val captionModerateBookDefaultTypographyStyle: TextStyle,
-    val captionModerateDemiDefaultTypographyStyle: TextStyle
+    val captionModerateDemiDefaultTypographyStyle: TextStyle,
 )
 
 /**
@@ -33,22 +33,30 @@ class AndromedaTypography(
 @Composable
 fun textStyles(fontFamily: FontFamily): AndromedaTypography {
     return AndromedaTypography(
-        titleHeroTextStyle = TitleHeroTypographyStyle(fontFamily)
-            .getComposeTextStyle(),
-        titleModerateBoldTextStyle = TitleModerateBoldTypographyStyle(fontFamily)
-            .getComposeTextStyle(),
-        titleModerateDemiTextStyle = TitleModerateDemiTypographyStyle(fontFamily)
-            .getComposeTextStyle(),
-        titleSmallDemiTextStyle = TitleSmallDemiTypographyStyle(fontFamily)
-            .getComposeTextStyle(),
-        bodyModerateDefaultTypographyStyle = BodyModerateTypographyStyle(fontFamily)
-            .getComposeTextStyle(),
-        bodySmallDefaultTypographyStyle = BodySmallTypographyStyle(fontFamily)
-            .getComposeTextStyle(),
-        captionModerateBookDefaultTypographyStyle = CaptionModerateBookTypographyStyle(fontFamily)
-            .getComposeTextStyle(),
-        captionModerateDemiDefaultTypographyStyle = CaptionModerateDemiTypographyStyle(fontFamily)
-            .getComposeTextStyle()
+        titleHeroTextStyle =
+            TitleHeroTypographyStyle(fontFamily)
+                .getComposeTextStyle(),
+        titleModerateBoldTextStyle =
+            TitleModerateBoldTypographyStyle(fontFamily)
+                .getComposeTextStyle(),
+        titleModerateDemiTextStyle =
+            TitleModerateDemiTypographyStyle(fontFamily)
+                .getComposeTextStyle(),
+        titleSmallDemiTextStyle =
+            TitleSmallDemiTypographyStyle(fontFamily)
+                .getComposeTextStyle(),
+        bodyModerateDefaultTypographyStyle =
+            BodyModerateTypographyStyle(fontFamily)
+                .getComposeTextStyle(),
+        bodySmallDefaultTypographyStyle =
+            BodySmallTypographyStyle(fontFamily)
+                .getComposeTextStyle(),
+        captionModerateBookDefaultTypographyStyle =
+            CaptionModerateBookTypographyStyle(fontFamily)
+                .getComposeTextStyle(),
+        captionModerateDemiDefaultTypographyStyle =
+            CaptionModerateDemiTypographyStyle(fontFamily)
+                .getComposeTextStyle(),
     )
 }
 
@@ -65,9 +73,10 @@ fun BaseTypography.getComposeTextStyle(): TextStyle {
     return toTextStyle(this)
 }
 
-internal val LocalTypography = compositionLocalOf<AndromedaTypography> {
-    error(
-        "No typography provided! Make sure to wrap all usages of components in a " +
-            "AndromedaTheme."
-    )
-}
+internal val LocalTypography =
+    compositionLocalOf<AndromedaTypography> {
+        error(
+            "No typography provided! Make sure to wrap all usages of components in a " +
+                "AndromedaTheme.",
+        )
+    }

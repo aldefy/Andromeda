@@ -8,7 +8,10 @@ import androidx.compose.ui.text.TextStyle
 val LocalAndromedaTextStyle = compositionLocalOf { TextStyle.Default }
 
 @Composable
-fun ProvideAndromedaTextStyle(value: TextStyle, content: @Composable () -> Unit) {
+fun ProvideAndromedaTextStyle(
+    value: TextStyle,
+    content: @Composable () -> Unit,
+) {
     val mergedStyle = LocalAndromedaTextStyle.current.merge(value)
     CompositionLocalProvider(LocalAndromedaTextStyle provides mergedStyle, content = content)
 }

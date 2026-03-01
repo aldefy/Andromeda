@@ -37,7 +37,7 @@ fun IconsScreen(onUpClick: () -> Unit) {
         Box(
             Modifier
                 .fillMaxSize()
-                .padding(it)
+                .padding(it),
         ) {
             IconsScreenContent()
         }
@@ -47,9 +47,10 @@ fun IconsScreen(onUpClick: () -> Unit) {
 @Preview
 @Composable
 fun IconsScreenContent() {
-    val icons: List<Pair<String, Painter>> = AndromedaIcons::class.memberProperties.map {
-        it.name to (it.getter.call(AndromedaIcons, currentComposer, 0) as Painter)
-    }
+    val icons: List<Pair<String, Painter>> =
+        AndromedaIcons::class.memberProperties.map {
+            it.name to (it.getter.call(AndromedaIcons, currentComposer, 0) as Painter)
+        }
 
     LazyVerticalGrid(
         columns = GridCells.Adaptive(96.dp),
@@ -60,15 +61,17 @@ fun IconsScreenContent() {
                     .padding(8.dp)
                     .clickable(
                         onClick = { /* Ignoring onClick */ },
-                        indication = rememberRipple(
-                            bounded = false,
-                            color = AndromedaTheme.colors.contentColors.normal
-                        ),
-                        interactionSource = remember {
-                            MutableInteractionSource()
-                        }
+                        indication =
+                            rememberRipple(
+                                bounded = false,
+                                color = AndromedaTheme.colors.contentColors.normal,
+                            ),
+                        interactionSource =
+                            remember {
+                                MutableInteractionSource()
+                            },
                     ),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Icon(painter = icon, contentDescription = name)
                 Text(

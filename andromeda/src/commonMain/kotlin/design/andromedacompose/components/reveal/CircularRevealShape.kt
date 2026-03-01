@@ -15,12 +15,12 @@ import kotlin.math.hypot
  */
 internal class CircularRevealShape(
     private val progress: Float,
-    private val offset: Offset? = null
+    private val offset: Offset? = null,
 ) : Shape {
     override fun createOutline(
         size: Size,
         layoutDirection: LayoutDirection,
-        density: Density
+        density: Density,
     ): Outline {
         val centerX = offset?.x ?: (size.width / 2f)
         val centerY = offset?.y ?: (size.height / 2f)
@@ -32,14 +32,17 @@ internal class CircularRevealShape(
                         left = centerX - radius,
                         top = centerY - radius,
                         right = centerX + radius,
-                        bottom = centerY + radius
-                    )
+                        bottom = centerY + radius,
+                    ),
                 )
-            }
+            },
         )
     }
 
-    private fun longestDistanceToACorner(size: Size, offset: Offset?): Float {
+    private fun longestDistanceToACorner(
+        size: Size,
+        offset: Offset?,
+    ): Float {
         if (offset == null) {
             return hypot(size.width / 2f, size.height / 2f)
         }

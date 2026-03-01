@@ -33,22 +33,25 @@ subprojects {
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
         compilerOptions {
             allWarningsAsErrors.set(
-                providers.gradleProperty("warningsAsErrors").map { it.toBoolean() }.orElse(false)
+                providers.gradleProperty("warningsAsErrors").map { it.toBoolean() }.orElse(false),
             )
         }
     }
 }
 
 // Publishing configuration
-val ossrhUsername: String? = providers.gradleProperty("OSSRH_USERNAME")
-    .orElse(providers.environmentVariable("OSSRH_USERNAME"))
-    .orNull
-val ossrhPassword: String? = providers.gradleProperty("OSSRH_PASSWORD")
-    .orElse(providers.environmentVariable("OSSRH_PASSWORD"))
-    .orNull
-val sonatypeStagingProfileId: String? = providers.gradleProperty("sonatypeStagingProfileId")
-    .orElse(providers.environmentVariable("SONATYPE_STAGING_PROFILE_ID"))
-    .orNull
+val ossrhUsername: String? =
+    providers.gradleProperty("OSSRH_USERNAME")
+        .orElse(providers.environmentVariable("OSSRH_USERNAME"))
+        .orNull
+val ossrhPassword: String? =
+    providers.gradleProperty("OSSRH_PASSWORD")
+        .orElse(providers.environmentVariable("OSSRH_PASSWORD"))
+        .orNull
+val sonatypeStagingProfileId: String? =
+    providers.gradleProperty("sonatypeStagingProfileId")
+        .orElse(providers.environmentVariable("SONATYPE_STAGING_PROFILE_ID"))
+        .orNull
 
 apply(from = "git-hooks.gradle.kts")
 

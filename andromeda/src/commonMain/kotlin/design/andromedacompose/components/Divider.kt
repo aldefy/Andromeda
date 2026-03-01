@@ -19,23 +19,25 @@ fun Divider(
     modifier: Modifier = Modifier,
     color: Color = AndromedaTheme.colors.contentColors.normal.copy(alpha = AndromedaOpacity.Divider),
     thickness: Dp = 1.dp,
-    startIndent: Dp = 0.dp
+    startIndent: Dp = 0.dp,
 ) {
-    val indentMod = if (startIndent.value != 0f) {
-        Modifier.padding(start = startIndent)
-    } else {
-        Modifier
-    }
-    val targetThickness = if (thickness == Dp.Hairline) {
-        (1f / LocalDensity.current.density).dp
-    } else {
-        thickness
-    }
+    val indentMod =
+        if (startIndent.value != 0f) {
+            Modifier.padding(start = startIndent)
+        } else {
+            Modifier
+        }
+    val targetThickness =
+        if (thickness == Dp.Hairline) {
+            (1f / LocalDensity.current.density).dp
+        } else {
+            thickness
+        }
     Box(
         modifier
             .then(indentMod)
             .fillMaxWidth()
             .height(targetThickness)
-            .background(color = color)
+            .background(color = color),
     )
 }

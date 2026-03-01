@@ -40,7 +40,7 @@ fun TokensScreen(onUpClick: () -> Unit) {
                 .fillMaxSize()
                 .padding(contentPadding)
                 .verticalScroll(rememberScrollState())
-                .padding(16.dp)
+                .padding(16.dp),
         ) {
             SpacingSection()
             Spacer(Modifier.height(24.dp))
@@ -56,35 +56,36 @@ private fun SpacingSection() {
     Text(
         text = "Spacing",
         style = AndromedaTheme.typography.titleModerateBoldTextStyle,
-        modifier = Modifier.padding(bottom = 8.dp)
+        modifier = Modifier.padding(bottom = 8.dp),
     )
-    val spacings = listOf(
-        "None" to Spacing.None,
-        "XXSmall (2dp)" to Spacing.XXSmall,
-        "XSmall (4dp)" to Spacing.XSmall,
-        "Small (8dp)" to Spacing.Small,
-        "Medium (16dp)" to Spacing.Medium,
-        "Large (24dp)" to Spacing.Large,
-        "XLarge (32dp)" to Spacing.XLarge,
-        "XXLarge (48dp)" to Spacing.XXLarge,
-    )
+    val spacings =
+        listOf(
+            "None" to Spacing.None,
+            "XXSmall (2dp)" to Spacing.XXSmall,
+            "XSmall (4dp)" to Spacing.XSmall,
+            "Small (8dp)" to Spacing.Small,
+            "Medium (16dp)" to Spacing.Medium,
+            "Large (24dp)" to Spacing.Large,
+            "XLarge (32dp)" to Spacing.XLarge,
+            "XXLarge (48dp)" to Spacing.XXLarge,
+        )
     spacings.forEach { (name, value) ->
         Row(
             Modifier
                 .fillMaxWidth()
                 .padding(vertical = 4.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
                 text = name,
                 fontSize = 12.sp,
-                modifier = Modifier.width(120.dp)
+                modifier = Modifier.width(120.dp),
             )
             Box(
                 Modifier
                     .height(16.dp)
                     .width(value.coerceAtLeast(1.dp))
-                    .background(AndromedaTheme.colors.primaryColors.active)
+                    .background(AndromedaTheme.colors.primaryColors.active),
             )
         }
     }
@@ -95,21 +96,22 @@ private fun ElevationSection() {
     Text(
         text = "Elevation",
         style = AndromedaTheme.typography.titleModerateBoldTextStyle,
-        modifier = Modifier.padding(bottom = 8.dp)
+        modifier = Modifier.padding(bottom = 8.dp),
     )
-    val elevations = listOf(
-        "None" to AndromedaElevation.None,
-        "XSmall (1dp)" to AndromedaElevation.XSmall,
-        "Small (2dp)" to AndromedaElevation.Small,
-        "Medium (4dp)" to AndromedaElevation.Medium,
-        "Large (8dp)" to AndromedaElevation.Large,
-        "XLarge (16dp)" to AndromedaElevation.XLarge,
-    )
+    val elevations =
+        listOf(
+            "None" to AndromedaElevation.None,
+            "XSmall (1dp)" to AndromedaElevation.XSmall,
+            "Small (2dp)" to AndromedaElevation.Small,
+            "Medium (4dp)" to AndromedaElevation.Medium,
+            "Large (8dp)" to AndromedaElevation.Large,
+            "XLarge (16dp)" to AndromedaElevation.XLarge,
+        )
     Row(
         Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp),
-        horizontalArrangement = Arrangement.SpaceEvenly
+        horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
         elevations.forEach { (name, value) ->
             ElevationCard(name, value)
@@ -118,7 +120,10 @@ private fun ElevationSection() {
 }
 
 @Composable
-private fun ElevationCard(name: String, elevation: Dp) {
+private fun ElevationCard(
+    name: String,
+    elevation: Dp,
+) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Box(
             Modifier
@@ -126,8 +131,8 @@ private fun ElevationCard(name: String, elevation: Dp) {
                 .shadow(elevation, AndromedaTheme.shapes.small)
                 .background(
                     AndromedaTheme.colors.primaryColors.background,
-                    AndromedaTheme.shapes.small
-                )
+                    AndromedaTheme.shapes.small,
+                ),
         )
         Spacer(Modifier.height(4.dp))
         Text(text = name, fontSize = 10.sp)
@@ -139,27 +144,28 @@ private fun OpacitySection() {
     Text(
         text = "Opacity",
         style = AndromedaTheme.typography.titleModerateBoldTextStyle,
-        modifier = Modifier.padding(bottom = 8.dp)
+        modifier = Modifier.padding(bottom = 8.dp),
     )
-    val opacities = listOf(
-        "Full (1.0)" to AndromedaOpacity.Full,
-        "Minor (0.80)" to AndromedaOpacity.Minor,
-        "Subtle (0.66)" to AndromedaOpacity.Subtle,
-        "Disabled (0.48)" to AndromedaOpacity.Disabled,
-        "Divider (0.12)" to AndromedaOpacity.Divider,
-        "Transparent (0)" to AndromedaOpacity.Transparent,
-    )
+    val opacities =
+        listOf(
+            "Full (1.0)" to AndromedaOpacity.Full,
+            "Minor (0.80)" to AndromedaOpacity.Minor,
+            "Subtle (0.66)" to AndromedaOpacity.Subtle,
+            "Disabled (0.48)" to AndromedaOpacity.Disabled,
+            "Divider (0.12)" to AndromedaOpacity.Divider,
+            "Transparent (0)" to AndromedaOpacity.Transparent,
+        )
     opacities.forEach { (name, alpha) ->
         Row(
             Modifier
                 .fillMaxWidth()
                 .padding(vertical = 4.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
                 text = name,
                 fontSize = 12.sp,
-                modifier = Modifier.width(120.dp)
+                modifier = Modifier.width(120.dp),
             )
             Box(
                 Modifier
@@ -167,8 +173,8 @@ private fun OpacitySection() {
                     .fillMaxWidth()
                     .border(1.dp, AndromedaTheme.colors.borderColors.inactive)
                     .background(
-                        AndromedaTheme.colors.primaryColors.active.copy(alpha = alpha)
-                    )
+                        AndromedaTheme.colors.primaryColors.active.copy(alpha = alpha),
+                    ),
             )
         }
     }

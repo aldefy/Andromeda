@@ -26,15 +26,16 @@ public fun IconButton(
     content: @Composable () -> Unit,
 ) {
     Box(
-        modifier = modifier
-            .clickable(
-                onClick = onClick,
-                enabled = enabled,
-                role = Role.Button,
-                interactionSource = interactionSource,
-                indication = AndromedaIndication,
-            )
-            .size(rippleRadius * 2),
+        modifier =
+            modifier
+                .clickable(
+                    onClick = onClick,
+                    enabled = enabled,
+                    role = Role.Button,
+                    interactionSource = interactionSource,
+                    indication = AndromedaIndication,
+                )
+                .size(rippleRadius * 2),
         contentAlignment = Alignment.Center,
     ) {
         val contentEmphasis =

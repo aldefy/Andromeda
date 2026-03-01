@@ -14,7 +14,6 @@ import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import design.andromedacompose.icons.AndromedaSystemIcons
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
@@ -50,6 +49,7 @@ import design.andromedacompose.components.internal.Preview
 import design.andromedacompose.foundation.tokens.AndromedaMotion
 import design.andromedacompose.foundation.typography.LocalTextStyle
 import design.andromedacompose.foundation.typography.ProvideMergedTextStyle
+import design.andromedacompose.icons.AndromedaSystemIcons
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -103,7 +103,7 @@ fun TextField(
         bringIntoView = bringIntoView,
         visualTransformation = visualTransformation,
         interactionSource = interactionSource,
-        toShowErrorCheck = toShowErrorCheck
+        toShowErrorCheck = toShowErrorCheck,
     )
 }
 
@@ -142,9 +142,10 @@ internal fun TextField(
         val layoutCoordinates = remember { mutableStateOf<LayoutCoordinates?>(null) }
         val focused = remember { mutableStateOf(false) }
 
-        autoBringIntoViewSetupModifier = Modifier
-            .bringIntoViewRequester(bringIntoViewRequester)
-            .onGloballyPositioned { layoutCoordinates.value = it }
+        autoBringIntoViewSetupModifier =
+            Modifier
+                .bringIntoViewRequester(bringIntoViewRequester)
+                .onGloballyPositioned { layoutCoordinates.value = it }
         autoBringIntoViewFocusModifier = Modifier.onFocusEvent { focused.value = it.isFocused }
 
         BringIntoViewWhenFocused(focused, layoutCoordinates, bringIntoViewRequester)
@@ -166,51 +167,56 @@ internal fun TextField(
         ProvideMergedTextStyle(AndromedaTheme.typography.bodyModerateDefaultTypographyStyle) {
             var textFieldValueState by remember {
                 mutableStateOf(
-                    TextFieldValue(text = value)
+                    TextFieldValue(text = value),
                 )
             }
-            val textFieldValue = textFieldValueState.copy(
-                text = value,
-            )
+            val textFieldValue =
+                textFieldValueState.copy(
+                    text = value,
+                )
 
             if (label != null) {
                 FieldLabel(label)
             }
 
             val isFocused = interactionSource.collectIsFocusedAsState().value
-            val inputState: InputState = when (isFocused) {
-                true -> when (error != null && toShowErrorCheck) {
-                    true -> InputState.FocusedError
-                    false -> InputState.Focused
-                }
+            val inputState: InputState =
+                when (isFocused) {
+                    true ->
+                        when (error != null && toShowErrorCheck) {
+                            true -> InputState.FocusedError
+                            false -> InputState.Focused
+                        }
 
-                false -> when (error != null && toShowErrorCheck) {
-                    true -> InputState.NormalError
-                    false -> InputState.Normal
+                    false ->
+                        when (error != null && toShowErrorCheck) {
+                            true -> InputState.NormalError
+                            false -> InputState.Normal
+                        }
                 }
-            }
 
             // If color is not provided via the text style, use content color as a default
             val textStyle = LocalTextStyle.current
             val mergedTextStyle =
                 textStyle.copy(
                     color = AndromedaTheme.colors.secondaryColors.alt,
-                    fontFamily = FontFamily.Default
+                    fontFamily = FontFamily.Default,
                 )
 
             val transition = updateTransition(inputState, "stateTransition")
-            val borderColor = transition.animateColor(
-                transitionSpec = { tween(durationMillis = AnimationDuration) },
-                label = "borderColor",
-            ) {
-                when (it) {
-                    InputState.Normal -> defaultBorderNormalColor
-                    InputState.Focused, InputState.FocusedError ->
-                        AndromedaTheme.colors.primaryColors.active
+            val borderColor =
+                transition.animateColor(
+                    transitionSpec = { tween(durationMillis = AnimationDuration) },
+                    label = "borderColor",
+                ) {
+                    when (it) {
+                        InputState.Normal -> defaultBorderNormalColor
+                        InputState.Focused, InputState.FocusedError ->
+                            AndromedaTheme.colors.primaryColors.active
 
-                    InputState.NormalError -> AndromedaTheme.colors.primaryColors.error
+                        InputState.NormalError -> AndromedaTheme.colors.primaryColors.error
+                    }
                 }
-            }
 
             BasicTextField(
                 value = textFieldValue,
@@ -220,13 +226,14 @@ internal fun TextField(
                         onValueChange(it.text)
                     }
                 },
-                modifier = Modifier
-                    .then(autoBringIntoViewFocusModifier)
-                    .border(1.dp, borderColor.value, AndromedaTheme.shapes.normal)
-                    .background(
-                        AndromedaTheme.colors.primaryColors.alt,
-                        AndromedaTheme.shapes.normal
-                    ),
+                modifier =
+                    Modifier
+                        .then(autoBringIntoViewFocusModifier)
+                        .border(1.dp, borderColor.value, AndromedaTheme.shapes.normal)
+                        .background(
+                            AndromedaTheme.colors.primaryColors.alt,
+                            AndromedaTheme.shapes.normal,
+                        ),
                 enabled = enabled,
                 readOnly = readOnly,
                 textStyle = mergedTextStyle,
@@ -240,10 +247,11 @@ internal fun TextField(
                 decorationBox = { innerTextField ->
                     FieldContent(
                         fieldContent = innerTextField,
-                        placeholder = when (textFieldValue.text.isEmpty()) {
-                            true -> placeholder
-                            false -> null
-                        },
+                        placeholder =
+                            when (textFieldValue.text.isEmpty()) {
+                                true -> placeholder
+                                false -> null
+                            },
                         leadingIcon = leadingIcon,
                         onLeadingIconClick = onLeadingIconClick,
                         trailingIcon = trailingIcon,
@@ -258,7 +266,7 @@ internal fun TextField(
             FieldMessage(
                 error = error,
                 info = info,
-                toShow = toShowErrorCheck
+                toShow = toShowErrorCheck,
             )
         }
     }
@@ -272,12 +280,14 @@ private fun BringIntoViewWhenFocused(
     bringIntoViewRequester: BringIntoViewRequester,
 ) {
     val density = LocalDensity.current
-    val scaffoldBottomPadding = remember {
-        MutableStateFlow(0f)
-    }
-    val height = with(density) {
-        LocalScaffoldPadding.current.calculateBottomPadding().toPx()
-    }
+    val scaffoldBottomPadding =
+        remember {
+            MutableStateFlow(0f)
+        }
+    val height =
+        with(density) {
+            LocalScaffoldPadding.current.calculateBottomPadding().toPx()
+        }
     LaunchedEffect(height) {
         scaffoldBottomPadding.emit(height)
     }
@@ -322,7 +332,7 @@ internal fun TextFieldPreview() {
             trailingIcon = { Icon(AndromedaSystemIcons.Close, contentDescription = null) },
             info = {
                 Text("Input must be set", fontSize = 9.sp)
-            }
+            },
         )
     }
 }

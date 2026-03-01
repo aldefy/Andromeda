@@ -13,9 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import design.andromedacompose.components.Divider
-import design.andromedacompose.catalog.Screen
 import design.andromedacompose.AndromedaTheme
+import design.andromedacompose.catalog.Screen
+import design.andromedacompose.components.Divider
 import design.andromedacompose.components.Text
 
 @Composable
@@ -28,7 +28,7 @@ fun TypographyScreen(onUpClick: () -> Unit) {
             Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(it)
+                .padding(it),
         ) {
             TypographyScreenContent()
         }
@@ -58,11 +58,11 @@ private fun TypographyScreenContent() {
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             "Moderate Demi Caption",
-            style = AndromedaTheme.typography.captionModerateDemiDefaultTypographyStyle
+            style = AndromedaTheme.typography.captionModerateDemiDefaultTypographyStyle,
         )
         Text(
             "Moderate Book Caption",
-            style = AndromedaTheme.typography.captionModerateBookDefaultTypographyStyle
+            style = AndromedaTheme.typography.captionModerateBookDefaultTypographyStyle,
         )
         Spacer(modifier = Modifier.height(16.dp))
     }

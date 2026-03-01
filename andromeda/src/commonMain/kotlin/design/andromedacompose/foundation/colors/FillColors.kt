@@ -23,7 +23,7 @@ class PrimaryColors(
     error: ComposeColor,
     mute: ComposeColor,
     pressed: ComposeColor,
-    alt: ComposeColor
+    alt: ComposeColor,
 ) : FillColors {
     override var background: ComposeColor by mutableStateOf(background, structuralEqualityPolicy())
         internal set
@@ -44,15 +44,16 @@ class PrimaryColors(
         error: ComposeColor = this.error,
         mute: ComposeColor = this.mute,
         pressed: ComposeColor = this.pressed,
-        alt: ComposeColor = this.alt
-    ): PrimaryColors = PrimaryColors(
-        background,
-        active,
-        error,
-        mute,
-        pressed,
-        alt
-    )
+        alt: ComposeColor = this.alt,
+    ): PrimaryColors =
+        PrimaryColors(
+            background,
+            active,
+            error,
+            mute,
+            pressed,
+            alt,
+        )
 }
 
 @Stable
@@ -62,7 +63,7 @@ class SecondaryColors(
     error: ComposeColor,
     mute: ComposeColor,
     pressed: ComposeColor,
-    alt: ComposeColor
+    alt: ComposeColor,
 ) : FillColors {
     override var background: ComposeColor by mutableStateOf(background, structuralEqualityPolicy())
         internal set
@@ -83,15 +84,16 @@ class SecondaryColors(
         error: ComposeColor = this.error,
         mute: ComposeColor = this.mute,
         pressed: ComposeColor = this.pressed,
-        alt: ComposeColor = this.alt
-    ): SecondaryColors = SecondaryColors(
-        background,
-        active,
-        error,
-        mute,
-        pressed,
-        alt
-    )
+        alt: ComposeColor = this.alt,
+    ): SecondaryColors =
+        SecondaryColors(
+            background,
+            active,
+            error,
+            mute,
+            pressed,
+            alt,
+        )
 }
 
 @Stable
@@ -101,7 +103,7 @@ class TertiaryColors(
     error: ComposeColor,
     mute: ComposeColor,
     pressed: ComposeColor,
-    alt: ComposeColor
+    alt: ComposeColor,
 ) : FillColors {
     override var background: ComposeColor by mutableStateOf(background, structuralEqualityPolicy())
         internal set
@@ -122,20 +124,19 @@ class TertiaryColors(
         error: ComposeColor = this.error,
         mute: ComposeColor = this.mute,
         pressed: ComposeColor = this.pressed,
-        alt: ComposeColor = this.alt
-    ): TertiaryColors = TertiaryColors(
-        background,
-        active,
-        error,
-        mute,
-        pressed,
-        alt
-    )
+        alt: ComposeColor = this.alt,
+    ): TertiaryColors =
+        TertiaryColors(
+            background,
+            active,
+            error,
+            mute,
+            pressed,
+            alt,
+        )
 }
 
-internal fun FillColors.contentColorFor(
-    color: ComposeColor
-): ComposeColor? =
+internal fun FillColors.contentColorFor(color: ComposeColor): ComposeColor? =
     when (color) {
         background -> alt
         active -> alt

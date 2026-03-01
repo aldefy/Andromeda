@@ -34,26 +34,27 @@ fun EmphasisScreen(onUpClick: () -> Unit) {
                 .fillMaxSize()
                 .padding(contentPadding)
                 .verticalScroll(rememberScrollState())
-                .padding(16.dp)
+                .padding(16.dp),
         ) {
             Text(
                 text = "Emphasis Levels",
                 style = AndromedaTheme.typography.titleModerateBoldTextStyle,
-                modifier = Modifier.padding(bottom = 8.dp)
+                modifier = Modifier.padding(bottom = 8.dp),
             )
             Text(
                 text = "Controls text and icon visibility to create visual hierarchy",
                 fontSize = 12.sp,
                 color = AndromedaTheme.colors.contentColors.subtle,
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier.padding(bottom = 16.dp),
             )
 
-            val emphases = listOf(
-                "Normal (1.0)" to ContentEmphasis.Normal,
-                "Minor (0.80)" to ContentEmphasis.Minor,
-                "Subtle (0.66)" to ContentEmphasis.Subtle,
-                "Disabled (0.48)" to ContentEmphasis.Disabled,
-            )
+            val emphases =
+                listOf(
+                    "Normal (1.0)" to ContentEmphasis.Normal,
+                    "Minor (0.80)" to ContentEmphasis.Minor,
+                    "Subtle (0.66)" to ContentEmphasis.Subtle,
+                    "Disabled (0.48)" to ContentEmphasis.Disabled,
+                )
 
             emphases.forEach { (name, emphasis) ->
                 EmphasisRow(name, emphasis)
@@ -65,7 +66,7 @@ fun EmphasisScreen(onUpClick: () -> Unit) {
             Text(
                 text = "Applied to Text",
                 style = AndromedaTheme.typography.titleModerateBoldTextStyle,
-                modifier = Modifier.padding(bottom = 12.dp)
+                modifier = Modifier.padding(bottom = 12.dp),
             )
 
             emphases.forEach { (_, emphasis) ->
@@ -74,7 +75,7 @@ fun EmphasisScreen(onUpClick: () -> Unit) {
                         text = "The quick brown fox jumps over the lazy dog",
                         style = AndromedaTheme.typography.bodyModerateDefaultTypographyStyle,
                         emphasis = emphasis,
-                        modifier = Modifier.padding(bottom = 8.dp)
+                        modifier = Modifier.padding(bottom = 8.dp),
                     )
                 }
             }
@@ -83,10 +84,13 @@ fun EmphasisScreen(onUpClick: () -> Unit) {
 }
 
 @Composable
-private fun EmphasisRow(name: String, emphasis: ContentEmphasis) {
+private fun EmphasisRow(
+    name: String,
+    emphasis: ContentEmphasis,
+) {
     Row(
         Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         ProvideContentEmphasis(emphasis) {
             Icon(

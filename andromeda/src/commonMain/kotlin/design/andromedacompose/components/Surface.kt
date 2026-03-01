@@ -34,7 +34,7 @@ public fun Surface(
     contentColor: Color = contentColorFor(color),
     border: BorderStroke? = null,
     elevation: Dp = 0.dp,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     Surface(
         modifier = modifier,
@@ -44,9 +44,10 @@ public fun Surface(
         border = border,
         elevation = elevation,
         content = content,
-        modifierWithClickAndSemantics = Modifier
-            .semantics(mergeDescendants = false) {}
-            .pointerInput(Unit) { }
+        modifierWithClickAndSemantics =
+            Modifier
+                .semantics(mergeDescendants = false) {}
+                .pointerInput(Unit) { },
     )
 }
 
@@ -64,7 +65,7 @@ public fun Surface(
     enabled: Boolean = true,
     onClickLabel: String? = null,
     role: Role? = null,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     Surface(
         modifier = modifier,
@@ -74,14 +75,15 @@ public fun Surface(
         border = border,
         elevation = elevation,
         content = content,
-        modifierWithClickAndSemantics = Modifier.clickable(
-            interactionSource = interactionSource,
-            indication = indication,
-            enabled = enabled,
-            onClickLabel = onClickLabel,
-            role = role,
-            onClick = onClick
-        )
+        modifierWithClickAndSemantics =
+            Modifier.clickable(
+                interactionSource = interactionSource,
+                indication = indication,
+                enabled = enabled,
+                onClickLabel = onClickLabel,
+                role = role,
+                onClick = onClick,
+            ),
     )
 }
 
@@ -94,7 +96,7 @@ internal fun Surface(
     border: BorderStroke?,
     elevation: Dp,
     modifierWithClickAndSemantics: Modifier,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     CompositionLocalProvider(
         LocalAndromedaContentColor provides contentColor,
@@ -106,7 +108,7 @@ internal fun Surface(
                 .then(modifierWithClickAndSemantics)
                 .then(if (border != null) Modifier.border(border, shape) else Modifier)
                 .background(color, shape),
-            propagateMinConstraints = true
+            propagateMinConstraints = true,
         ) {
             content()
         }

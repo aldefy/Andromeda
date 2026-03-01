@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -40,7 +39,7 @@ fun ButtonScreen(onUpClick: () -> Unit) {
                 .fillMaxSize()
                 .padding(contentPadding)
                 .verticalScroll(rememberScrollState())
-                .padding(16.dp)
+                .padding(16.dp),
         ) {
             // --- Variants ---
             SectionTitle("Variants")
@@ -84,9 +83,10 @@ fun ButtonScreen(onUpClick: () -> Unit) {
             Button(
                 onClick = {},
                 modifier = fullWidth,
-                colors = ButtonDefaults.filledColors(
-                    backgroundColor = AndromedaTheme.colors.secondaryColors.active
-                )
+                colors =
+                    ButtonDefaults.filledColors(
+                        backgroundColor = AndromedaTheme.colors.secondaryColors.active,
+                    ),
             ) {
                 Text("Secondary")
             }
@@ -94,9 +94,10 @@ fun ButtonScreen(onUpClick: () -> Unit) {
             Button(
                 onClick = {},
                 modifier = fullWidth,
-                colors = ButtonDefaults.filledColors(
-                    backgroundColor = AndromedaTheme.colors.tertiaryColors.active
-                )
+                colors =
+                    ButtonDefaults.filledColors(
+                        backgroundColor = AndromedaTheme.colors.tertiaryColors.active,
+                    ),
             ) {
                 Text("Tertiary")
             }
@@ -112,20 +113,22 @@ fun ButtonScreen(onUpClick: () -> Unit) {
                 Button(
                     onClick = {},
                     variant = ButtonVariant.Outlined,
-                    colors = ButtonDefaults.outlinedColors(
-                        contentColor = AndromedaTheme.colors.secondaryColors.active,
-                        borderColor = AndromedaTheme.colors.secondaryColors.active,
-                    )
+                    colors =
+                        ButtonDefaults.outlinedColors(
+                            contentColor = AndromedaTheme.colors.secondaryColors.active,
+                            borderColor = AndromedaTheme.colors.secondaryColors.active,
+                        ),
                 ) {
                     Text("Secondary")
                 }
                 Button(
                     onClick = {},
                     variant = ButtonVariant.Outlined,
-                    colors = ButtonDefaults.outlinedColors(
-                        contentColor = AndromedaTheme.colors.tertiaryColors.active,
-                        borderColor = AndromedaTheme.colors.tertiaryColors.active,
-                    )
+                    colors =
+                        ButtonDefaults.outlinedColors(
+                            contentColor = AndromedaTheme.colors.tertiaryColors.active,
+                            borderColor = AndromedaTheme.colors.tertiaryColors.active,
+                        ),
                 ) {
                     Text("Tertiary")
                 }
@@ -143,14 +146,14 @@ fun ButtonScreen(onUpClick: () -> Unit) {
                 Button(
                     onClick = {},
                     variant = ButtonVariant.Outlined,
-                    isLoading = true
+                    isLoading = true,
                 ) {
                     Text("Outlined")
                 }
                 Button(
                     onClick = {},
                     variant = ButtonVariant.Ghost,
-                    isLoading = true
+                    isLoading = true,
                 ) {
                     Text("Ghost")
                 }
@@ -179,7 +182,7 @@ fun ButtonScreen(onUpClick: () -> Unit) {
                     design.andromedacompose.components.Icon(
                         imageVector = AndromedaSystemIcons.Edit,
                         contentDescription = null,
-                        modifier = Modifier.padding(end = 8.dp)
+                        modifier = Modifier.padding(end = 8.dp),
                     )
                     Text("Edit")
                 }
@@ -187,7 +190,7 @@ fun ButtonScreen(onUpClick: () -> Unit) {
                     design.andromedacompose.components.Icon(
                         imageVector = AndromedaSystemIcons.Info,
                         contentDescription = null,
-                        modifier = Modifier.padding(end = 8.dp)
+                        modifier = Modifier.padding(end = 8.dp),
                     )
                     Text("Info")
                 }
@@ -202,11 +205,11 @@ fun ButtonScreen(onUpClick: () -> Unit) {
                     text = size.name,
                     fontSize = 12.sp,
                     color = AndromedaTheme.colors.contentColors.subtle,
-                    modifier = Modifier.padding(bottom = 4.dp)
+                    modifier = Modifier.padding(bottom = 4.dp),
                 )
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    modifier = Modifier.padding(bottom = 12.dp)
+                    modifier = Modifier.padding(bottom = 12.dp),
                 ) {
                     Button(onClick = {}, size = size) { Text("Filled") }
                     Button(onClick = {}, size = size, variant = ButtonVariant.Outlined) {
@@ -228,6 +231,6 @@ private fun SectionTitle(text: String) {
     Text(
         text = text,
         style = AndromedaTheme.typography.titleModerateBoldTextStyle,
-        modifier = Modifier.padding(bottom = 12.dp)
+        modifier = Modifier.padding(bottom = 12.dp),
     )
 }

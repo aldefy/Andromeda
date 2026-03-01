@@ -11,7 +11,6 @@ import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import design.andromedacompose.icons.AndromedaSystemIcons
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +21,7 @@ import design.andromedacompose.components.Icon
 import design.andromedacompose.foundation.size
 import design.andromedacompose.foundation.tokens.AndromedaMotion
 import design.andromedacompose.foundation.typography.ProvideMergedTextStyle
+import design.andromedacompose.icons.AndromedaSystemIcons
 
 @Composable
 internal fun FieldMessage(
@@ -29,20 +29,23 @@ internal fun FieldMessage(
     error: @Composable (() -> Unit)? = null,
     info: @Composable (() -> Unit)? = null,
 ) {
-    val state = when {
-        error != null -> Message.Error(error)
-        info != null -> Message.Info(info)
-        else -> null
-    }
-    if (toShow)
+    val state =
+        when {
+            error != null -> Message.Error(error)
+            info != null -> Message.Info(info)
+            else -> null
+        }
+    if (toShow) {
         AnimatedContent(
             targetState = state,
             transitionSpec = {
                 if (targetState == null || initialState == null) {
-                    val enter = slideInVertically(animationSpec = tween(AnimationDuration)) +
-                        fadeIn(animationSpec = tween(AnimationDuration))
-                    val exit = slideOutVertically(animationSpec = tween(AnimationDuration)) +
-                        fadeOut(animationSpec = tween(AnimationDuration))
+                    val enter =
+                        slideInVertically(animationSpec = tween(AnimationDuration)) +
+                            fadeIn(animationSpec = tween(AnimationDuration))
+                    val exit =
+                        slideOutVertically(animationSpec = tween(AnimationDuration)) +
+                            fadeOut(animationSpec = tween(AnimationDuration))
                     val size = SizeTransform(clip = false) { _, _ -> tween(AnimationDuration) }
                     enter togetherWith exit using size
                 } else {
@@ -56,20 +59,23 @@ internal fun FieldMessage(
             if (message != null) {
                 Row(
                     Modifier.padding(top = 6.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    val icon = when (message) {
-                        is Message.Error -> AndromedaSystemIcons.ErrorIcon
-                        is Message.Info -> AndromedaSystemIcons.Info
-                    }
-                    val tintColor = when (message) {
-                        is Message.Error -> AndromedaTheme.colors.secondaryColors.error
-                        is Message.Info -> AndromedaTheme.colors.tertiaryColors.active
-                    }
+                    val icon =
+                        when (message) {
+                            is Message.Error -> AndromedaSystemIcons.ErrorIcon
+                            is Message.Info -> AndromedaSystemIcons.Info
+                        }
+                    val tintColor =
+                        when (message) {
+                            is Message.Error -> AndromedaTheme.colors.secondaryColors.error
+                            is Message.Info -> AndromedaTheme.colors.tertiaryColors.active
+                        }
                     Box(
-                        modifier = Modifier
-                            .padding(end = 4.dp)
-                            .size(height = 20.sp, width = 16.sp),
+                        modifier =
+                            Modifier
+                                .padding(end = 4.dp)
+                                .size(height = 20.sp, width = 16.sp),
                         contentAlignment = Alignment.Center,
                     ) {
                         Icon(
@@ -81,8 +87,8 @@ internal fun FieldMessage(
                     }
                     ProvideMergedTextStyle(
                         AndromedaTheme.typography.bodyModerateDefaultTypographyStyle.copy(
-                            color = tintColor
-                        )
+                            color = tintColor,
+                        ),
                     ) {
                         message.content.invoke()
                     }
@@ -91,12 +97,14 @@ internal fun FieldMessage(
                 Box {}
             }
         }
+    }
 }
 
 private sealed class Message(
     open val content: @Composable (() -> Unit),
 ) {
     data class Error(override val content: @Composable () -> Unit) : Message(content)
+
     data class Info(override val content: @Composable () -> Unit) : Message(content)
 }
 

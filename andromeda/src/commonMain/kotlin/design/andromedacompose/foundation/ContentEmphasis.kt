@@ -18,7 +18,10 @@ public val LocalContentEmphasis: ProvidableCompositionLocal<ContentEmphasis> =
     compositionLocalOf { ContentEmphasis.Normal }
 
 @Composable
-public fun ProvideContentEmphasis(emphasis: ContentEmphasis, content: @Composable () -> Unit) {
+public fun ProvideContentEmphasis(
+    emphasis: ContentEmphasis,
+    content: @Composable () -> Unit,
+) {
     CompositionLocalProvider(LocalContentEmphasis provides emphasis, content = content)
 }
 

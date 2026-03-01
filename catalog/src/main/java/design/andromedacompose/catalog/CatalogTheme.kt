@@ -15,7 +15,7 @@ import design.andromedacompose.foundation.colors.defaultLightColors
 @Composable
 fun CatalogTheme(
     isLightTheme: Boolean = true,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val view = LocalView.current
     if (!view.isInEditMode) {
@@ -29,19 +29,20 @@ fun CatalogTheme(
 
     AndromedaTheme(
         colors = if (isLightTheme) defaultLightColors() else defaultDarkColors(),
-        fontFamily = CatalogAppFonts
+        fontFamily = CatalogAppFonts,
     ) {
         content()
     }
 }
 
-val CatalogAppFonts = FontFamily(
-    Font(R.font.catalog_black, FontWeight.Black),
-    Font(R.font.catalog_bold, FontWeight.Bold),
-    Font(R.font.catalog_extrabold, FontWeight.ExtraBold),
-    Font(R.font.catalog_extralight, FontWeight.Light),
-    Font(R.font.catalog_medium, FontWeight.Medium),
-    Font(R.font.catalog_regular, FontWeight.W400),
-    Font(R.font.catalog_semibold, FontWeight.SemiBold),
-    Font(R.font.catalog_thin, FontWeight.Thin)
-)
+val CatalogAppFonts =
+    FontFamily(
+        Font(R.font.catalog_black, FontWeight.Black),
+        Font(R.font.catalog_bold, FontWeight.Bold),
+        Font(R.font.catalog_extrabold, FontWeight.ExtraBold),
+        Font(R.font.catalog_extralight, FontWeight.Light),
+        Font(R.font.catalog_medium, FontWeight.Medium),
+        Font(R.font.catalog_regular, FontWeight.W400),
+        Font(R.font.catalog_semibold, FontWeight.SemiBold),
+        Font(R.font.catalog_thin, FontWeight.Thin),
+    )

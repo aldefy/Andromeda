@@ -10,7 +10,7 @@ import androidx.compose.ui.geometry.Offset
  */
 fun Modifier.circularReveal(
     progress: Float,
-    offset: Offset? = null
+    offset: Offset? = null,
 ) = then(
-    clip(CircularRevealShape(progress, offset))
+    clip(CircularRevealShape(progress, offset)),
 )

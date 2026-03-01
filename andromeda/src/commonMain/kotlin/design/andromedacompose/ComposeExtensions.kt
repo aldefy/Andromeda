@@ -15,14 +15,13 @@ import androidx.compose.ui.graphics.Color as ComposeColor
 
 @PublishedApi
 internal val timeSource = TimeSource.Monotonic
+
 @PublishedApi
 internal val startMark = timeSource.markNow()
 
-fun LazyListState.isScrolledToTheEnd() =
-    layoutInfo.visibleItemsInfo.lastOrNull()?.index == layoutInfo.totalItemsCount - 1
+fun LazyListState.isScrolledToTheEnd() = layoutInfo.visibleItemsInfo.lastOrNull()?.index == layoutInfo.totalItemsCount - 1
 
-fun LazyListState.isScrolledToTheStart() =
-    layoutInfo.visibleItemsInfo.lastOrNull()?.index == 0
+fun LazyListState.isScrolledToTheStart() = layoutInfo.visibleItemsInfo.lastOrNull()?.index == 0
 
 /**
  * Wraps an [onClick] lambda with another one that supports debouncing. The default deboucing time
@@ -31,7 +30,10 @@ fun LazyListState.isScrolledToTheStart() =
  * @return debounced onClick
  */
 @Composable
-inline fun debounced(crossinline onClick: () -> Unit, debounceTime: Long = 1000L): () -> Unit {
+inline fun debounced(
+    crossinline onClick: () -> Unit,
+    debounceTime: Long = 1000L,
+): () -> Unit {
     var lastTimeClicked by remember { mutableStateOf(0L) }
     val onClickLambda: () -> Unit = {
         val now = startMark.elapsedNow().inWholeMilliseconds
@@ -48,7 +50,7 @@ inline fun debounced(crossinline onClick: () -> Unit, debounceTime: Long = 1000L
  */
 fun Modifier.debouncedClickable(
     debounceTime: Long = 1000L,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ): Modifier {
     return this.composed {
         val clickable = debounced(debounceTime = debounceTime, onClick = { onClick() })
@@ -57,7 +59,9 @@ fun Modifier.debouncedClickable(
 }
 
 fun ComposeColor.invert(): ComposeColor {
-    val r = red; val g = green; val b = blue
+    val r = red
+    val g = green
+    val b = blue
     val max = maxOf(r, g, b)
     val min = minOf(r, g, b)
     var h: Float
@@ -65,15 +69,17 @@ fun ComposeColor.invert(): ComposeColor {
     val l = (max + min) / 2f
 
     if (max == min) {
-        h = 0f; s = 0f
+        h = 0f
+        s = 0f
     } else {
         val d = max - min
         s = if (l > 0.5f) d / (2f - max - min) else d / (max + min)
-        h = when (max) {
-            r -> (g - b) / d + (if (g < b) 6f else 0f)
-            g -> (b - r) / d + 2f
-            else -> (r - g) / d + 4f
-        }
+        h =
+            when (max) {
+                r -> (g - b) / d + (if (g < b) 6f else 0f)
+                g -> (b - r) / d + 2f
+                else -> (r - g) / d + 4f
+            }
         h /= 6f
     }
 
@@ -81,24 +87,30 @@ fun ComposeColor.invert(): ComposeColor {
     return hslToColor(h, s, invertedL, alpha)
 }
 
-private fun hslToColor(h: Float, s: Float, l: Float, alpha: Float): ComposeColor {
+private fun hslToColor(
+    h: Float,
+    s: Float,
+    l: Float,
+    alpha: Float,
+): ComposeColor {
     val c = (1f - abs(2f * l - 1f)) * s
     val x = c * (1f - abs((h * 6f) % 2f - 1f))
     val m = l - c / 2f
-    val (r, g, b) = when {
-        h < 1f / 6f -> Triple(c, x, 0f)
-        h < 2f / 6f -> Triple(x, c, 0f)
-        h < 3f / 6f -> Triple(0f, c, x)
-        h < 4f / 6f -> Triple(0f, x, c)
-        h < 5f / 6f -> Triple(x, 0f, c)
-        else -> Triple(c, 0f, x)
-    }
+    val (r, g, b) =
+        when {
+            h < 1f / 6f -> Triple(c, x, 0f)
+            h < 2f / 6f -> Triple(x, c, 0f)
+            h < 3f / 6f -> Triple(0f, c, x)
+            h < 4f / 6f -> Triple(0f, x, c)
+            h < 5f / 6f -> Triple(x, 0f, c)
+            else -> Triple(c, 0f, x)
+        }
     return ComposeColor(r + m, g + m, b + m, alpha)
 }
 
 fun Modifier.conditional(
     predicate: Boolean,
-    other: Modifier.() -> Modifier
+    other: Modifier.() -> Modifier,
 ): Modifier =
     if (predicate) {
         this.then(other())

@@ -59,7 +59,7 @@ fun TextFieldScreen(onUpClick: () -> Unit) {
         Box(
             Modifier
                 .fillMaxSize()
-                .padding(it)
+                .padding(it),
         ) {
             TextFieldScreenContent()
         }
@@ -76,8 +76,8 @@ fun TextFieldScreenContent() {
     var selectedOptionText by remember {
         mutableStateOf(
             TextFieldValue(
-                ""
-            )
+                "",
+            ),
         )
     }
     val coroutineScope = rememberCoroutineScope()
@@ -85,73 +85,81 @@ fun TextFieldScreenContent() {
     val bringIntoViewRequester = remember { BringIntoViewRequester() }
     LazyColumn {
         item {
-            val text = remember {
-                mutableStateOf("John")
-            }
+            val text =
+                remember {
+                    mutableStateOf("John")
+                }
             TextField(
                 value = text.value,
                 onValueChange = { text.value = it },
                 label = { Text("First Name") },
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .fillMaxWidth(),
+                modifier =
+                    Modifier
+                        .padding(horizontal = 16.dp)
+                        .fillMaxWidth(),
                 leadingIcon = { Icon(Icons.Default.Person, contentDescription = null) },
                 trailingIcon = { Icon(Icons.Default.Close, contentDescription = null) },
                 onTrailingIconClick = {
                     text.value = ""
                 },
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
             )
         }
         item {
-            val text = remember {
-                mutableStateOf("Doe")
-            }
+            val text =
+                remember {
+                    mutableStateOf("Doe")
+                }
             TextField(
                 value = text.value,
                 onValueChange = { text.value = it },
                 label = { Text("Last Name") },
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .fillMaxWidth(),
+                modifier =
+                    Modifier
+                        .padding(horizontal = 16.dp)
+                        .fillMaxWidth(),
                 leadingIcon = { Icon(Icons.Default.Person, contentDescription = null) },
                 trailingIcon = { Icon(Icons.Default.Close, contentDescription = null) },
                 onTrailingIconClick = {
                     text.value = ""
                 },
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
             )
         }
         item {
-            val text = remember {
-                mutableStateOf("Random text")
-            }
+            val text =
+                remember {
+                    mutableStateOf("Random text")
+                }
             TextField(
                 value = text.value,
                 onValueChange = { text.value = it },
                 label = { Text("Meta info") },
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .fillMaxWidth(),
+                modifier =
+                    Modifier
+                        .padding(horizontal = 16.dp)
+                        .fillMaxWidth(),
                 enabled = false,
                 leadingIcon = { Icon(Icons.Default.DisabledByDefault, contentDescription = null) },
                 info = {
                     Text("this field is not editable", fontSize = 9.sp)
                 },
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
             )
         }
         item {
-            val text = remember {
-                mutableStateOf("")
-            }
+            val text =
+                remember {
+                    mutableStateOf("")
+                }
             TextField(
                 value = text.value,
                 onValueChange = { text.value = it },
                 label = { Text("Meta info") },
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .fillMaxWidth(),
+                modifier =
+                    Modifier
+                        .padding(horizontal = 16.dp)
+                        .fillMaxWidth(),
                 leadingIcon = { Icon(Icons.Default.Edit, contentDescription = null) },
                 trailingIcon = { Icon(Icons.Default.Close, contentDescription = null) },
                 onTrailingIconClick = {
@@ -160,73 +168,82 @@ fun TextFieldScreenContent() {
                 error = {
                     Text("This must be set", fontSize = 9.sp)
                 },
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
             )
         }
         item {
-            val text = remember {
-                mutableStateOf("123.29")
-            }
+            val text =
+                remember {
+                    mutableStateOf("123.29")
+                }
             TextField(
                 value = text.value,
                 onValueChange = { text.value = it },
                 label = { Text("MRP *") },
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .fillMaxWidth(),
+                modifier =
+                    Modifier
+                        .padding(horizontal = 16.dp)
+                        .fillMaxWidth(),
                 leadingIcon = { Icon(Icons.Default.CurrencyRupee, contentDescription = null) },
                 trailingIcon = { Icon(Icons.Default.Close, contentDescription = null) },
                 onTrailingIconClick = {
                     text.value = ""
                 },
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
-                    imeAction = ImeAction.Done
-                )
+                keyboardOptions =
+                    KeyboardOptions(
+                        keyboardType = KeyboardType.Number,
+                        imeAction = ImeAction.Done,
+                    ),
             )
         }
         item {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                val text = remember {
-                    mutableStateOf("123.29")
-                }
+                val text =
+                    remember {
+                        mutableStateOf("123.29")
+                    }
                 TextField(
                     value = text.value,
                     onValueChange = { text.value = it },
                     label = { Text("GST *") },
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                        .width(200.dp),
+                    modifier =
+                        Modifier
+                            .padding(horizontal = 16.dp)
+                            .width(200.dp),
                     leadingIcon = { Icon(Icons.Default.CurrencyRupee, contentDescription = null) },
                     trailingIcon = { Icon(Icons.Default.Close, contentDescription = null) },
                     onTrailingIconClick = {
                         text.value = ""
                     },
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Number,
-                        imeAction = ImeAction.Done
-                    )
+                    keyboardOptions =
+                        KeyboardOptions(
+                            keyboardType = KeyboardType.Number,
+                            imeAction = ImeAction.Done,
+                        ),
                 )
-                val text2 = remember {
-                    mutableStateOf("1")
-                }
+                val text2 =
+                    remember {
+                        mutableStateOf("1")
+                    }
                 TextField(
                     value = text2.value,
                     onValueChange = { text2.value = it },
                     label = { Text("No of Units.") },
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                        .width(200.dp),
+                    modifier =
+                        Modifier
+                            .padding(horizontal = 16.dp)
+                            .width(200.dp),
                     leadingIcon = {
                         Icon(
                             Icons.Default.AddShoppingCart,
-                            contentDescription = null
+                            contentDescription = null,
                         )
                     },
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Number,
-                        imeAction = ImeAction.Done
-                    )
+                    keyboardOptions =
+                        KeyboardOptions(
+                            keyboardType = KeyboardType.Number,
+                            imeAction = ImeAction.Done,
+                        ),
                 )
             }
         }
@@ -237,7 +254,7 @@ fun TextFieldScreenContent() {
                     text = "Dropdown test",
                     fontWeight = FontWeight.Bold,
                     fontSize = 14.sp,
-                    modifier = Modifier.padding(horizontal = 8.dp)
+                    modifier = Modifier.padding(horizontal = 8.dp),
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 ExposedDropdownMenuBox(
@@ -250,19 +267,29 @@ fun TextFieldScreenContent() {
                     TextField(
                         modifier = Modifier,
                         value = selectedOptionText.text,
-                        defaultBorderNormalColor = if (selectedOptionText.text.isEmpty()) Color.Red
-                        else Color.parse(
-                            "#7F8186"
-                        ),
+                        defaultBorderNormalColor =
+                            if (selectedOptionText.text.isEmpty()) {
+                                Color.Red
+                            } else {
+                                Color.parse(
+                                    "#7F8186",
+                                )
+                            },
                         onValueChange = { newString ->
-                            selectedOptionText = TextFieldValue(
-                                text = newString,
-                                selection = if (newString.isNotEmpty()) TextRange(newString.length)
-                                else TextRange(0)
-                            )
-                            options = selections.filter {
-                                it.contains(newString, ignoreCase = true)
-                            }
+                            selectedOptionText =
+                                TextFieldValue(
+                                    text = newString,
+                                    selection =
+                                        if (newString.isNotEmpty()) {
+                                            TextRange(newString.length)
+                                        } else {
+                                            TextRange(0)
+                                        },
+                                )
+                            options =
+                                selections.filter {
+                                    it.contains(newString, ignoreCase = true)
+                                }
                             if (newString.isNotEmpty() && !expanded) {
                                 expanded = true
                             }
@@ -271,8 +298,9 @@ fun TextFieldScreenContent() {
                             Icon(
                                 imageVector = Icons.Default.ArrowDropDown,
                                 contentDescription = null,
-                                modifier = Modifier.clickable {
-                                }
+                                modifier =
+                                    Modifier.clickable {
+                                    },
                             )
                         },
                         singleLine = true,
@@ -282,20 +310,23 @@ fun TextFieldScreenContent() {
                         expanded = expanded,
                         onDismissRequest = {
                             expanded = false
-                        }
+                        },
                     ) {
                         options.forEach { selectionOption ->
                             DropdownMenuItem(
                                 onClick = {
-                                    selectedOptionText = TextFieldValue(
-                                        selectionOption,
-                                        selection = if (selectionOption.isNotEmpty())
-                                            TextRange(selectionOption.length)
-                                        else
-                                            TextRange(0)
-                                    )
+                                    selectedOptionText =
+                                        TextFieldValue(
+                                            selectionOption,
+                                            selection =
+                                                if (selectionOption.isNotEmpty()) {
+                                                    TextRange(selectionOption.length)
+                                                } else {
+                                                    TextRange(0)
+                                                },
+                                        )
                                     expanded = false
-                                }
+                                },
                             ) {
                                 Text(text = selectionOption)
                             }

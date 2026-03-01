@@ -32,12 +32,13 @@ class ContentColors(
         minor: ComposeColor = this.minor,
         subtle: ComposeColor = this.subtle,
         disabled: ComposeColor = this.disabled,
-    ): ContentColors = ContentColors(
-        normal,
-        minor,
-        subtle,
-        disabled,
-    )
+    ): ContentColors =
+        ContentColors(
+            normal,
+            minor,
+            subtle,
+            disabled,
+        )
 }
 
 @Composable

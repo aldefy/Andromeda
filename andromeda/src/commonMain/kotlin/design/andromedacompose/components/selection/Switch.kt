@@ -16,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.Dp
@@ -57,38 +56,41 @@ public fun Switch(
     val thumbPadding = 2.dp
     val thumbTravel = width - thumbDiameter - (thumbPadding * 2)
 
-    val thumbOffset = animateDpAsState(
-        targetValue = if (checked) thumbTravel else 0.dp,
-        animationSpec = tween(durationMillis = AndromedaMotion.Fast),
-        label = "switchThumb"
-    )
+    val thumbOffset =
+        animateDpAsState(
+            targetValue = if (checked) thumbTravel else 0.dp,
+            animationSpec = tween(durationMillis = AndromedaMotion.Fast),
+            label = "switchThumb",
+        )
 
     val alpha = if (enabled) AndromedaOpacity.Full else AndromedaOpacity.Disabled
 
-    val clickModifier = if (onCheckedChange != null) {
-        Modifier
-            .minimumInteractiveSize()
-            .toggleableSemantics(
-                checked = checked,
-                role = Role.Switch,
-                checkedLabel = "On",
-                uncheckedLabel = "Off",
-            )
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = AndromedaIndication,
-                enabled = enabled,
-                role = Role.Switch,
-                onClick = { onCheckedChange(!checked) },
-            )
-    } else {
-        Modifier
-    }
+    val clickModifier =
+        if (onCheckedChange != null) {
+            Modifier
+                .minimumInteractiveSize()
+                .toggleableSemantics(
+                    checked = checked,
+                    role = Role.Switch,
+                    checkedLabel = "On",
+                    uncheckedLabel = "Off",
+                )
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = AndromedaIndication,
+                    enabled = enabled,
+                    role = Role.Switch,
+                    onClick = { onCheckedChange(!checked) },
+                )
+        } else {
+            Modifier
+        }
 
     Canvas(
-        modifier = modifier
-            .then(clickModifier)
-            .requiredSize(width = width, height = height)
+        modifier =
+            modifier
+                .then(clickModifier)
+                .requiredSize(width = width, height = height),
     ) {
         val cornerRadius = CornerRadius(size.height / 2f)
         val trackColor = if (checked) checkedTrackColor else uncheckedTrackColor
@@ -138,16 +140,17 @@ public fun LabeledSwitch(
     label: @Composable () -> Unit,
 ) {
     Row(
-        modifier = modifier
-            .minimumInteractiveSize()
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = AndromedaIndication,
-                enabled = enabled,
-                role = Role.Switch,
-                onClick = { onCheckedChange(!checked) },
-            )
-            .padding(horizontal = 4.dp),
+        modifier =
+            modifier
+                .minimumInteractiveSize()
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = AndromedaIndication,
+                    enabled = enabled,
+                    role = Role.Switch,
+                    onClick = { onCheckedChange(!checked) },
+                )
+                .padding(horizontal = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         label()

@@ -37,7 +37,7 @@ fun Screen(
     val backButton = @Composable {
         BackButton(
             imageVector = Icons.Default.ArrowBack,
-            onBackPressed = onNavigateUp ?: {}
+            onBackPressed = onNavigateUp ?: {},
         )
     }
     Scaffold(
@@ -51,7 +51,7 @@ fun Screen(
 
                     Text(
                         text = title,
-                        style = mergedTextStyle
+                        style = mergedTextStyle,
                     )
                 },
                 elevation = if (onNavigateUp == null) NavBarDefaultElevation else 4.dp,
@@ -62,20 +62,21 @@ fun Screen(
                             Icon(
                                 modifier = Modifier.size(20.dp, 32.dp),
                                 imageVector = Icons.Rounded.BrightnessMedium,
-                                contentDescription = stringResource(
-                                    R.string.accessibility_toggle_theme
-                                ),
+                                contentDescription =
+                                    stringResource(
+                                        R.string.accessibility_toggle_theme,
+                                    ),
                             )
                         }
                     }
-                }
+                },
             )
         },
         content = {
             Box(
                 Modifier
                     .fillMaxSize()
-                    .background(background)
+                    .background(background),
             ) {
                 content(it)
             }

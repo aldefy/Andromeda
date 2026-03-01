@@ -5,11 +5,11 @@ fun isLinuxOrMacOs(): Boolean {
 
 tasks.register<Copy>("copyGitHooks") {
     description = "Copies the git hooks from scripts/git-hooks to the .git folder."
-    from("${rootDir}/scripts/git-hooks/") {
+    from("$rootDir/scripts/git-hooks/") {
         include("**/*.sh")
         rename("(.*).sh", "$1")
     }
-    into("${rootDir}/.git/hooks")
+    into("$rootDir/.git/hooks")
     onlyIf { isLinuxOrMacOs() }
 }
 

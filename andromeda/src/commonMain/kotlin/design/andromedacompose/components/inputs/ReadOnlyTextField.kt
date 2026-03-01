@@ -39,13 +39,14 @@ fun ReadonlyTextField(
             leadingIcon = leadingIcon,
             onLeadingIconClick = onLeadingIconClick,
             trailingIcon = trailingIcon,
-            onTrailingIconClick = onTrailingIconClick
+            onTrailingIconClick = onTrailingIconClick,
         )
         Box(
-            modifier = Modifier
-                .matchParentSize()
-                .alpha(0f)
-                .clickable(onClick = onClick),
+            modifier =
+                Modifier
+                    .matchParentSize()
+                    .alpha(0f)
+                    .clickable(onClick = onClick),
         )
     }
 }

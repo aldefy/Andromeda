@@ -13,8 +13,8 @@ import design.andromedacompose.catalog.screens.IconsScreen
 import design.andromedacompose.catalog.screens.IllustrationsScreen
 import design.andromedacompose.catalog.screens.MainScreen
 import design.andromedacompose.catalog.screens.NavBarScreen
-import design.andromedacompose.catalog.screens.ShapesScreen
 import design.andromedacompose.catalog.screens.SelectionControlsScreen
+import design.andromedacompose.catalog.screens.ShapesScreen
 import design.andromedacompose.catalog.screens.TextFieldScreen
 import design.andromedacompose.catalog.screens.TokensScreen
 import design.andromedacompose.catalog.screens.TypographyScreen
@@ -46,7 +46,7 @@ fun NavGraph(
 
     NavHost(
         navController = navController,
-        startDestination = startDestination
+        startDestination = startDestination,
     ) {
         composable(MainDestinations.MAIN) {
             MainScreen(actions, onToggleTheme)

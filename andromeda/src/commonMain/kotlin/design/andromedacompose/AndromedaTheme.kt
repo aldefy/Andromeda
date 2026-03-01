@@ -11,13 +11,13 @@ import design.andromedacompose.foundation.colors.LocalColors
 import design.andromedacompose.foundation.shape.AndromedaShapes
 import design.andromedacompose.foundation.shape.DefaultShapes
 import design.andromedacompose.foundation.shape.LocalShapes
-import design.andromedacompose.foundation.typography.andromedaFontFamily
 import design.andromedacompose.foundation.tokens.AndromedaElevation
 import design.andromedacompose.foundation.tokens.AndromedaMotion
 import design.andromedacompose.foundation.tokens.AndromedaOpacity
 import design.andromedacompose.foundation.tokens.Spacing
 import design.andromedacompose.foundation.typography.AndromedaTypography
 import design.andromedacompose.foundation.typography.LocalTypography
+import design.andromedacompose.foundation.typography.andromedaFontFamily
 import design.andromedacompose.foundation.typography.textStyles
 
 @Composable
@@ -42,7 +42,6 @@ fun AndromedaTheme(
  * Useful static object to access currently configured Theme properties.
  */
 object AndromedaTheme {
-
     /**
      * These represent the default ease-of-use accessors for colors, typography.
      * */

@@ -19,8 +19,9 @@ object AndromedaMotion {
     val EaseInOut: Easing = CubicBezierEasing(0.4f, 0f, 0.2f, 1f)
 
     // Springs
-    fun <T> defaultSpring(): SpringSpec<T> = spring(
-        dampingRatio = 0.85f,
-        stiffness = 400f,
-    )
+    fun <T> defaultSpring(): SpringSpec<T> =
+        spring(
+            dampingRatio = 0.85f,
+            stiffness = 400f,
+        )
 }

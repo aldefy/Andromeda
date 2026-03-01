@@ -12,8 +12,7 @@ import androidx.compose.ui.unit.dp
  * Enforces the minimum 48dp × 48dp touch target size recommended by
  * WCAG 2.5.8 and the European Accessibility Act (EAA 2025).
  */
-public fun Modifier.minimumInteractiveSize(): Modifier =
-    this.sizeIn(minWidth = 48.dp, minHeight = 48.dp)
+public fun Modifier.minimumInteractiveSize(): Modifier = this.sizeIn(minWidth = 48.dp, minHeight = 48.dp)
 
 /**
  * Adds toggleable semantics (role + state description) for
@@ -29,17 +28,17 @@ public fun Modifier.toggleableSemantics(
     role: Role,
     checkedLabel: String = "Checked",
     uncheckedLabel: String = "Not checked",
-): Modifier = semantics {
-    this.role = role
-    stateDescription = if (checked) checkedLabel else uncheckedLabel
-}
+): Modifier =
+    semantics {
+        this.role = role
+        stateDescription = if (checked) checkedLabel else uncheckedLabel
+    }
 
 /**
  * Adds semantic state description for indeterminate checkbox state.
  */
-public fun Modifier.indeterminateSemantics(
-    role: Role = Role.Checkbox,
-): Modifier = semantics {
-    this.role = role
-    stateDescription = "Indeterminate"
-}
+public fun Modifier.indeterminateSemantics(role: Role = Role.Checkbox): Modifier =
+    semantics {
+        this.role = role
+        stateDescription = "Indeterminate"
+    }

@@ -26,7 +26,7 @@ fun <T> CircularReveal(
     targetState: T,
     modifier: Modifier = Modifier,
     animationSpec: FiniteAnimationSpec<Float> = tween(),
-    content: @Composable CircularRevealScope.(T) -> Unit
+    content: @Composable CircularRevealScope.(T) -> Unit,
 ) {
     val items = remember { mutableStateListOf<CircularRevealAnimationItem<T>>() }
     val transitionState = remember { MutableTransitionState(targetState) }
@@ -36,22 +36,26 @@ fun <T> CircularReveal(
     val transition = updateTransition(transitionState, label = "transition")
     if (targetChanged || items.isEmpty()) {
         // Only manipulate the list when the state is changed, or in the first run.
-        val keys = items.map { it.key }.run {
-            if (!contains(targetState)) {
-                toMutableList().also { it.add(targetState) }
-            } else {
-                this
+        val keys =
+            items.map { it.key }.run {
+                if (!contains(targetState)) {
+                    toMutableList().also { it.add(targetState) }
+                } else {
+                    this
+                }
             }
-        }
         items.clear()
         keys.mapIndexedTo(items) { index, key ->
             CircularRevealAnimationItem(key) {
                 val progress by transition.animateFloat(
-                    transitionSpec = { animationSpec }, label = ""
+                    transitionSpec = { animationSpec },
+                    label = "",
                 ) {
                     if (index == keys.size - 1) {
                         if (it == key) 1f else 0f
-                    } else 1f
+                    } else {
+                        1f
+                    }
                 }
                 Box(Modifier.circularReveal(progress = progress, offset = offset)) {
                     with(CircularRevealScope) {
@@ -76,7 +80,7 @@ fun <T> CircularReveal(
                     }
                 }
             }
-        }
+        },
     ) {
         items.forEach {
             key(it.key) {

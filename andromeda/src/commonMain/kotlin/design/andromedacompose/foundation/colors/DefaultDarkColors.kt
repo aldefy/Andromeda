@@ -1,7 +1,7 @@
 package design.andromedacompose.foundation.colors
 
-import design.andromedacompose.foundation.colors.tokens.DefaultColorTokens
 import design.andromedacompose.design.invert
+import design.andromedacompose.foundation.colors.tokens.DefaultColorTokens
 import androidx.compose.ui.graphics.Color as ComposeColor
 
 /**
@@ -13,16 +13,17 @@ fun defaultDarkColors(
     tertiaryColors: TertiaryColors = defaultTertiaryDarkColors(),
     borderColors: BorderColors = defaultBorderDarkColors(),
     iconColors: IconColors = defaultIconsDarkColors(),
-    contentColors: ContentColors = defaultContentDarkColors()
-): AndromedaColors = AndromedaColors(
-    primaryColors = primaryColors,
-    secondaryColors = secondaryColors,
-    tertiaryColors = tertiaryColors,
-    borderColors = borderColors,
-    iconColors = iconColors,
-    contentColors = contentColors,
-    isDark = true
-)
+    contentColors: ContentColors = defaultContentDarkColors(),
+): AndromedaColors =
+    AndromedaColors(
+        primaryColors = primaryColors,
+        secondaryColors = secondaryColors,
+        tertiaryColors = tertiaryColors,
+        borderColors = borderColors,
+        iconColors = iconColors,
+        contentColors = contentColors,
+        isDark = true,
+    )
 
 internal fun defaultPrimaryDarkColors(
     active: ComposeColor = DefaultColorTokens.activePrimaryDark,
@@ -31,14 +32,15 @@ internal fun defaultPrimaryDarkColors(
     mute: ComposeColor = DefaultColorTokens.mutePrimaryDark,
     pressed: ComposeColor = DefaultColorTokens.pressedPrimaryDark,
     alt: ComposeColor = DefaultColorTokens.CloudDarkNormal,
-): PrimaryColors = PrimaryColors(
-    active = active,
-    background = background,
-    error = error,
-    mute = mute,
-    pressed = pressed,
-    alt = alt
-)
+): PrimaryColors =
+    PrimaryColors(
+        active = active,
+        background = background,
+        error = error,
+        mute = mute,
+        pressed = pressed,
+        alt = alt,
+    )
 
 internal fun defaultSecondaryDarkColors(
     active: ComposeColor = DefaultColorTokens.activeSecondaryDark,
@@ -47,14 +49,15 @@ internal fun defaultSecondaryDarkColors(
     mute: ComposeColor = DefaultColorTokens.muteSecondaryDark,
     pressed: ComposeColor = DefaultColorTokens.pressedSecondaryDark,
     alt: ComposeColor = DefaultColorTokens.White,
-): SecondaryColors = SecondaryColors(
-    active = active,
-    background = background,
-    error = error,
-    mute = mute,
-    pressed = pressed,
-    alt = alt
-)
+): SecondaryColors =
+    SecondaryColors(
+        active = active,
+        background = background,
+        error = error,
+        mute = mute,
+        pressed = pressed,
+        alt = alt,
+    )
 
 internal fun defaultTertiaryDarkColors(
     active: ComposeColor = DefaultColorTokens.activeTertiaryDark,
@@ -63,14 +66,15 @@ internal fun defaultTertiaryDarkColors(
     mute: ComposeColor = DefaultColorTokens.muteTertiaryDark,
     pressed: ComposeColor = DefaultColorTokens.pressedTertiaryDark,
     alt: ComposeColor = DefaultColorTokens.White,
-): TertiaryColors = TertiaryColors(
-    active = active,
-    background = background,
-    error = error,
-    mute = mute,
-    pressed = pressed,
-    alt = alt
-)
+): TertiaryColors =
+    TertiaryColors(
+        active = active,
+        background = background,
+        error = error,
+        mute = mute,
+        pressed = pressed,
+        alt = alt,
+    )
 
 internal fun defaultBorderDarkColors(
     active: ComposeColor = DefaultColorTokens.activeBorderDark,
@@ -79,33 +83,36 @@ internal fun defaultBorderDarkColors(
     mute: ComposeColor = DefaultColorTokens.muteBorderDark,
     focus: ComposeColor = DefaultColorTokens.focusBorderDark,
     error: ComposeColor = DefaultColorTokens.errorBorderDark,
-): BorderColors = AndromedaBorderColors(
-    active = active,
-    pressed = pressed,
-    inactive = inactive,
-    mute = mute,
-    focus = focus,
-    error = error
-)
+): BorderColors =
+    AndromedaBorderColors(
+        active = active,
+        pressed = pressed,
+        inactive = inactive,
+        mute = mute,
+        focus = focus,
+        error = error,
+    )
 
 internal fun defaultIconsDarkColors(
     default: ComposeColor = DefaultColorTokens.iconDefaultDark,
     disabled: ComposeColor = DefaultColorTokens.iconDisabledDark,
     active: ComposeColor = DefaultColorTokens.iconActiveDark,
-): IconColors = AndromedaIconColors(
-    default = default,
-    disabled = disabled,
-    active = active
-)
+): IconColors =
+    AndromedaIconColors(
+        default = default,
+        disabled = disabled,
+        active = active,
+    )
 
 internal fun defaultContentDarkColors(
     normal: ComposeColor = DefaultColorTokens.contentNormal.invert(),
     minor: ComposeColor = DefaultColorTokens.contentMinor.invert(),
     subtle: ComposeColor = DefaultColorTokens.contentSubtle.invert(),
     disabled: ComposeColor = DefaultColorTokens.contentDisabled.invert(),
-): ContentColors = ContentColors(
-    normal = normal,
-    minor = minor,
-    subtle = subtle,
-    disabled = disabled
-)
+): ContentColors =
+    ContentColors(
+        normal = normal,
+        minor = minor,
+        subtle = subtle,
+        disabled = disabled,
+    )

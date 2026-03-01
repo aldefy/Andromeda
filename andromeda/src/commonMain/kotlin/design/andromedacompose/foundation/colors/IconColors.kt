@@ -30,9 +30,10 @@ class AndromedaIconColors(
         default: ComposeColor = this.default,
         disabled: ComposeColor = this.disabled,
         active: ComposeColor = this.active,
-    ): IconColors = AndromedaIconColors(
-        default,
-        disabled,
-        active,
-    )
+    ): IconColors =
+        AndromedaIconColors(
+            default,
+            disabled,
+            active,
+        )
 }

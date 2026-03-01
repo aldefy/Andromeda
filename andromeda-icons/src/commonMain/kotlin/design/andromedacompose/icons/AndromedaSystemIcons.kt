@@ -11,14 +11,13 @@ import androidx.compose.ui.unit.dp
  * These are ImageVector-based icons that replace Material icon dependencies.
  */
 object AndromedaSystemIcons {
-
     val ArrowBack: ImageVector by lazy {
         ImageVector.Builder(
             name = "ArrowBack",
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
             viewportWidth = 24f,
-            viewportHeight = 24f
+            viewportHeight = 24f,
         ).apply {
             path(fill = SolidColor(Color.Black)) {
                 moveTo(20f, 11f)
@@ -42,7 +41,7 @@ object AndromedaSystemIcons {
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
             viewportWidth = 24f,
-            viewportHeight = 24f
+            viewportHeight = 24f,
         ).apply {
             path(fill = SolidColor(Color.Black)) {
                 moveTo(19f, 6.41f)
@@ -68,7 +67,7 @@ object AndromedaSystemIcons {
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
             viewportWidth = 24f,
-            viewportHeight = 24f
+            viewportHeight = 24f,
         ).apply {
             path(fill = SolidColor(Color.Black)) {
                 moveTo(12f, 2f)
@@ -99,7 +98,7 @@ object AndromedaSystemIcons {
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
             viewportWidth = 24f,
-            viewportHeight = 24f
+            viewportHeight = 24f,
         ).apply {
             path(fill = SolidColor(Color.Black)) {
                 moveTo(12f, 2f)
@@ -130,7 +129,7 @@ object AndromedaSystemIcons {
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
             viewportWidth = 24f,
-            viewportHeight = 24f
+            viewportHeight = 24f,
         ).apply {
             path(fill = SolidColor(Color.Black)) {
                 moveTo(3f, 17.25f)
@@ -158,7 +157,7 @@ object AndromedaSystemIcons {
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
             viewportWidth = 24f,
-            viewportHeight = 24f
+            viewportHeight = 24f,
         ).apply {
             path(fill = SolidColor(Color.Black)) {
                 moveTo(12f, 8f)

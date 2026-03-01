@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.sp
 import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.catalog.Screen
 import design.andromedacompose.components.Text
-import design.andromedacompose.components.selection.Checkbox
 import design.andromedacompose.components.selection.LabeledCheckbox
 import design.andromedacompose.components.selection.LabeledRadioButton
 import design.andromedacompose.components.selection.LabeledSwitch
@@ -41,7 +40,7 @@ fun SelectionControlsScreen(onUpClick: () -> Unit) {
                 .fillMaxSize()
                 .padding(contentPadding)
                 .verticalScroll(rememberScrollState())
-                .padding(16.dp)
+                .padding(16.dp),
         ) {
             // --- Checkbox ---
             SectionHeader("Checkbox")
@@ -67,7 +66,7 @@ fun SelectionControlsScreen(onUpClick: () -> Unit) {
                 "Tri-State",
                 fontSize = 12.sp,
                 color = AndromedaTheme.colors.contentColors.subtle,
-                modifier = Modifier.padding(bottom = 4.dp)
+                modifier = Modifier.padding(bottom = 4.dp),
             )
             Row(verticalAlignment = Alignment.CenterVertically) {
                 val states = listOf(ToggleableState.Unchecked, ToggleableState.Checked, ToggleableState.Indeterminate)
@@ -132,7 +131,7 @@ fun SelectionControlsScreen(onUpClick: () -> Unit) {
                 "Standalone",
                 fontSize = 12.sp,
                 color = AndromedaTheme.colors.contentColors.subtle,
-                modifier = Modifier.padding(bottom = 8.dp)
+                modifier = Modifier.padding(bottom = 8.dp),
             )
             Row(verticalAlignment = Alignment.CenterVertically) {
                 var standalone by remember { mutableStateOf(false) }
@@ -151,6 +150,6 @@ private fun SectionHeader(text: String) {
     Text(
         text = text,
         style = AndromedaTheme.typography.titleModerateBoldTextStyle,
-        modifier = Modifier.padding(bottom = 12.dp)
+        modifier = Modifier.padding(bottom = 12.dp),
     )
 }

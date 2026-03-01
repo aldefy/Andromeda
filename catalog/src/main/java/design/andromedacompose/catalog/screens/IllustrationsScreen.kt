@@ -12,25 +12,26 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.catalog.Screen
 import design.andromedacompose.components.Text
-import androidx.compose.ui.graphics.vector.ImageVector
 import design.andromedacompose.illustrations.AndromedaIllustrations
 import design.andromedacompose.illustrations.Illustration
 
 private data class IllustrationEntry(val name: String, val imageVector: ImageVector)
 
-private val illustrations = listOf(
-    IllustrationEntry("FriendsChatting", AndromedaIllustrations.FriendsChatting),
-    IllustrationEntry("ManVibing", AndromedaIllustrations.ManVibing),
-    IllustrationEntry("WateringPlants", AndromedaIllustrations.WateringPlants),
-    IllustrationEntry("Workspace", AndromedaIllustrations.Workspace),
-    IllustrationEntry("WorkingPeople", AndromedaIllustrations.WorkingPeople),
-)
+private val illustrations =
+    listOf(
+        IllustrationEntry("FriendsChatting", AndromedaIllustrations.FriendsChatting),
+        IllustrationEntry("ManVibing", AndromedaIllustrations.ManVibing),
+        IllustrationEntry("WateringPlants", AndromedaIllustrations.WateringPlants),
+        IllustrationEntry("Workspace", AndromedaIllustrations.Workspace),
+        IllustrationEntry("WorkingPeople", AndromedaIllustrations.WorkingPeople),
+    )
 
 @Composable
 fun IllustrationsScreen(onUpClick: () -> Unit) {
@@ -41,7 +42,7 @@ fun IllustrationsScreen(onUpClick: () -> Unit) {
         Box(
             Modifier
                 .fillMaxSize()
-                .padding(it)
+                .padding(it),
         ) {
             IllustrationsScreenContent()
         }
@@ -59,7 +60,7 @@ fun IllustrationsScreenContent() {
             Card(
                 Modifier.padding(8.dp),
                 backgroundColor = AndromedaTheme.colors.primaryColors.background,
-                elevation = 4.dp
+                elevation = 4.dp,
             ) {
                 Column {
                     Text(
@@ -71,9 +72,10 @@ fun IllustrationsScreenContent() {
                     Illustration(
                         imageVector = ill.imageVector,
                         contentDescription = ill.name,
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .fillMaxWidth(),
+                        modifier =
+                            Modifier
+                                .padding(8.dp)
+                                .fillMaxWidth(),
                     )
                 }
             }

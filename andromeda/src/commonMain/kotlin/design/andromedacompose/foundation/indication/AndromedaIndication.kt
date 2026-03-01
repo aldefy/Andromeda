@@ -21,6 +21,7 @@ object AndromedaIndication : IndicationNodeFactory {
     }
 
     override fun equals(other: Any?) = other === this
+
     override fun hashCode() = this::class.hashCode()
 }
 
@@ -38,7 +39,8 @@ private class AndromedaIndicationNode(
                         invalidateDraw()
                     }
                     is PressInteraction.Release,
-                    is PressInteraction.Cancel -> {
+                    is PressInteraction.Cancel,
+                    -> {
                         isPressed = false
                         invalidateDraw()
                     }

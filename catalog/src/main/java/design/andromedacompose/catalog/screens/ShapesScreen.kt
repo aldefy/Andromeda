@@ -36,22 +36,23 @@ fun ShapesScreen(onUpClick: () -> Unit) {
                 .fillMaxSize()
                 .padding(contentPadding)
                 .verticalScroll(rememberScrollState())
-                .padding(16.dp)
+                .padding(16.dp),
         ) {
             Text(
                 text = "Shape Tokens",
                 style = AndromedaTheme.typography.titleModerateBoldTextStyle,
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier.padding(bottom = 16.dp),
             )
 
-            val shapes = listOf(
-                "small (4dp)" to AndromedaTheme.shapes.small,
-                "normal (6dp)" to AndromedaTheme.shapes.normal,
-                "large (12dp)" to AndromedaTheme.shapes.large,
-                "buttonShape (8dp)" to AndromedaTheme.shapes.buttonShape,
-                "dialogShape (8dp)" to AndromedaTheme.shapes.dialogShape,
-                "bottomSheet (16dp top)" to AndromedaTheme.shapes.bottomSheet,
-            )
+            val shapes =
+                listOf(
+                    "small (4dp)" to AndromedaTheme.shapes.small,
+                    "normal (6dp)" to AndromedaTheme.shapes.normal,
+                    "large (12dp)" to AndromedaTheme.shapes.large,
+                    "buttonShape (8dp)" to AndromedaTheme.shapes.buttonShape,
+                    "dialogShape (8dp)" to AndromedaTheme.shapes.dialogShape,
+                    "bottomSheet (16dp top)" to AndromedaTheme.shapes.bottomSheet,
+                )
 
             shapes.forEach { (name, shape) ->
                 ShapeItem(name, shape)
@@ -62,23 +63,26 @@ fun ShapesScreen(onUpClick: () -> Unit) {
 }
 
 @Composable
-private fun ShapeItem(name: String, shape: Shape) {
+private fun ShapeItem(
+    name: String,
+    shape: Shape,
+) {
     Row(
         Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Text(
             text = name,
             fontSize = 14.sp,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f),
         )
         Box(
             Modifier
                 .size(width = 120.dp, height = 64.dp)
                 .clip(shape)
                 .background(AndromedaTheme.colors.primaryColors.active)
-                .border(1.dp, AndromedaTheme.colors.borderColors.active, shape)
+                .border(1.dp, AndromedaTheme.colors.borderColors.active, shape),
         )
     }
 }

@@ -23,9 +23,10 @@ internal fun ConstrainedColumn(
         content = {
             content()
         },
-        measurePolicy = remember {
-            ColumnWithMinConstraintsMeasurePolicy()
-        },
+        measurePolicy =
+            remember {
+                ColumnWithMinConstraintsMeasurePolicy()
+            },
     )
 }
 
@@ -35,19 +36,22 @@ private class ColumnWithMinConstraintsMeasurePolicy : MeasurePolicy {
         constraints: Constraints,
     ): MeasureResult {
         var occupiedSpaceVertically = 0
-        val placeables = measurables.map { measurable ->
-            val placeable = measurable.measure(
-                constraints.copy(
-                    maxHeight = if (constraints.maxHeight == Constraints.Infinity) {
-                        Constraints.Infinity
-                    } else {
-                        constraints.maxHeight - occupiedSpaceVertically
-                    },
-                ),
-            )
-            occupiedSpaceVertically += placeable.height
-            placeable
-        }
+        val placeables =
+            measurables.map { measurable ->
+                val placeable =
+                    measurable.measure(
+                        constraints.copy(
+                            maxHeight =
+                                if (constraints.maxHeight == Constraints.Infinity) {
+                                    Constraints.Infinity
+                                } else {
+                                    constraints.maxHeight - occupiedSpaceVertically
+                                },
+                        ),
+                    )
+                occupiedSpaceVertically += placeable.height
+                placeable
+            }
 
         val width = placeables.maxOf { it.width }.coerceAtLeast(constraints.minWidth)
         val height = occupiedSpaceVertically.coerceAtLeast(constraints.minHeight)

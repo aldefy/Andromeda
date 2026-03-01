@@ -57,7 +57,7 @@ fun AndromedaNavBar(
         DefaultAndromedaNavBarTitle(
             modifier = titleModifier,
             title = title,
-            subTitle = subTitle
+            subTitle = subTitle,
         )
     },
     menuView: @Composable RowScope.(Modifier) -> Unit = { DefaultAndromedaNavBarMenu(it) },
@@ -67,12 +67,13 @@ fun AndromedaNavBar(
         elevation = elevation,
         shape = shape,
         contentColor = contentColor,
-        modifier = modifier.then(
-            Modifier.padding(
-                WindowInsets.statusBars.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
-                    .asPaddingValues()
-            )
-        )
+        modifier =
+            modifier.then(
+                Modifier.padding(
+                    WindowInsets.statusBars.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
+                        .asPaddingValues(),
+                ),
+            ),
     ) {
         Row(
             Modifier
@@ -88,25 +89,26 @@ fun AndromedaNavBar(
                     Row(TitleIconModifier, verticalAlignment = Alignment.CenterVertically) {
                         ProvideContentEmphasis(
                             emphasis = ContentEmphasis.Normal,
-                            content = navigationIcon
+                            content = navigationIcon,
                         )
                     }
                 }
 
                 ProvideMergedTextStyle(
-                    value = TextStyle(
-                        fontSize = 19.sp,
-                        letterSpacing = 0.15.sp,
-                        fontWeight = FontWeight.Medium,
-                    )
+                    value =
+                        TextStyle(
+                            fontSize = 19.sp,
+                            letterSpacing = 0.15.sp,
+                            fontWeight = FontWeight.Medium,
+                        ),
                 ) {
                     CompositionLocalProvider(
-                        LocalContentEmphasis provides ContentEmphasis.Normal
+                        LocalContentEmphasis provides ContentEmphasis.Normal,
                     ) {
                         Box(
                             Modifier.semantics(mergeDescendants = true) {
                                 testTag = "title"
-                            }
+                            },
                         ) {
                             this@Row.titleView(Modifier.fillMaxWidth())
                         }
@@ -115,7 +117,7 @@ fun AndromedaNavBar(
 
                 Spacer(modifier = Modifier.weight(1f))
                 menuView(Modifier.padding(end = 8.dp))
-            }
+            },
         )
     }
 }
@@ -124,18 +126,18 @@ fun AndromedaNavBar(
 fun DefaultAndromedaNavBarTitle(
     title: String,
     subTitle: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(modifier) {
         Text(
             text = title,
             style = AndromedaTheme.typography.titleModerateBoldTextStyle,
-            color = AndromedaTheme.colors.contentColors.normal
+            color = AndromedaTheme.colors.contentColors.normal,
         )
         Text(
             text = subTitle,
             style = AndromedaTheme.typography.titleSmallDemiTextStyle,
-            color = AndromedaTheme.colors.contentColors.subtle
+            color = AndromedaTheme.colors.contentColors.subtle,
         )
     }
 }
@@ -151,10 +153,11 @@ fun DefaultAndromedaNavBarTitlePreview() {
 fun DefaultAndromedaNavBarMenu(modifier: Modifier) {
 }
 
-val ContentPadding = PaddingValues(
-    start = 4.dp,
-    end = 4.dp
-)
+val ContentPadding =
+    PaddingValues(
+        start = 4.dp,
+        end = 4.dp,
+    )
 val NavBarNoElevation = AndromedaElevation.None
 val NavBarDefaultElevation = AndromedaElevation.Small
 private val NavBarHeight = 56.dp
@@ -164,6 +167,7 @@ private val NavBarHorizontalPadding = 4.dp
 private val TitleInsetWithoutIcon = Modifier.width(16.dp - NavBarHorizontalPadding)
 
 // Start inset for the title when there is a navigation icon provided
-private val TitleIconModifier = Modifier
-    .fillMaxHeight()
-    .width(72.dp - NavBarHorizontalPadding)
+private val TitleIconModifier =
+    Modifier
+        .fillMaxHeight()
+        .width(72.dp - NavBarHorizontalPadding)

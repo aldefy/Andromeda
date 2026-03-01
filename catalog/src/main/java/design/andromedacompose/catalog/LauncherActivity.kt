@@ -39,11 +39,12 @@ class LauncherActivity : ComponentActivity() {
             // Works on API < 36; on API 36 the system may override this, so we
             // also draw a scrim (StatusBarProtection) as a fallback.
             SideEffect {
-                val barStyle = if (isLightTheme) {
-                    SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT)
-                } else {
-                    SystemBarStyle.dark(Color.TRANSPARENT)
-                }
+                val barStyle =
+                    if (isLightTheme) {
+                        SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT)
+                    } else {
+                        SystemBarStyle.dark(Color.TRANSPARENT)
+                    }
                 enableEdgeToEdge(
                     statusBarStyle = barStyle,
                     navigationBarStyle = barStyle,
@@ -52,7 +53,7 @@ class LauncherActivity : ComponentActivity() {
 
             CircularReveal(
                 targetState = isLightTheme,
-                animationSpec = tween(2500)
+                animationSpec = tween(2500),
             ) { localTheme ->
                 CatalogTheme(isLightTheme = localTheme) {
                     Box(Modifier.fillMaxSize()) {
@@ -65,7 +66,7 @@ class LauncherActivity : ComponentActivity() {
                         // where the system ignores isAppearanceLightStatusBars.
                         if (!localTheme) {
                             StatusBarProtection(
-                                color = AndromedaTheme.colors.primaryColors.background
+                                color = AndromedaTheme.colors.primaryColors.background,
                             )
                         }
                     }
@@ -82,15 +83,14 @@ class LauncherActivity : ComponentActivity() {
  * the system theme, not the app theme).
  */
 @Composable
-private fun StatusBarProtection(
-    color: ComposeColor,
-) {
+private fun StatusBarProtection(color: ComposeColor) {
     val statusBarsInsets = WindowInsets.statusBars
     val density = LocalDensity.current
-    val heights = remember(statusBarsInsets, density) {
-        val statusBarH = statusBarsInsets.getTop(density).toFloat()
-        statusBarH to statusBarH * 1.3f
-    }
+    val heights =
+        remember(statusBarsInsets, density) {
+            val statusBarH = statusBarsInsets.getTop(density).toFloat()
+            statusBarH to statusBarH * 1.3f
+        }
     Canvas(Modifier.fillMaxSize()) {
         val (solidHeight, totalHeight) = heights
         // Solid opaque bar covering the status bar icons
@@ -99,11 +99,12 @@ private fun StatusBarProtection(
             size = Size(size.width, solidHeight),
         )
         // Short gradient fade below the solid bar
-        val fade = Brush.verticalGradient(
-            colors = listOf(color, ComposeColor.Transparent),
-            startY = solidHeight,
-            endY = totalHeight,
-        )
+        val fade =
+            Brush.verticalGradient(
+                colors = listOf(color, ComposeColor.Transparent),
+                startY = solidHeight,
+                endY = totalHeight,
+            )
         drawRect(
             brush = fade,
             topLeft = androidx.compose.ui.geometry.Offset(0f, solidHeight),

@@ -41,7 +41,7 @@ public fun Text(
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
     onTextLayout: (TextLayoutResult) -> Unit = {},
-    style: TextStyle = LocalTextStyle.current
+    style: TextStyle = LocalTextStyle.current,
 ) {
     Text(
         AnnotatedString(text),
@@ -61,7 +61,7 @@ public fun Text(
         maxLines,
         emptyMap(),
         onTextLayout,
-        style
+        style,
     )
 }
 
@@ -84,26 +84,28 @@ public fun Text(
     maxLines: Int = Int.MAX_VALUE,
     inlineContent: Map<String, InlineTextContent> = mapOf(),
     onTextLayout: (TextLayoutResult) -> Unit = {},
-    style: TextStyle = LocalTextStyle.current
+    style: TextStyle = LocalTextStyle.current,
 ) {
-    val textColor = color.takeOrElse {
-        style.color.takeOrElse {
-            LocalContentColor.current.applyEmphasis(emphasis)
+    val textColor =
+        color.takeOrElse {
+            style.color.takeOrElse {
+                LocalContentColor.current.applyEmphasis(emphasis)
+            }
         }
-    }
-    val mergedStyle = style.merge(
-        TextStyle(
-            color = textColor,
-            fontSize = fontSize,
-            fontWeight = fontWeight,
-            textAlign = textAlign,
-            lineHeight = lineHeight,
-            fontFamily = fontFamily,
-            textDecoration = textDecoration,
-            fontStyle = fontStyle,
-            letterSpacing = letterSpacing
+    val mergedStyle =
+        style.merge(
+            TextStyle(
+                color = textColor,
+                fontSize = fontSize,
+                fontWeight = fontWeight,
+                textAlign = textAlign,
+                lineHeight = lineHeight,
+                fontFamily = fontFamily,
+                textDecoration = textDecoration,
+                fontStyle = fontStyle,
+                letterSpacing = letterSpacing,
+            ),
         )
-    )
     BasicText(
         text = text,
         modifier = modifier,
@@ -113,6 +115,6 @@ public fun Text(
         softWrap = softWrap,
         maxLines = maxLines,
         minLines = 1,
-        inlineContent = inlineContent
+        inlineContent = inlineContent,
     )
 }

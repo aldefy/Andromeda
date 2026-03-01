@@ -45,12 +45,13 @@ class AndromedaBorderColors(
         mute: ComposeColor = this.mute,
         focus: ComposeColor = this.focus,
         error: ComposeColor = this.error,
-    ): BorderColors = AndromedaBorderColors(
-        active,
-        pressed,
-        inactive,
-        mute,
-        focus,
-        error
-    )
+    ): BorderColors =
+        AndromedaBorderColors(
+            active,
+            pressed,
+            inactive,
+            mute,
+            focus,
+            error,
+        )
 }

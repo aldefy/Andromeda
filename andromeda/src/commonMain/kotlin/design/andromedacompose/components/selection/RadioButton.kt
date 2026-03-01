@@ -49,32 +49,34 @@ public fun RadioButton(
     unselectedColor: Color = AndromedaTheme.colors.borderColors.active,
     size: Dp = 22.dp,
 ) {
-    val dotScale = animateFloatAsState(
-        targetValue = if (selected) 1f else 0f,
-        animationSpec = tween(durationMillis = AndromedaMotion.Fast),
-        label = "radioDotScale"
-    )
+    val dotScale =
+        animateFloatAsState(
+            targetValue = if (selected) 1f else 0f,
+            animationSpec = tween(durationMillis = AndromedaMotion.Fast),
+            label = "radioDotScale",
+        )
     val alpha = if (enabled) AndromedaOpacity.Full else AndromedaOpacity.Disabled
 
-    val clickModifier = if (onClick != null) {
-        Modifier
-            .minimumInteractiveSize()
-            .toggleableSemantics(
-                checked = selected,
-                role = Role.RadioButton,
-                checkedLabel = "Selected",
-                uncheckedLabel = "Not selected",
-            )
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = AndromedaIndication,
-                enabled = enabled,
-                role = Role.RadioButton,
-                onClick = onClick,
-            )
-    } else {
-        Modifier
-    }
+    val clickModifier =
+        if (onClick != null) {
+            Modifier
+                .minimumInteractiveSize()
+                .toggleableSemantics(
+                    checked = selected,
+                    role = Role.RadioButton,
+                    checkedLabel = "Selected",
+                    uncheckedLabel = "Not selected",
+                )
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = AndromedaIndication,
+                    enabled = enabled,
+                    role = Role.RadioButton,
+                    onClick = onClick,
+                )
+        } else {
+            Modifier
+        }
 
     Canvas(modifier = modifier.then(clickModifier).size(size)) {
         val borderWidth = 2.dp.toPx()
@@ -115,16 +117,17 @@ public fun LabeledRadioButton(
     label: @Composable () -> Unit,
 ) {
     Row(
-        modifier = modifier
-            .minimumInteractiveSize()
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = AndromedaIndication,
-                enabled = enabled,
-                role = Role.RadioButton,
-                onClick = onClick,
-            )
-            .padding(horizontal = 4.dp),
+        modifier =
+            modifier
+                .minimumInteractiveSize()
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = AndromedaIndication,
+                    enabled = enabled,
+                    role = Role.RadioButton,
+                    onClick = onClick,
+                )
+                .padding(horizontal = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         RadioButton(

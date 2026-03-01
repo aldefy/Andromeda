@@ -9,6 +9,9 @@ import design.andromedacompose.foundation.ProvideAndromedaTextStyle
 public val LocalTextStyle: ProvidableCompositionLocal<TextStyle> = LocalAndromedaTextStyle
 
 @Composable
-public fun ProvideMergedTextStyle(value: TextStyle, content: @Composable () -> Unit) {
+public fun ProvideMergedTextStyle(
+    value: TextStyle,
+    content: @Composable () -> Unit,
+) {
     ProvideAndromedaTextStyle(value, content)
 }

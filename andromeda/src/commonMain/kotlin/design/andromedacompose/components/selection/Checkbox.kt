@@ -92,16 +92,17 @@ public fun LabeledCheckbox(
     label: @Composable () -> Unit,
 ) {
     Row(
-        modifier = modifier
-            .minimumInteractiveSize()
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = AndromedaIndication,
-                enabled = enabled,
-                role = Role.Checkbox,
-                onClick = { onCheckedChange(!checked) }
-            )
-            .padding(horizontal = 4.dp),
+        modifier =
+            modifier
+                .minimumInteractiveSize()
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = AndromedaIndication,
+                    enabled = enabled,
+                    role = Role.Checkbox,
+                    onClick = { onCheckedChange(!checked) },
+                )
+                .padding(horizontal = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         CheckboxCanvas(
@@ -135,23 +136,24 @@ public fun TriStateCheckbox(
     checkmarkColor: Color = Color.White,
     size: Dp = 22.dp,
 ) {
-    val clickModifier = if (onClick != null) {
-        Modifier
-            .minimumInteractiveSize()
-            .toggleableSemantics(
-                checked = state == ToggleableState.Checked,
-                role = Role.Checkbox,
-            )
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = AndromedaIndication,
-                enabled = enabled,
-                role = Role.Checkbox,
-                onClick = onClick,
-            )
-    } else {
-        Modifier
-    }
+    val clickModifier =
+        if (onClick != null) {
+            Modifier
+                .minimumInteractiveSize()
+                .toggleableSemantics(
+                    checked = state == ToggleableState.Checked,
+                    role = Role.Checkbox,
+                )
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = AndromedaIndication,
+                    enabled = enabled,
+                    role = Role.Checkbox,
+                    onClick = onClick,
+                )
+        } else {
+            Modifier
+        }
 
     CheckboxCanvas(
         state = state,
@@ -175,11 +177,12 @@ private fun CheckboxCanvas(
     size: Dp,
 ) {
     val isCheckedOrIndeterminate = state != ToggleableState.Unchecked
-    val progress = animateFloatAsState(
-        targetValue = if (isCheckedOrIndeterminate) 1f else 0f,
-        animationSpec = tween(durationMillis = AndromedaMotion.Fast),
-        label = "checkboxProgress"
-    )
+    val progress =
+        animateFloatAsState(
+            targetValue = if (isCheckedOrIndeterminate) 1f else 0f,
+            animationSpec = tween(durationMillis = AndromedaMotion.Fast),
+            label = "checkboxProgress",
+        )
     val alpha = if (enabled) AndromedaOpacity.Full else AndromedaOpacity.Disabled
 
     Canvas(modifier = modifier.size(size)) {
@@ -208,17 +211,19 @@ private fun CheckboxCanvas(
         // Check mark or indeterminate dash
         if (progress.value > 0f) {
             when (state) {
-                ToggleableState.Checked -> drawCheckMark(
-                    color = checkmarkColor,
-                    progress = progress.value,
-                    alpha = alpha,
-                    boxSize = boxSize,
-                )
-                ToggleableState.Indeterminate -> drawIndeterminateDash(
-                    color = checkmarkColor,
-                    alpha = alpha,
-                    boxSize = boxSize,
-                )
+                ToggleableState.Checked ->
+                    drawCheckMark(
+                        color = checkmarkColor,
+                        progress = progress.value,
+                        alpha = alpha,
+                        boxSize = boxSize,
+                    )
+                ToggleableState.Indeterminate ->
+                    drawIndeterminateDash(
+                        color = checkmarkColor,
+                        alpha = alpha,
+                        boxSize = boxSize,
+                    )
                 else -> {}
             }
         }
@@ -232,31 +237,32 @@ private fun DrawScope.drawCheckMark(
     boxSize: Size,
 ) {
     val stroke = Stroke(width = 2.dp.toPx(), cap = StrokeCap.Round)
-    val path = Path().apply {
-        // Check mark path: down-left to bottom, then up-right to top
-        val startX = boxSize.width * 0.22f
-        val startY = boxSize.height * 0.52f
-        val midX = boxSize.width * 0.42f
-        val midY = boxSize.height * 0.72f
-        val endX = boxSize.width * 0.78f
-        val endY = boxSize.height * 0.30f
+    val path =
+        Path().apply {
+            // Check mark path: down-left to bottom, then up-right to top
+            val startX = boxSize.width * 0.22f
+            val startY = boxSize.height * 0.52f
+            val midX = boxSize.width * 0.42f
+            val midY = boxSize.height * 0.72f
+            val endX = boxSize.width * 0.78f
+            val endY = boxSize.height * 0.30f
 
-        moveTo(startX, startY)
-        if (progress < 0.5f) {
-            val p = progress * 2f
-            lineTo(
-                startX + (midX - startX) * p,
-                startY + (midY - startY) * p,
-            )
-        } else {
-            lineTo(midX, midY)
-            val p = (progress - 0.5f) * 2f
-            lineTo(
-                midX + (endX - midX) * p,
-                midY + (endY - midY) * p,
-            )
+            moveTo(startX, startY)
+            if (progress < 0.5f) {
+                val p = progress * 2f
+                lineTo(
+                    startX + (midX - startX) * p,
+                    startY + (midY - startY) * p,
+                )
+            } else {
+                lineTo(midX, midY)
+                val p = (progress - 0.5f) * 2f
+                lineTo(
+                    midX + (endX - midX) * p,
+                    midY + (endY - midY) * p,
+                )
+            }
         }
-    }
     drawPath(path, color, alpha = alpha, style = stroke)
 }
 

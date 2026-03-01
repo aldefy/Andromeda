@@ -226,3 +226,6 @@ fabric.properties
 
 .idea/
 /loanbook/development/release/output-metadata.json
+
+# ComposeProof
+.composeproof/

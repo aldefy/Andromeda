@@ -9,9 +9,7 @@ import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.foundation.typography.ProvideMergedTextStyle
 
 @Composable
-internal fun FieldLabel(
-    content: @Composable () -> Unit,
-) {
+internal fun FieldLabel(content: @Composable () -> Unit) {
     ProvideMergedTextStyle(AndromedaTheme.typography.bodyModerateDefaultTypographyStyle) {
         Box(Modifier.padding(bottom = 4.dp)) {
             content()

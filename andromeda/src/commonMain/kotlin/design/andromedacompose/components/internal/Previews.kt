@@ -17,15 +17,16 @@ internal fun Preview(
     modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit,
 ) {
-    val colors = when (!isSystemInDarkTheme()) {
-        true -> defaultLightColors()
-        false -> defaultDarkColors()
-    }
+    val colors =
+        when (!isSystemInDarkTheme()) {
+            true -> defaultLightColors()
+            false -> defaultDarkColors()
+        }
     AndromedaTheme(colors = colors) {
         Surface {
             Column(
                 modifier = modifier,
-                verticalArrangement = Arrangement.spacedBy(4.dp)
+                verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
                 content()
             }
