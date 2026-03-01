@@ -1,47 +1,65 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
+
 task androidSourcesJar(type: Jar) {
     archiveClassifier.set('sources')
     if (project.plugins.findPlugin("com.android.library")) {
-// For Android libraries
         from android.sourceSets.main.java.srcDirs
         from android.sourceSets.main.kotlin.srcDirs
     } else {
-// For pure Kotlin libraries, in case you have them
         from sourceSets.main.java.srcDirs
         from sourceSets.main.kotlin.srcDirs
     }
 }
+
 artifacts {
     archives androidSourcesJar
 }
+
 group = PUBLISH_GROUP_ID
 version = PUBLISH_VERSION
+
+// Load signing properties from local.properties or environment
+def signingKeyId = ''
+def signingPassword = ''
+def signingKey = ''
+
+File secretPropsFile = project.rootProject.file('local.properties')
+if (secretPropsFile.exists()) {
+    Properties p = new Properties()
+    new FileInputStream(secretPropsFile).withCloseable { is -> p.load(is) }
+    signingKeyId = p.getProperty('signing.keyId', '')
+    signingPassword = p.getProperty('signing.password', '')
+    signingKey = p.getProperty('signing.key', '')
+} else {
+    signingKeyId = System.getenv('SIGNING_KEY_ID') ?: ''
+    signingPassword = System.getenv('SIGNING_PASSWORD') ?: ''
+    signingKey = System.getenv('SIGNING_KEY') ?: ''
+}
+
 afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
-// The coordinates of the library, being set from variables that
-// we'll set up later
                 groupId PUBLISH_GROUP_ID
                 artifactId PUBLISH_ARTIFACT_ID
                 version PUBLISH_VERSION
-// Two artifacts, the `aar` (or `jar`) and the sources
+
                 if (project.plugins.findPlugin("com.android.library")) {
                     from components.release
                 } else {
                     from components.java
                 }
                 artifact androidSourcesJar
-// Mostly self-explanatory metadata
+
                 pom {
                     name = PUBLISH_ARTIFACT_ID
-                    description = 'Andromeda Compose design system sdk'
+                    description = 'Andromeda - Compose Design System'
                     url = 'https://github.com/aldefy/Andromeda'
                     licenses {
                         license {
-                            name = 'Andromeda License'
-                            url = 'https://github.com/aldefy/Andromeda/blob/main/license.md'
+                            name = 'MIT License'
+                            url = 'https://opensource.org/licenses/MIT'
                         }
                     }
                     developers {
@@ -50,10 +68,7 @@ afterEvaluate {
                             name = 'Adit Lal'
                             email = 'me@aditlal.dev'
                         }
-// Add all other devs here...
                     }
-// Version control info - if you're using GitHub, follow the
-// format as seen here
                     scm {
                         connection = 'scm:git:github.com/aldefy/Andromeda/.git'
                         developerConnection = 'scm:git:ssh://github.com/aldefy/Andromeda/.git'
@@ -66,10 +81,6 @@ afterEvaluate {
 }
 
 signing {
-    useInMemoryPgpKeys(
-            rootProject.ext["signing.keyId"],
-            rootProject.ext["signing.key"],
-            rootProject.ext["signing.password"],
-    )
+    useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
     sign publishing.publications
 }

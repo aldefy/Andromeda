@@ -4,9 +4,9 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
-val publishGroupId = "design.andromedacompose.icons"
-val publishArtifactId = "andromeda-icons"
-val publishVersion = "2.0.0-alpha01"
+extra["PUBLISH_GROUP_ID"] = "design.andromedacompose.icons"
+extra["PUBLISH_ARTIFACT_ID"] = "andromeda-icons"
+extra["PUBLISH_VERSION"] = "2.0.0-alpha01"
 
 android {
     namespace = "design.andromedacompose.icons"
