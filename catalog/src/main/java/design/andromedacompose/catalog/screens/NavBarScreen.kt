@@ -18,6 +18,7 @@ import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.catalog.Screen
 import design.andromedacompose.components.BackButton
 import design.andromedacompose.components.Divider
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import design.andromedacompose.components.Icon
 import design.andromedacompose.components.Text
 import design.andromedacompose.components.navbar.AndromedaNavBar
@@ -74,7 +75,7 @@ fun NavBarScreenContent() {
             },
             menuView = {
                 Icon(
-                    painter = AndromedaIcons.InformationCircle,
+                    painter = rememberVectorPainter(AndromedaIcons.InformationCircle),
                     contentDescription = "Demo icon",
                     onClick = {}
                 )

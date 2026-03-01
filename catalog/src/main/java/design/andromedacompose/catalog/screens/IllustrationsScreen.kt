@@ -18,8 +18,19 @@ import androidx.compose.ui.unit.dp
 import design.andromedacompose.AndromedaTheme
 import design.andromedacompose.catalog.Screen
 import design.andromedacompose.components.Text
+import androidx.compose.ui.graphics.vector.ImageVector
 import design.andromedacompose.illustrations.AndromedaIllustrations
 import design.andromedacompose.illustrations.Illustration
+
+private data class IllustrationEntry(val name: String, val imageVector: ImageVector)
+
+private val illustrations = listOf(
+    IllustrationEntry("FriendsChatting", AndromedaIllustrations.FriendsChatting),
+    IllustrationEntry("ManVibing", AndromedaIllustrations.ManVibing),
+    IllustrationEntry("WateringPlants", AndromedaIllustrations.WateringPlants),
+    IllustrationEntry("Workspace", AndromedaIllustrations.Workspace),
+    IllustrationEntry("WorkingPeople", AndromedaIllustrations.WorkingPeople),
+)
 
 @Composable
 fun IllustrationsScreen(onUpClick: () -> Unit) {
@@ -44,7 +55,7 @@ fun IllustrationsScreenContent() {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(96.dp),
     ) {
-        items(AndromedaIllustrations.values()) { ill ->
+        items(illustrations) { ill ->
             Card(
                 Modifier.padding(8.dp),
                 backgroundColor = AndromedaTheme.colors.primaryColors.background,
@@ -52,13 +63,14 @@ fun IllustrationsScreenContent() {
             ) {
                 Column {
                     Text(
-                        ill.resourceName(),
+                        ill.name,
                         Modifier.padding(top = 4.dp, start = 6.dp),
                         style = AndromedaTheme.typography.titleSmallDemiTextStyle,
                         textAlign = TextAlign.Center,
                     )
                     Illustration(
-                        illustration = ill,
+                        imageVector = ill.imageVector,
+                        contentDescription = ill.name,
                         modifier = Modifier
                             .padding(8.dp)
                             .fillMaxWidth(),
